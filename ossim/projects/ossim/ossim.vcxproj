@@ -1,0 +1,2088 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseWithSymbols|Win32">
+      <Configuration>ReleaseWithSymbols</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseWithSymbols|x64">
+      <Configuration>ReleaseWithSymbols</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\ossim\base\datum.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossim2dBilinearTransform.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossim2dLinearRegression.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossim2dTo2dIdentityTransform.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossim2dTo2dMatrixTransform.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossim2dTo2dShiftTransform.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossim2dTo2dTransform.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossim2dTo2dTransformFactory.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossim2dTo2dTransformFactoryBase.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossim2dTo2dTransformRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimActiveEdgeTable.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimAdjSolutionAttributes.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimAdjustableParameterInfo.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimAdjustableParameterInterface.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimAdjustmentExecutive.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimAdjustmentInfo.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimAffineTransform.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimApplicationUsage.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimArgumentParser.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimAxes.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimBaseObjectFactory.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimBilSplitter.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimBinaryDataProperty.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimBooleanProperty.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimByteStreamBuffer.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimCallback1.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimCallback1wRet.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimCallback2wRet.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimCmyVector.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimColorProperty.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimColumnVector3d.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimColumnVector4d.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimCommon.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimConnectableContainer.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimConnectableContainerInterface.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimConnectableDisplayListener.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimConnectableObject.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimConnectableObjectListener.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimConnectionEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimConstants.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimContainerEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimContainerProperty.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimCplUtil.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimCsvFile.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimCustomEditorWindow.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimCustomEditorWindowFactoryBase.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimCustomEditorWindowRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDataObject.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDate.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDateProperty.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDatum.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDatumFactory.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDatumFactoryInterface.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDatumFactoryRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDblGrid.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDFeature.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDirectory.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDirectoryData.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDirectoryTree.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDisplayEventListener.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDisplayInterface.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDisplayListEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDisplayRefreshEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDms.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDoubleGridProperty.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDpt.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDpt3d.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDrect.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimDuration.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimEbcdicToAscii.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimEcefPoint.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimEcefRay.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimEcefVector.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimElevationManagerEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimElevationManagerEventListener.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimEllipsoid.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimEllipsoidFactory.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimEndian.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimEnvironmentUtility.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimEpsgDatumFactory.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimEquTokenDefines.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimEquTokenizer.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimErrorCodes.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimErrorContext.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimErrorStatusInterface.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimEventIds.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimException.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimFactoryBaseTemplate.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimFactoryListInterface.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimFilename.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimFilenameProperty.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimFileProcessorInterface.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimFlexLexer.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimFontInformation.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimFontProperty.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimFpt.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimFpt3d.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimGeocent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimGeodeticEvaluator.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimGeoid.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimGeoidEgm96.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimGeoidManager.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimGeoidNgs.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimGeoidNgsHeader.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimGeoPolygon.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimGeoref.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimGeoTiffCoordTransformsLut.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimGeoTiffDatumLut.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimGFeature.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimGpt.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimGrect.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimGzStream.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimHexString.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimHistogram.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimHistogramSource.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimHsiVector.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimHsvVector.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimHttpRequest.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimHttpResponse.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimId.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimIdManager.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimImageAoiListener.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimImageGeometryEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimImageGeometryEventListener.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimImagePolygonEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimImageRectangleEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimImageTypeLut.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimInterleaveTypeLut.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimIoStream.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimIpt.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimIrect.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimJpegYCbCrVector.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimKeyword.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimKeywordlist.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimKeywordNames.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimLagrangeInterpolator.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimLeastSquaresBilin.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimLine.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimListener.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimListenerManager.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimLookUpTable.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimLsrPoint.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimLsrRay.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimLsrSpace.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimLsrVector.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimMatrix3x3.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimMatrix4x4.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimMatrixProperty.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimMouseEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimMouseListener.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimMultiBandHistogram.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimMultiResLevelHistogram.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimNadconGridDatum.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimNadconGridFile.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimNadconGridHeader.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimNadconNarDatum.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimNadconNasDatum.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimNBandLutDataObject.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimNormRgbVector.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimNotify.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimNotifyContext.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimNumericProperty.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimObject.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimObjectDestructingEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimObjectEvents.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimObjectFactory.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimObjectFactoryRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimObservationSet.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimOutputSource.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimPackedBits.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimPointHash.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimPointObservation.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimPolyArea2d.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimPolygon.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimPolyLine.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimPolynom.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimPool.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimPoolObject.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimPreferences.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimProcessInterface.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimProcessListener.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimProcessProgressEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimProperty.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimPropertyEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimPropertyInterface.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimPropertyInterfaceFactory.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimPropertyInterfaceRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimProtocolStream.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimQuadrilateralMap.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimQuadTreeWarp.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimQuaternion.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimRationalNumber.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimRectanglePartitioner.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimRectilinearDataObject.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimReferenced.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimRefPtr.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimRefreshEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimRegExp.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimRgbLutDataObject.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimRgbVector.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimROIEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimROIEventListener.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimRtti.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimScalarTypeLut.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimSevenParamDatum.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimSource.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimStateChangedEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimStdOutProgress.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimStreamBase.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimStreamFactory.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimStreamFactoryBase.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimStreamFactoryRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimString.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimStringListProperty.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimStringProperty.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimTDpt.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimTempFilename.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimTextProperty.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimThinPlateSpline.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimThreeParamDatum.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimTieFeature.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimTieGpt.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimTieGptSet.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimTiledImageHash.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimTileHash.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimTimer.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimTrace.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimTraceManager.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimUnitConversionTool.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimUnitTypeLut.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimUrl.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimUsgsQuad.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimViewController.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimViewEvent.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimViewInterface.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimViewListener.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimVisitor.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimVrect.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimWebRequest.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimWebRequestFactoryBase.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimWebRequestFactoryRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimWebResponse.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimWgs72Datum.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimWgs84Datum.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimWLSBundleSolution.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimWms.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimXmlAttribute.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimXmlDocument.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimXmlNode.h" />
+    <ClInclude Include="..\..\include\ossim\base\ossimXmlString.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimDtedElevationDatabase.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimDtedFactory.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimDtedHandler.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimElevationAccuracyInfo.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimElevationDatabase.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimElevationDatabaseFactory.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimElevationDatabaseFactoryBase.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimElevationDatabaseRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimElevCellHandler.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimElevCellHandlerFactory.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimElevLess.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimElevManager.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimElevSource.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimElevSourceFactory.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimGeneralRasterElevationDatabase.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimGeneralRasterElevFactory.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimGeneralRasterElevHandler.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimHgtRef.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimImageElevationDatabase.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimImageElevationHandler.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimSrtmElevationDatabase.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimSrtmFactory.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimSrtmHandler.h" />
+    <ClInclude Include="..\..\include\ossim\elevation\ossimTiledElevationDatabase.h" />
+    <ClInclude Include="..\..\include\ossim\font\ossimFont.h" />
+    <ClInclude Include="..\..\include\ossim\font\ossimFontFactoryBase.h" />
+    <ClInclude Include="..\..\include\ossim\font\ossimFontFactoryRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\font\ossimFreeTypeFont.h" />
+    <ClInclude Include="..\..\include\ossim\font\ossimFreeTypeFontFactory.h" />
+    <ClInclude Include="..\..\include\ossim\font\ossimGdBitmapFont.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossim3x3ConvolutionFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAdrgHeader.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAdrgTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAnnotationEllipseObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAnnotationFontObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAnnotationGdBitmapFont.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAnnotationLineObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAnnotationMapGridSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAnnotationMultiEllipseObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAnnotationMultiLineObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAnnotationMultiPolyLineObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAnnotationMultiPolyObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAnnotationObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAnnotationObjectFactory.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAnnotationPolyObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAnnotationSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAOD.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAppFixedTileCache.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAppTileCache.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimArcInfoGridWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAtbController.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAtbMatchPoint.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAtbPointSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAtCorrGridRemapper.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAtCorrKeywords.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimAtCorrRemapper.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimBandAverageFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimBandClipFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimBandMergeSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimBandSelector.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimBandSeparateHandler.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimBitMaskTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimBitMaskWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimBlendMosaic.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimBrightnessContrastSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimBrightnessMatch.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimBumpShadeTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimCacheTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimCastTileSourceFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimCcfHead.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimCcfTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimCibCadrgTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimClosestToCenterCombiner.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimColorNormalizedFusion.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimConvolutionFilter1D.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimConvolutionSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimDespeckleFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimDiscrete3x3HatFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimDiscreteConvolutionKernel.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimDiscreteNearestNeighbor.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimDoqqTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimDtedTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimEastingNorthingCutter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimEdgeFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimElevImageSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimEnviHeaderFileWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimEnviTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimEquationCombiner.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimERSFileWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimERSTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimEsriShapeFileInterface.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimFeatherMosaic.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimFftFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimFgdcFileWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimFilterResampler.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimFilterTable.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimFixedTileCache.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimFusionCombiner.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGammaRemapper.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGdFont.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGdFontExterns.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeneralRasterInfo.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeneralRasterTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeneralRasterWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeoAnnotationBitmap.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeoAnnotationEllipseObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeoAnnotationFontObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeoAnnotationGdBitmapFont.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeoAnnotationLineObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeoAnnotationMultiEllipseObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeoAnnotationMultiPolyLineObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeoAnnotationMultiPolyObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeoAnnotationObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeoAnnotationPolyLineObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeoAnnotationPolyObject.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeoAnnotationSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeographicAnnotationGrid.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeomFileWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGeoPolyCutter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGridRemapEngine.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGridRemapEngineFactory.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimGridRemapSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimHistogramEqualization.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimHistogramMatchFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimHistogramRemapper.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimHistogramThreshholdFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimHistogramWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimHistoMatchRemapper.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimHsiRemapper.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimHsiToRgbSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimHsvGridRemapEngine.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimHsvToRgbSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimIgenGenerator.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageCacheBase.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageCacheTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageChain.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageCombiner.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageData.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageDataFactory.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageDataHelper.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageDisplayWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageFileWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageGaussianFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageGeometry.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageGeometryFactory.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageGeometryFactoryBase.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageGeometryRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageHandler.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageHandlerFactory.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageHandlerFactoryBase.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageHandlerRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageHistogramSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageMetaData.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageMetaDataWriterFactory.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageMetaDataWriterFactoryBase.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageMetaDataWriterRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageModel.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageMosaic.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageReconstructionFilterFactory.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageReconstructionFilterRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageRenderer.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageSharpenFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageSourceFactory.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageSourceFactoryBase.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageSourceFactoryRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageSourceFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageSourceHistogramFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageSourceSequencer.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageStatisticsSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageToPlaneNormalFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageWriterFactory.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageWriterFactoryBase.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimImageWriterFactoryRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimIndexToRgbLutFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimIntensityAdjustmentFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimIso8211.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimJpegDefaultTable.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimJpegMemDest.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimJpegMemSrc.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimJpegStdIOSrc.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimJpegTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimJpegWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimJpegYCbCrToRgbSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimLandsatTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimLandsatTopoCorrectionFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimLocalCorrelationFusion.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimMapCompositionSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimMaskFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimMaxMosaic.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimMeanMedianFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimMemoryImageSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimMetadataFileWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimMonoGridRemapEngine.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimMultiBandHistogramTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimNBandToIndexFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimNitf20Writer.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimNitfTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimNitfTileSource_12.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimNitfWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimNitfWriterBase.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimNormalizedRemapTable.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimNormalizedS16RemapTable.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimNormalizedU11RemapTable.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimNormalizedU16RemapTable.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimNormalizedU8RemapTable.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimNullPixelFlip.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimOrthoImageMosaic.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimOverviewBuilderBase.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimOverviewBuilderFactory.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimOverviewBuilderFactoryBase.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimOverviewBuilderFactoryRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimOverviewSequencer.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimPdfWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimPiecewiseRemapper.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimPixelFlipper.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimPolyCutter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimQbTileFilesHandler.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimQuickbirdNitfTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimQuickbirdTiffTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimReadmeFileWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimRectangleCutFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimResampler.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimRgbGridRemapEngine.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimRgbImage.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimRgbToGreyFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimRgbToHsiSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimRgbToHsvSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimRgbToIndexFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimRgbToJpegYCbCrSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimRLevelFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimRpfCacheTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimS16ImageData.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimScalarRemapper.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimScaleFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimSFIMFusion.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimSICDToDetectedImage.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimSingleImageChain.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimSrtmTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimSubImageTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimTableRemapper.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimTiffOverviewBuilder.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimTiffTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimTiffWriter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimTileCache.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimTiledImageHandler.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimTilePatch.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimTiling.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimTilingPoly.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimTilingRect.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimTopographicCorrectionFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimTrimFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimTwoColorView.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimU11ImageData.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimU16ImageData.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimU8ImageData.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimUsgsDemTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimValueAssignImageSourceFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimVectorRenderer.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimVertexExtractor.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimVpfAnnotationCoverageInfo.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimVpfAnnotationFeatureInfo.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimVpfAnnotationLibraryInfo.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimVpfAnnotationSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimVpfTileSource.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimWatermarkFilter.h" />
+    <ClInclude Include="..\..\include\ossim\imaging\ossimWorldFileWriter.h" />
+    <ClInclude Include="..\..\include\ossim\init\ossimInit.h" />
+    <ClInclude Include="..\..\include\ossim\matrix\controlw.h" />
+    <ClInclude Include="..\..\include\ossim\matrix\include.h" />
+    <ClInclude Include="..\..\include\ossim\matrix\myexcept.h" />
+    <ClInclude Include="..\..\include\ossim\matrix\newmat.h" />
+    <ClInclude Include="..\..\include\ossim\matrix\newmatap.h" />
+    <ClInclude Include="..\..\include\ossim\matrix\newmatio.h" />
+    <ClInclude Include="..\..\include\ossim\matrix\newmatnl.h" />
+    <ClInclude Include="..\..\include\ossim\matrix\newmatrc.h" />
+    <ClInclude Include="..\..\include\ossim\matrix\newmatrm.h" />
+    <ClInclude Include="..\..\include\ossim\matrix\precisio.h" />
+    <ClInclude Include="..\..\include\ossim\matrix\solution.h" />
+    <ClInclude Include="..\..\include\ossim\parallel\ossimIgen.h" />
+    <ClInclude Include="..\..\include\ossim\parallel\ossimImageChainMtAdaptor.h" />
+    <ClInclude Include="..\..\include\ossim\parallel\ossimImageHandlerMtAdaptor.h" />
+    <ClInclude Include="..\..\include\ossim\parallel\ossimImageMpiMWriterSequenceConnection.h" />
+    <ClInclude Include="..\..\include\ossim\parallel\ossimImageMpiSWriterSequenceConnection.h" />
+    <ClInclude Include="..\..\include\ossim\parallel\ossimJob.h" />
+    <ClInclude Include="..\..\include\ossim\parallel\ossimJobMultiThreadQueue.h" />
+    <ClInclude Include="..\..\include\ossim\parallel\ossimJobQueue.h" />
+    <ClInclude Include="..\..\include\ossim\parallel\ossimJobThreadQueue.h" />
+    <ClInclude Include="..\..\include\ossim\parallel\ossimMpi.h" />
+    <ClInclude Include="..\..\include\ossim\parallel\ossimMpiMasterOverviewSequencer.h" />
+    <ClInclude Include="..\..\include\ossim\parallel\ossimMpiSlaveOverviewSequencer.h" />
+    <ClInclude Include="..\..\include\ossim\parallel\ossimMtDebug.h" />
+    <ClInclude Include="..\..\include\ossim\parallel\ossimMultiThreadSequencer.h" />
+    <ClInclude Include="..\..\include\ossim\parallel\ossimOrthoIgen.h" />
+    <ClInclude Include="..\..\include\ossim\plugin\ossimDynamicLibrary.h" />
+    <ClInclude Include="..\..\include\ossim\plugin\ossimPluginLibrary.h" />
+    <ClInclude Include="..\..\include\ossim\plugin\ossimSharedObjectBridge.h" />
+    <ClInclude Include="..\..\include\ossim\plugin\ossimSharedPluginRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimAdjMapModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimAffineProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimAlbersProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimAlphaSensor.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimAlphaSensorHRI.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimAlphaSensorHSI.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimApplanixEcefModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimApplanixUtmModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimAzimEquDistProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimBilinearProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimBlockAdjustment.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimBngProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimBonneProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimBuckeyeSensor.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimCadrgProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimCassiniProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimCoarseGridModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimCylEquAreaProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimEckert4Projection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimEckert6Projection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimEpsgProjectionDatabase.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimEpsgProjectionFactory.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimEquDistCylProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimFcsiModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimGnomonicProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimHj1Model.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimIkonosRpcModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimImageProjectionModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimImageViewAffineTransform.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimImageViewProjectionTransform.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimImageViewTransform.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimImageViewTransformFactory.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimIpodSensor.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimLambertConformalConicProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimLandSatModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimLensDistortion.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimLlxyProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimMapProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimMapProjectionFactory.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimMapProjectionInfo.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimMapViewController.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimMeanRadialLensDistortion.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimMercatorProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimMgrs.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimMillerProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimMiscProjectionFactory.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimMollweidProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimNewZealandMapGridProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimNitfMapModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimNitfProjectionFactory.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimNitfRpcModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimObliqueMercatorProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimOptimizableProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimOrthoGraphicProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimPolarst.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimPolarStereoProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimPolyconicProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimPolynomProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimPositionQualityEvaluator.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimPpjFrameSensor.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimProjectionFactoryBase.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimProjectionFactoryRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimProjectionViewControllerFactory.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimQuadProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimQuickbirdRpcModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimRadialDecentLensDistortion.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimRpcModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimRpcProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimRpcRcz2XyModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimRpcSolver.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimRpcXyz2RcModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimRS1SarModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimSarModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimSensorModel.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimSensorModelFactory.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimSensorModelTuple.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimSinusoid.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimSinusoidalProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimSkyBoxLearSensor.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimSmacCallibrationSystem.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimSonomaSensor.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimSpaceObliqueMercatorProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimSpot5Model.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimStatePlaneProjectionInfo.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimStereographicProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimTiffProjectionFactory.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimTranmerc.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimTransCylEquAreaProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimTransMercatorProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimUps.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimUpsProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimUpspt.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimUtm.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimUtmProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimUtmpt.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimVanDerGrintenProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimWarpProjection.h" />
+    <ClInclude Include="..\..\include\ossim\projection\ossimWktProjectionFactory.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimAigBounds.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimAigDataFileHeader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimAigHeader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimAigIndexFileHeader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimAigStatistics.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimAlphaSensorSupportData.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimApplanixEOFile.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimAuxFileHandler.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimAuxXmlSupportData.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimCcfInfo.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimCeosData.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimDemGrid.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimDemHeader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimDemInfo.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimDemPoint.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimDemProfile.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimDemStats.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimDemUtil.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimDoqq.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimDtedAcc.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimDtedDsi.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimDtedHdr.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimDtedInfo.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimDtedRecord.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimDtedUhl.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimDtedVol.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimEnviHeader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimEnviInfo.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimERS.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimFfL5.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimFfL7.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimFfRevb.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimFfRevc.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimFgdcTxtDoc.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimFgdcXmlDoc.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimGeoTiff.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimIkonosMetaData.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimInfoBase.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimInfoFactory.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimInfoFactoryInterface.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimInfoFactoryRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimJ2kCodRecord.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimJ2kInfo.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimJ2kSizRecord.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimJ2kSotRecord.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimJp2Info.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimJpipMessage.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimJpipMessageDecoder.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimJpipMessageHeader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimLasHdr.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimLasInfo.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfAcftbTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfAimidbTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfBlockaTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfCommon.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfCompressionHeader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfCsccgaTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfCscrnaTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfCsdidaTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfCsexraTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfCsproaTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfDataExtensionSegment.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfDataExtensionSegmentV2_0.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfDataExtensionSegmentV2_1.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfEmbeddedRpfDes.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfEngrdaTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfExoptaTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfFile.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfFileHeader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfFileHeaderV2_0.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfFileHeaderV2_1.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfFileHeaderV2_X.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfGeoPositioningTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfHistoaTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfIchipbTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfImageBand.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfImageBandV2_0.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfImageBandV2_1.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfImageDataMaskV2_1.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfImageHeader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfImageHeaderV2_0.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfImageHeaderV2_1.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfImageHeaderV2_X.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfImageLut.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfImageLutV2_0.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfImageLutV2_1.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfInfo.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfJ2klraTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfLabelHeader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfLabelHeaderV2_0.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfLocalCartographicTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfLocalGeographicTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfMstgtaTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfNameConversionTables.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfPiaimcTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfProjectionParameterTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfRegisteredTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfRegisteredTagFactory.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfRpcATag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfRpcBase.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfRpcBTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfRpfTagFactory.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfSensraTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfStdidcTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfSymbolHeader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfSymbolHeaderV2_0.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfTagFactory.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfTagFactoryRegistry.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfTagInformation.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfTextHeader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfTextHeaderV2_0.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfTextHeaderV2_1.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfUnknownTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfUse00aTag.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNitfVqCompressionHeader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNmeaMessage.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimNmeaMessageSequencer.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimPpjFrameSensorFile.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimQuickbirdMetaData.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimQuickbirdRpcHeader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimQuickbirdTile.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimQVProcSupportData.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfAttributeOffsetRecord.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfAttributes.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfAttributeSectionSubheader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfBoundaryRectRecord.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfBoundaryRectSectionSubheader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfBoundaryRectTable.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfColorConverterOffsetRecord.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfColorConverterSubsection.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfColorConverterTable.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfColorGrayscaleOffsetRecord.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfColorGrayscaleSubheader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfColorGrayscaleTable.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfComponentIdLut.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfCompressionLookupOffsetRecord.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfCompressionSection.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfCompressionSectionSubheader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfConstants.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfCoverageSection.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfFrame.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfFrameEntry.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfFrameFileIndexRecord.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfFrameFileIndexSectionSubheader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfFrameFileIndexSubsection.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfFrameFileReader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfHeader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfImageDescriptionSubheader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfImageDisplayParameterSubheader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfInfo.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfLocationSection.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfMaskSubheader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfMaskSubsection.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfPathnameRecord.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfReplaceUpdateRecord.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfReplaceUpdateSectionSubheader.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfReplaceUpdateTable.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfToc.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimRpfTocEntry.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimSpaceImagingGeom.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimSpotDimapSupportData.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimSrcRecord.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimSrtmFilename.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimSrtmSupportData.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimSupportFilesList.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimTiffInfo.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimTiffWorld.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimWavelength.h" />
+    <ClInclude Include="..\..\include\ossim\support_data\ossimXmpInfo.h" />
+    <ClInclude Include="..\..\include\ossim\util\ossimBatchTest.h" />
+    <ClInclude Include="..\..\include\ossim\util\ossimChipperUtil.h" />
+    <ClInclude Include="..\..\include\ossim\util\ossimFileWalker.h" />
+    <ClInclude Include="..\..\include\ossim\util\ossimImageUtil.h" />
+    <ClInclude Include="..\..\include\ossim\util\ossimInfo.h" />
+    <ClInclude Include="..\..\include\ossim\util\ossimRpfUtil.h" />
+    <ClInclude Include="..\..\include\ossim\vec\ossimVpfBoundingRecordTable.h" />
+    <ClInclude Include="..\..\include\ossim\vec\ossimVpfCoverage.h" />
+    <ClInclude Include="..\..\include\ossim\vec\ossimVpfDatabase.h" />
+    <ClInclude Include="..\..\include\ossim\vec\ossimVpfDatabaseHeader.h" />
+    <ClInclude Include="..\..\include\ossim\vec\ossimVpfDatabaseHeaderTableValidator.h" />
+    <ClInclude Include="..\..\include\ossim\vec\ossimVpfExtent.h" />
+    <ClInclude Include="..\..\include\ossim\vec\ossimVpfFeatureClass.h" />
+    <ClInclude Include="..\..\include\ossim\vec\ossimVpfFeatureClassSchema.h" />
+    <ClInclude Include="..\..\include\ossim\vec\ossimVpfLibrary.h" />
+    <ClInclude Include="..\..\include\ossim\vec\ossimVpfLibraryAttributeTableValidator.h" />
+    <ClInclude Include="..\..\include\ossim\vec\ossimVpfTable.h" />
+    <ClInclude Include="..\..\include\ossim\vec\ossimVpfTableValidator.h" />
+    <ClInclude Include="..\..\include\ossim\vec\vpf.h" />
+    <ClInclude Include="..\..\include\ossim\video\ossimVideoGeometry.h" />
+    <ClInclude Include="..\..\include\ossim\video\ossimVideoHandler.h" />
+    <ClInclude Include="..\..\include\ossim\video\ossimVideoImageHandler.h" />
+    <ClInclude Include="..\..\include\ossim\video\ossimVideoImageSource.h" />
+    <ClInclude Include="..\..\include\ossim\video\ossimVideoSource.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\linklist.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\machine.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\mapgraph.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\polygrf.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\projectn.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\protomas.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\set.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\system.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\values.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\vpfapi.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\vpfdisp.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\vpfdraw.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\vpfinit.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\vpfio.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\vpfmisc.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\vpfprim.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\vpfrelat.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\vpfselec.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\vpftable.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\vpftidx.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\vpfview.h" />
+    <ClInclude Include="..\..\include\ossim\vpfutil\xmemory.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\include\ossim\font\ossimGdSansBold.inc" />
+    <None Include="..\..\include\ossim\imaging\gdfontg.inc" />
+    <None Include="..\..\include\ossim\imaging\gdfontl.inc" />
+    <None Include="..\..\include\ossim\imaging\gdfontmb.inc" />
+    <None Include="..\..\include\ossim\imaging\gdfonts.inc" />
+    <None Include="..\..\include\ossim\imaging\gdfontt.inc" />
+    <None Include="..\..\src\ossim\base\ossimDatumFactory.inc">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\src\ossim\base\ossimEquTokenizer.l">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\ossim\base\ossim2dBilinearTransform.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossim2dLinearRegression.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossim2dTo2dIdentityTransform.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossim2dTo2dMatrixTransform.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossim2dTo2dShiftTransform.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossim2dTo2dTransform.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossim2dTo2dTransformFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossim2dTo2dTransformRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimActiveEdgeTable.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimAdjSolutionAttributes.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimAdjustableParameterInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimAdjustableParameterInterface.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimAdjustmentExecutive.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimAdjustmentInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimAffineTransform.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimApplicationUsage.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimArgumentParser.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimBaseObjectFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimBilSplitter.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimBinaryDataProperty.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimBooleanProperty.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimByteStreamBuffer.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimCmyVector.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimColorProperty.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimColumnVector3d.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimCommon.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimConnectableContainer.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimConnectableContainerInterface.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimConnectableDisplayListener.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimConnectableObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimConnectableObjectListener.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimConnectionEvent.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimContainerEvent.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimContainerProperty.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimCplUtil.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimCsvFile.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimCustomEditorWindow.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimCustomEditorWindowFactoryBase.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimCustomEditorWindowRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDataObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDate.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDateProperty.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDatum.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDatumFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDatumFactoryRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDblGrid.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDFeature.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDirectory.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDirectoryData.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDirectoryTree.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDisplayEventListener.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDisplayInterface.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDisplayListEvent.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDisplayRefreshEvent.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDms.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDoubleGridProperty.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDpt.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDpt3d.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDrect.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimDuration.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimEbcdicToAscii.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimEcefPoint.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimEcefRay.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimEcefVector.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimElevationManagerEvent.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimElevationManagerEventListener.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimEllipsoid.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimEllipsoidFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimEndian.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimEnvironmentUtility.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimEpsgDatumFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimEquTokenizer.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimErrorCodes.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimErrorStatusInterface.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimEvent.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimException.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimFactoryBaseTemplate.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimFilename.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimFilenameProperty.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimFontInformation.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimFontProperty.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimFpt.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimFpt3d.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimGeocent.c" />
+    <ClCompile Include="..\..\src\ossim\base\ossimGeodeticEvaluator.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimGeoid.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimGeoidEgm96.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimGeoidManager.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimGeoidNgs.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimGeoidNgsHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimGeoPolygon.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimGeoref.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimGeoTiffCoordTransformsLut.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimGeoTiffDatumLut.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimGFeature.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimGpt.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimGrect.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimGzStream.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimHexString.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimHistogram.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimHistogramSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimHsiVector.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimHsvVector.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimHttpRequest.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimHttpResponse.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimId.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimIdManager.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimImageAoiListener.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimImageGeometryEvent.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimImageGeometryEventListener.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimImageTypeLut.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimInterleaveTypeLut.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimIoStream.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimIpt.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimIrect.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimJpegYCbCrVector.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimKeyword.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimKeywordlist.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimKeywordNames.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimLagrangeInterpolator.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimLeastSquaresBilin.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimLine.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimListener.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimListenerManager.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimLookUpTable.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimLsrPoint.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimLsrRay.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimLsrSpace.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimLsrVector.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimMatrix3x3.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimMatrix4x4.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimMatrixProperty.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimMouseEvent.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimMouseListener.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimMultiBandHistogram.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimMultiResLevelHistogram.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimNadconGridDatum.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimNadconGridFile.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimNadconGridHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimNadconNarDatum.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimNadconNasDatum.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimNBandLutDataObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimNormRgbVector.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimNotify.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimNumericProperty.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimObjectDestructingEvent.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimObjectFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimObjectFactoryRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimObservationSet.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimOutputSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimPackedBits.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimPointObservation.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimPolyArea2d.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimPolygon.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimPolyLine.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimPreferences.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimProcessInterface.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimProcessListener.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimProcessProgressEvent.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimProperty.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimPropertyInterface.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimPropertyInterfaceFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimPropertyInterfaceRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimQuadrilateralMap.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimQuadTreeWarp.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimQuaternion.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimRationalNumber.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimRectanglePartitioner.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimRectilinearDataObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimReferenced.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimRefreshEvent.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimRegExp.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimRgbLutDataObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimRgbVector.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimROIEvent.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimROIEventListener.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimRtti.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimScalarTypeLut.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimSevenParamDatum.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimStateChangedEvent.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimStdOutProgress.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimStreamBase.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimStreamFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimStreamFactoryRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimString.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimStringListProperty.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimStringProperty.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimTDpt.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimTempFilename.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimTextProperty.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimThinPlateSpline.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimThreeParamDatum.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimTieFeature.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimTieGpt.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimTieGptSet.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimTiledImageHash.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimTileHash.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimTimer.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimTrace.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimTraceManager.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimUnitConversionTool.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimUnitTypeLut.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimUrl.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimUsgsQuad.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimViewController.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimViewEvent.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimViewInterface.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimViewListener.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimVisitor.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimVrect.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimWebRequest.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimWebRequestFactoryBase.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimWebRequestFactoryRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimWebResponse.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimWgs72Datum.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimWgs84Datum.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimWLSBundleSolution.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimWms.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimXmlAttribute.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimXmlDocument.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimXmlNode.cpp" />
+    <ClCompile Include="..\..\src\ossim\base\ossimXmlString.cpp" />
+    <ClCompile Include="..\..\src\ossim\dll_main\ossimDllMain.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimDtedElevationDatabase.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimDtedFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimDtedHandler.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimElevationDatabase.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimElevationDatabaseFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimElevationDatabaseRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimElevCellHandler.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimElevCellHandlerFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimElevManager.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimElevSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimElevSourceFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimGeneralRasterElevationDatabase.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimGeneralRasterElevFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimGeneralRasterElevHandler.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimHgtRef.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimImageElevationDatabase.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimImageElevationHandler.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimSrtmElevationDatabase.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimSrtmFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimSrtmHandler.cpp" />
+    <ClCompile Include="..\..\src\ossim\elevation\ossimTiledElevationDatabase.cpp" />
+    <ClCompile Include="..\..\src\ossim\font\ossimFont.cpp" />
+    <ClCompile Include="..\..\src\ossim\font\ossimFontFactoryRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\font\ossimFreeTypeFont.cpp" />
+    <ClCompile Include="..\..\src\ossim\font\ossimFreeTypeFontFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\font\ossimGdBitmapFont.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossim3x3ConvolutionFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAdrgHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAdrgTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAnnotationEllipseObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAnnotationFontObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAnnotationGdBitmapFont.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAnnotationLineObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAnnotationMultiEllipseObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAnnotationMultiLineObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAnnotationMultiPolyLineObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAnnotationMultiPolyObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAnnotationObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAnnotationObjectFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAnnotationPolyObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAnnotationSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAOD.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAppFixedTileCache.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAppTileCache.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimArcInfoGridWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAtbController.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAtbMatchPoint.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAtbPointSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAtCorrGridRemapper.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimAtCorrRemapper.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimBandAverageFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimBandClipFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimBandMergeSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimBandSelector.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimBandSeparateHandler.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimBitMaskTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimBitMaskWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimBlendMosaic.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimBrightnessContrastSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimBrightnessMatch.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimBumpShadeTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimCacheTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimCastTileSourceFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimCcfHead.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimCcfTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimCibCadrgTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimClosestToCenterCombiner.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimColorNormalizedFusion.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimConvolutionFilter1D.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimConvolutionSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimDdffield.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimDdffielddefn.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimDdfmodule.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimDdfrecord.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimDdfsubfielddefn.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimDdfutils.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimDespeckleFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimDiscrete3x3HatFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimDiscreteConvolutionKernel.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimDoqqTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimDtedTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimEastingNorthingCutter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimEdgeFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimElevImageSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimEnviHeaderFileWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimEnviTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimEquationCombiner.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimERSFileWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimERSTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimEsriShapeFileInterface.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimFeatherMosaic.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimFftFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimFgdcFileWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimFilterResampler.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimFilterTable.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimFixedTileCache.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimFusionCombiner.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGammaRemapper.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeneralRasterInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeneralRasterTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeneralRasterWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeoAnnotationBitmap.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeoAnnotationEllipseObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeoAnnotationFontObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeoAnnotationGdBitmapFont.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeoAnnotationLineObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeoAnnotationMultiEllipseObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeoAnnotationMultiPolyLineObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeoAnnotationMultiPolyObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeoAnnotationObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeoAnnotationPolyLineObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeoAnnotationPolyObject.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeoAnnotationSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeographicAnnotationGrid.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeomFileWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGeoPolyCutter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGridRemapEngine.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGridRemapEngineFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimGridRemapSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimHistogramEqualization.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimHistogramMatchFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimHistogramRemapper.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimHistogramThreshholdFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimHistogramWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimHistoMatchRemapper.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimHsiRemapper.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimHsiToRgbSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimHsvGridRemapEngine.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimHsvToRgbSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimIgenGenerator.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageCacheBase.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageCacheTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageChain.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageCombiner.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageData.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageDataFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageDataHelper.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageDisplayWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageFileWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageGaussianFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageGeometry.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageGeometryFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageGeometryRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageHandler.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageHandlerFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageHandlerFactoryBase.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageHandlerRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageHistogramSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageMetaData.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageMetaDataWriterFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageMetaDataWriterFactoryBase.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageMetaDataWriterRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageMosaic.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageReconstructionFilterFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageReconstructionFilterRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageRenderer.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageSharpenFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageSourceFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageSourceFactoryBase.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageSourceFactoryRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageSourceFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageSourceHistogramFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageSourceSequencer.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageStatisticsSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageToPlaneNormalFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageWriterFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageWriterFactoryBase.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimImageWriterFactoryRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimIndexToRgbLutFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimIntensityAdjustmentFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimJpegMemDest.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimJpegMemSrc.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimJpegStdIOSrc.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimJpegTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimJpegWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimJpegYCbCrToRgbSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimLandsatTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimLandsatTopoCorrectionFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimLocalCorrelationFusion.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimMapCompositionSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimMaskFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimMaxMosaic.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimMeanMedianFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimMemoryImageSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimMetadataFileWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimMonoGridRemapEngine.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimMultiBandHistogramTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimNBandToIndexFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimNitf20Writer.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimNitfTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimNitfTileSource_12.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimNitfWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimNitfWriterBase.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimNormalizedRemapTable.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimNormalizedS16RemapTable.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimNormalizedU11RemapTable.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimNormalizedU16RemapTable.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimNormalizedU8RemapTable.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimNullPixelFlip.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimOrthoImageMosaic.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimOverviewBuilderBase.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimOverviewBuilderFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimOverviewBuilderFactoryBase.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimOverviewBuilderFactoryRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimOverviewSequencer.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimPdfWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimPiecewiseRemapper.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimPixelFlipper.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimPolyCutter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimQbTileFilesHandler.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimQuickbirdNitfTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimQuickbirdTiffTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimReadmeFileWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimRectangleCutFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimResampler.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimRgbGridRemapEngine.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimRgbImage.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimRgbToGreyFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimRgbToHsiSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimRgbToHsvSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimRgbToIndexFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimRgbToJpegYCbCrSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimRLevelFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimRpfCacheTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimS16ImageData.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimScalarRemapper.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimScaleFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimSFIMFusion.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimSICDToDetectedImage.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimSingleImageChain.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimSrtmTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimSubImageTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimTableRemapper.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimTiffOverviewBuilder.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimTiffTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimTiffWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimTileCache.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimTiledImageHandler.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimTilePatch.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimTiling.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimTilingPoly.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimTilingRect.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimTopographicCorrectionFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimTrimFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimTwoColorView.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimU11ImageData.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimU16ImageData.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimU8ImageData.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimUsgsDemTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimValueAssignImageSourceFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimVectorRenderer.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimVertexExtractor.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimVpfAnnotationCoverageInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimVpfAnnotationFeatureInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimVpfAnnotationLibraryInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimVpfAnnotationSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimVpfTileSource.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimWatermarkFilter.cpp" />
+    <ClCompile Include="..\..\src\ossim\imaging\ossimWorldFileWriter.cpp" />
+    <ClCompile Include="..\..\src\ossim\init\ossimInit.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\bandmat.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\cholesky.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\evalue.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\fft.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\hholder.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\jacobi.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\myexcept.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\newfft.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\newmat1.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\newmat2.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\newmat3.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\newmat4.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\newmat5.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\newmat6.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\newmat7.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\newmat8.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\newmat9.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\newmatex.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\newmatnl.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\newmatrm.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\solution.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\sort.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\submat.cpp" />
+    <ClCompile Include="..\..\src\ossim\matrix\svd.cpp" />
+    <ClCompile Include="..\..\src\ossim\parallel\ossimIgen.cpp" />
+    <ClCompile Include="..\..\src\ossim\parallel\ossimImageChainMtAdaptor.cpp" />
+    <ClCompile Include="..\..\src\ossim\parallel\ossimImageHandlerMtAdaptor.cpp" />
+    <ClCompile Include="..\..\src\ossim\parallel\ossimImageMpiMWriterSequenceConnection.cpp" />
+    <ClCompile Include="..\..\src\ossim\parallel\ossimImageMpiSWriterSequenceConnection.cpp" />
+    <ClCompile Include="..\..\src\ossim\parallel\ossimJob.cpp" />
+    <ClCompile Include="..\..\src\ossim\parallel\ossimJobMultiThreadQueue.cpp" />
+    <ClCompile Include="..\..\src\ossim\parallel\ossimJobQueue.cpp" />
+    <ClCompile Include="..\..\src\ossim\parallel\ossimJobThreadQueue.cpp" />
+    <ClCompile Include="..\..\src\ossim\parallel\ossimMpi.cpp" />
+    <ClCompile Include="..\..\src\ossim\parallel\ossimMpiMasterOverviewSequencer.cpp" />
+    <ClCompile Include="..\..\src\ossim\parallel\ossimMpiSlaveOverviewSequencer.cpp" />
+    <ClCompile Include="..\..\src\ossim\parallel\ossimMultiThreadSequencer.cpp" />
+    <ClCompile Include="..\..\src\ossim\parallel\ossimOrthoIgen.cpp" />
+    <ClCompile Include="..\..\src\ossim\plugin\ossimDynamicLibrary.cpp" />
+    <ClCompile Include="..\..\src\ossim\plugin\ossimPluginLibrary.cpp" />
+    <ClCompile Include="..\..\src\ossim\plugin\ossimSharedObjectBridge.cpp" />
+    <ClCompile Include="..\..\src\ossim\plugin\ossimSharedPluginRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimAdjMapModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimAffineProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimAlbersProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimAlphaSensor.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimAlphaSensorHRI.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimAlphaSensorHSI.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimApplanixEcefModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimApplanixUtmModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimAzimEquDistProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimBilinearProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimBlockAdjustment.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimBngProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimBonneProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimBuckeyeSensor.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimCadrgProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimCassiniProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimCoarseGridModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimCylEquAreaProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimEckert4Projection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimEckert6Projection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimEpsgProjectionDatabase.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimEpsgProjectionFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimEquDistCylProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimFcsiModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimGnomonicProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimHj1Model.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimIkonosRpcModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimImageProjectionModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimImageViewAffineTransform.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimImageViewProjectionTransform.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimImageViewTransform.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimImageViewTransformFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimIpodSensor.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimLambertConformalConicProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimLandSatModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimLensDistortion.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimLlxyProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimMapProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimMapProjectionFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimMapProjectionInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimMapViewController.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimMeanRadialLensDistortion.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimMercatorProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimMgrs.c" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimMillerProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimMiscProjectionFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimMollweidProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimNewZealandMapGridProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimNitfMapModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimNitfProjectionFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimNitfRpcModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimObliqueMercatorProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimOptimizableProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimOrthoGraphicProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimPolarst.c" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimPolarStereoProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimPolyconicProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimPolynomProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimPositionQualityEvaluator.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimPpjFrameSensor.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimProjectionFactoryBase.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimProjectionFactoryRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimProjectionViewControllerFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimQuadProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimQuickbirdRpcModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimRadialDecentLensDistortion.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimRpcModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimRpcProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimRpcRcz2XyModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimRpcSolver.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimRpcXyz2RcModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimRS1SarModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimSarModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimSensorModel.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimSensorModelFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimSensorModelTuple.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimSinusoid.c" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimSinusoidalProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimSkyBoxLearSensor.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimSmacCallibrationSystem.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimSonomaSensor.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimSpaceObliqueMercatorProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimSpot5Model.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimStatePlaneProjectionInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimStereographicProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimTiffProjectionFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimTranmerc.c" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimTransCylEquAreaProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimTransMercatorProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimUps.c" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimUpsProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimUpspt.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimUtm.c" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimUtmProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimUtmpt.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimVanDerGrintenProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimWarpProjection.cpp" />
+    <ClCompile Include="..\..\src\ossim\projection\ossimWktProjectionFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimAigBounds.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimAigDataFileHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimAigHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimAigIndexFileHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimAigStatistics.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimAlphaSensorSupportData.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimApplanixEOFile.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimAuxFileHandler.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimAuxXmlSupportData.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimCcfInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimCeosData.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimDemGrid.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimDemHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimDemInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimDemPoint.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimDemProfile.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimDemStats.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimDemUtil.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimDoqq.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimDtedAcc.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimDtedDsi.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimDtedHdr.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimDtedInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimDtedRecord.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimDtedUhl.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimDtedVol.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimEnviHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimEnviInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimERS.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimFfL5.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimFfL7.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimFfRevb.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimFfRevc.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimFgdcTxtDoc.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimFgdcXmlDoc.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimGeoTiff.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimIkonosMetaData.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimInfoBase.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimInfoFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimInfoFactoryRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimJ2kCodRecord.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimJ2kInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimJ2kSizRecord.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimJ2kSotRecord.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimJp2Info.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimJpipMessage.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimJpipMessageDecoder.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimLasHdr.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimLasInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfAcftbTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfAimidbTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfBlockaTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfCommon.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfCompressionHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfCsccgaTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfCscrnaTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfCsdidaTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfCsexraTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfCsproaTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfDataExtensionSegment.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfDataExtensionSegmentV2_0.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfDataExtensionSegmentV2_1.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfEmbeddedRpfDes.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfEngrdaTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfExoptaTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfFile.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfFileHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfFileHeaderV2_0.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfFileHeaderV2_1.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfFileHeaderV2_X.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfGeoPositioningTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfHistoaTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfIchipbTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfImageBand.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfImageBandV2_0.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfImageBandV2_1.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfImageDataMaskV2_1.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfImageHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfImageHeaderV2_0.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfImageHeaderV2_1.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfImageHeaderV2_X.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfImageLut.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfImageLutV2_0.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfImageLutV2_1.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfJ2klraTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfLabelHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfLabelHeaderV2_0.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfLocalCartographicTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfLocalGeographicTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfMstgtaTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfNameConversionTables.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfPiaimcTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfProjectionParameterTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfRegisteredTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfRegisteredTagFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfRpcATag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfRpcBase.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfRpcBTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfRpfTagFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfSensraTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfStdidcTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfSymbolHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfSymbolHeaderV2_0.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfTagFactory.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfTagFactoryRegistry.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfTagInformation.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfTextHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfTextHeaderV2_0.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfTextHeaderV2_1.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfUnknownTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfUse00aTag.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNitfVqCompressionHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNmeaMessage.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimNmeaMessageSequencer.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimPpjFrameSensorFile.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimQuickbirdMetaData.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimQuickbirdRpcHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimQuickbirdTile.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimQVProcSupportData.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfAttributeOffsetRecord.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfAttributes.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfAttributeSectionSubheader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfBoundaryRectRecord.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfBoundaryRectSectionSubheader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfBoundaryRectTable.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfColorConverterOffsetRecord.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfColorConverterSubsection.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfColorConverterTable.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfColorGrayscaleOffsetRecord.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfColorGrayscaleSubheader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfColorGrayscaleTable.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfComponentIdLut.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfCompressionLookupOffsetRecord.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfCompressionSection.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfCompressionSectionSubheader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfCoverageSection.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfFrame.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfFrameEntry.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfFrameFileIndexRecord.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfFrameFileIndexSectionSubheader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfFrameFileIndexSubsection.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfFrameFileReader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfImageDescriptionSubheader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfImageDisplayParameterSubheader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfLocationSection.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfMaskSubheader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfMaskSubsection.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfPathnameRecord.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfReplaceUpdateRecord.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfReplaceUpdateSectionSubheader.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfReplaceUpdateTable.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfToc.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimRpfTocEntry.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimSpaceImagingGeom.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimSpotDimapSupportData.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimSrcRecord.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimSrtmFilename.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimSrtmSupportData.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimSupportFilesList.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimTiffInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimTiffWorld.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimWavelength.cpp" />
+    <ClCompile Include="..\..\src\ossim\support_data\ossimXmpInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\util\ossimBatchTest.cpp" />
+    <ClCompile Include="..\..\src\ossim\util\ossimChipperUtil.cpp" />
+    <ClCompile Include="..\..\src\ossim\util\ossimFileWalker.cpp" />
+    <ClCompile Include="..\..\src\ossim\util\ossimImageUtil.cpp" />
+    <ClCompile Include="..\..\src\ossim\util\ossimInfo.cpp" />
+    <ClCompile Include="..\..\src\ossim\util\ossimRpfUtil.cpp" />
+    <ClCompile Include="..\..\src\ossim\vec\ossimVpfBoundingRecordTable.cpp" />
+    <ClCompile Include="..\..\src\ossim\vec\ossimVpfCoverage.cpp" />
+    <ClCompile Include="..\..\src\ossim\vec\ossimVpfDatabase.cpp" />
+    <ClCompile Include="..\..\src\ossim\vec\ossimVpfDatabaseHeader.cpp" />
+    <ClCompile Include="..\..\src\ossim\vec\ossimVpfDatabaseHeaderTableValidator.cpp" />
+    <ClCompile Include="..\..\src\ossim\vec\ossimVpfExtent.cpp" />
+    <ClCompile Include="..\..\src\ossim\vec\ossimVpfFeatureClass.cpp" />
+    <ClCompile Include="..\..\src\ossim\vec\ossimVpfFeatureClassSchema.cpp" />
+    <ClCompile Include="..\..\src\ossim\vec\ossimVpfLibrary.cpp" />
+    <ClCompile Include="..\..\src\ossim\vec\ossimVpfLibraryAttributeTableValidator.cpp" />
+    <ClCompile Include="..\..\src\ossim\vec\ossimVpfTable.cpp" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\bitarray.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\distance.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\linklist.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\polygrf.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\set.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpfclip.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpfcntnt.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpfdict.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpfdisp.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpfdraw.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpfmisc.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpfnear.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpfprim.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpfptply.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpfquery.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpfread.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpfrelat.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpfselec.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpfspx.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpftable.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpftidx.c" />
+    <ClCompile Include="..\..\src\ossim\vpfutil\vpfwrite.c" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3C21B2D0-9488-42F1-9F1E-C59B2054CEB4}</ProjectGuid>
+    <RootNamespace>ossim</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|Win32'">$(SolutionDir)bin\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)..\..\..\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)$(Configuration)\</IntDir>
+    <PreBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</PreBuildEventUseInBuild>
+    <PreBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</PreBuildEventUseInBuild>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86);</LibraryPath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">J:\thirdpart_update_x64\lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\include;$(OSSIM_DEPENDENCIES)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_WINDOWS;_USRDLL;OSSIMMAKINGDLL;_FILE_OFFSET_BITS=64;_LARGE_FILES;HAVE_CONFIG_H;SHAPELIB_DLLEXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libjpeg.lib;geotiff.lib;libtiff.lib;freetype239.lib;OpenThreads.lib;zlib1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OSSIM_DEPENDENCIES)\lib</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;msvcrt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\include;$(OSSIM_DEPENDENCIES)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_WINDOWS;_USRDLL;OSSIMMAKINGDLL;_FILE_OFFSET_BITS=64;_LARGE_FILES;HAVE_CONFIG_H;SHAPELIB_DLLEXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libjpeg.lib;geotiff.lib;libtiff.lib;freetype239.lib;OpenThreads.lib;zlib1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OSSIM_DEPENDENCIES)\lib</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;msvcrt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Command>if not exist "$(ProjectDir)..\..\include\ossim\ossimConfig.h" copy "$(ProjectDir)..\..\include\ossim\ossimConfig.h.vc"  "$(ProjectDir)..\..\include\ossim\ossimConfig.h"
+cd $(ProjectDir)
+cd ..
+cd ..
+cd src
+cd ossim
+echo Compiling version-config.cpp
+
+cl /I"..\include"  version-config.cpp
+
+echo Generating ossimVersion.h
+cd
+.\version-config.exe ..\..\include\ossim\ossimVersion.h 1.8.4
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>..\..\include;$(THIRD_PART)\include;$(THIRD_PART)\include\libgeotiff-1.4.0;$(THIRD_PART)\include\libgeotiff-1.4.0\libxtiff;$(THIRD_PART)\include\geos-3.4.2\include;$(THIRD_PART)\include\Eigen3</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_WINDOWS;_USRDLL;OSSIMMAKINGDLL;_FILE_OFFSET_BITS=64;_LARGE_FILES;HAVE_CONFIG_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>jpeg.lib;geotiff.lib;libtiff_i.lib;geos_c_i.lib;freetype252.lib;OpenThreads.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)bin\$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>$(THIRD_PART)\lib</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcmt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>..\..\..\lib\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>..\..\include;$(THIRD_PART)\include;$(THIRD_PART)\include\freetype;$(THIRD_PART)\include\libgeotiff-1.4.0;$(THIRD_PART)\include\libgeotiff-1.4.0\libxtiff;$(THIRD_PART)\include\geos-3.4.2\include;$(THIRD_PART)\include\Eigen3</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN64;NDEBUG;_WINDOWS;_USRDLL;OSSIMMAKINGDLL;_FILE_OFFSET_BITS=64;_LARGE_FILES;HAVE_CONFIG_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>jpeg.lib;geotiff.lib;libtiff_i.lib;geos_c_i.lib;freetype252.lib;OpenThreads.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)\x64\bin\$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>C:\opensource\third_part\lib_dll_x64\lib</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcmt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>..\..\..\lib\$(ProjectName).lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEvent>
+      <Command>if not exist "$(ProjectDir)..\..\..\include\ossim\ossimConfig.h" copy "$(ProjectDir)..\..\..\include\ossim\ossimConfig.h.vc"  "$(ProjectDir)..\..\..\include\ossim\ossimConfig.h"
+cd $(ProjectDir)
+cd ..
+cd ..
+cd ..
+cd src
+cd ossim
+echo Compiling version-config.cpp
+
+cl /I"..\..\include"  version-config.cpp
+
+echo Generating ossimVersion.h
+cd
+.\version-config.exe ..\..\include\ossim\ossimVersion.h 1.7.15
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\include;$(OSSIM_DEPENDENCIES)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;_USRDLL;OSSIMMAKINGDLL;_FILE_OFFSET_BITS=64;_LARGE_FILES;HAVE_CONFIG_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libjpeg.lib;geotiff.lib;libtiff.lib;freetype239.lib;OpenThreads.lib;zlib1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\..\..\bin\$(ProjectName)d.dll</OutputFile>
+      <AdditionalLibraryDirectories>$(OSSIM_DEPENDENCIES)\lib</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;msvcrt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>..\..\..\lib\$(ProjectName)d.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PreBuildEvent>
+      <Command>if not exist "$(ProjectDir)..\..\..\include\ossim\ossimConfig.h" copy "$(ProjectDir)..\..\..\include\ossim\ossimConfig.h.vc"  "$(ProjectDir)..\..\..\include\ossim\ossimConfig.h"
+cd $(ProjectDir)
+cd ..
+cd ..
+cd ..
+cd src
+cd ossim
+echo Compiling version-config.cpp
+
+cl /I"..\..\include"  version-config.cpp
+
+echo Generating ossimVersion.h
+cd
+.\version-config.exe ..\..\include\ossim\ossimVersion.h 1.7.15
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\include;$(OSSIM_DEPENDENCIES)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;_USRDLL;OSSIMMAKINGDLL;_FILE_OFFSET_BITS=64;_LARGE_FILES;HAVE_CONFIG_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libjpeg.lib;geotiff.lib;libtiff.lib;freetype239.lib;OpenThreads.lib;zlib1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\..\..\bin\$(ProjectName)d.dll</OutputFile>
+      <AdditionalLibraryDirectories>$(OSSIM_DEPENDENCIES)\lib</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;msvcrt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>NotSet</SubSystem>
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>..\..\..\lib\$(ProjectName)d.lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

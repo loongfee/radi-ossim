@@ -1,0 +1,14 @@
+plugin.file1: C:\opensource\ossim131112\ossim\projects\x64\Release\bin\ossimgdal_plugin.dll
+#plugin.file2: C:\opensource\ossim131112\ossim\projects\x64\Release\bin\ossimreg_plugin.dll
+#OSSIM_NULL_PIX_UINT8: 0
+#tile_size: 64 64
+#elevation.compute_statistics.enabled: false
+#elevation_manager.enabled:  true
+#geoid_egm_96_grid: D:\opensource\ossim131112\geoid1996\egm96.grd
+#elevation_manager.elevation_source1.connection_string: S:\PROCESS\srtm30\dem-hgt
+#elevation_manager.elevation_source1.type: srtm_directory
+#elevation_manager.elevation_source1.min_open_cells: 5
+#elevation_manager.elevation_source1.max_open_cells: 10
+#elevation_manager.elevation_source1.memory_map_cells: false
+#elevation_manager.elevation_source1.geoid.type: geoid1996
+#elevation_manager.default_height_above_ellipsoid: 0.0

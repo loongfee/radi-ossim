@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{503BB843-0429-4E75-8D39-8FB9C45FAFB4}</ProjectGuid>
+    <RootNamespace>kakadu</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="ossimJpipProjectionFactory.h" />
+    <ClInclude Include="ossimKakaduCommon.h" />
+    <ClInclude Include="ossimKakaduCompressedTarget.h" />
+    <ClInclude Include="ossimKakaduCompressor.h" />
+    <ClInclude Include="ossimKakaduJ2kReader.h" />
+    <ClInclude Include="ossimKakaduJp2Reader.h" />
+    <ClInclude Include="ossimKakaduJp2Writer.h" />
+    <ClInclude Include="ossimKakaduJpipHandler.h" />
+    <ClInclude Include="ossimKakaduJpipHandlerFactory.h" />
+    <ClInclude Include="ossimKakaduJpipImageGeometryFactory.h" />
+    <ClInclude Include="ossimKakaduJpipInfo.h" />
+    <ClInclude Include="ossimKakaduJpipInfoFactory.h" />
+    <ClInclude Include="ossimKakaduKeywords.h" />
+    <ClInclude Include="ossimKakaduMessaging.h" />
+    <ClInclude Include="ossimKakaduNitfOverviewBuilder.h" />
+    <ClInclude Include="ossimKakaduNitfReader.h" />
+    <ClInclude Include="ossimKakaduNitfWriter.h" />
+    <ClInclude Include="ossimKakaduOverviewBuilderFactory.h" />
+    <ClInclude Include="ossimKakaduReaderFactory.h" />
+    <ClInclude Include="ossimKakaduWriterFactory.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ossimJpipProjectionFactory.cpp" />
+    <ClCompile Include="ossimKakaduCommon.cpp" />
+    <ClCompile Include="ossimKakaduCompressedTarget.cpp" />
+    <ClCompile Include="ossimKakaduCompressor.cpp" />
+    <ClCompile Include="ossimKakaduJ2kReader.cpp" />
+    <ClCompile Include="ossimKakaduJp2Reader.cpp" />
+    <ClCompile Include="ossimKakaduJp2Writer.cpp" />
+    <ClCompile Include="ossimKakaduJpipHandler.cpp" />
+    <ClCompile Include="ossimKakaduJpipHandlerFactory.cpp" />
+    <ClCompile Include="ossimKakaduJpipImageGeometryFactory.cpp" />
+    <ClCompile Include="ossimKakaduJpipInfo.cpp" />
+    <ClCompile Include="ossimKakaduJpipInfoFactory.cpp" />
+    <ClCompile Include="ossimKakaduNitfOverviewBuilder.cpp" />
+    <ClCompile Include="ossimKakaduNitfReader.cpp" />
+    <ClCompile Include="ossimKakaduNitfWriter.cpp" />
+    <ClCompile Include="ossimKakaduOverviewBuilderFactory.cpp" />
+    <ClCompile Include="ossimKakaduPluginInit.cpp" />
+    <ClCompile Include="ossimKakaduReaderFactory.cpp" />
+    <ClCompile Include="ossimKakaduWriterFactory.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
