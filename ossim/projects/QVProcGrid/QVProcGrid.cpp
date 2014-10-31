@@ -368,9 +368,9 @@ bool createLonLatGrid()
 		cout << "Only HJ satellite data are supported at present." << endl;
 		return false;
 	}
-	if (!stationId.upcase().contains("MYC"))
+	if (!stationId.upcase().contains("MYC") || !stationId.upcase().contains("SY"))
 	{
-		cout << "Only the data from Miyun station are supported at present." << endl;
+		cout << "Only the data from Miyun and Sanya station are supported at present." << endl;
 		return false;
 	}
 
