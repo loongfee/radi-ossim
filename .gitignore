@@ -8,6 +8,13 @@
 *.7z
 *.rar
 *.zip
+<<<<<<< HEAD
+=======
+*.grd
+*.lib
+*.dll
+*.exe
+>>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
 
 # Build results
 

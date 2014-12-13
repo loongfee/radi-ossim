@@ -124,7 +124,10 @@ protected:
    TileCache                             m_tileCache;  //!< Saves tiles output by threaded jobs
    ossim_uint32                          m_maxCacheSize;
    ossim_uint32                          m_maxTileCacheFactor;
+<<<<<<< HEAD
    mutable OpenThreads::Mutex            m_tileMutex;
+=======
+>>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
    mutable OpenThreads::Mutex            m_cacheMutex;   
    mutable OpenThreads::Mutex            m_jobMutex;   
    ossim_uint32                          m_totalNumberOfTiles;

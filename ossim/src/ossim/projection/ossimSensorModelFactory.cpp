@@ -48,7 +48,10 @@ static ossimTrace traceDebug = ossimTrace("ossimSensorModelFactory:debug");
 #include <ossim_plugin/ossimPleiadesDimapSupportData.h>
 #include <ossim_plugin/radi/ossimHj1Model.h>
 #include <ossim_plugin/radi/radiRpcModel.h>
+<<<<<<< HEAD
 #include <ossim_plugin/ossimRadarSat2RPCModel.h>
+=======
+>>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
 //#include <ossim/radi/ossimTheosModel.h>
 //#include <ossim/radi/ossimTheosDimapSupportData.h>
 #include <ossim/projection/ossimBuckeyeSensor.h>
@@ -224,10 +227,13 @@ ossimSensorModelFactory::createProjection(const ossimString &name) const
    {
 	   return new ossimplugins::radiRpcModel;
    }
+<<<<<<< HEAD
    if (name == STATIC_TYPE_NAME(ossimplugins::ossimRadarSat2RPCModel))
    {
 	   return new ossimplugins::ossimRadarSat2RPCModel;
    }
+=======
+>>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
    //if(name == STATIC_TYPE_NAME(ossimTheosModel))
    //{
 	  // return new ossimTheosModel;
@@ -307,7 +313,10 @@ ossimSensorModelFactory::getTypeNameList(std::vector<ossimString>& typeList)
    typeList.push_back(STATIC_TYPE_NAME(ossimIpodSensor));
    typeList.push_back(STATIC_TYPE_NAME(ossimplugins::ossimHj1Model));
    typeList.push_back(STATIC_TYPE_NAME(ossimplugins::radiRpcModel));
+<<<<<<< HEAD
    typeList.push_back(STATIC_TYPE_NAME(ossimplugins::ossimRadarSat2RPCModel));
+=======
+>>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
    //typeList.push_back(STATIC_TYPE_NAME(ossimTheosModel));
    typeList.push_back(STATIC_TYPE_NAME(ossimPpjFrameSensor));
    typeList.push_back(STATIC_TYPE_NAME(ossimAlphaSensorHRI));
@@ -630,6 +639,7 @@ ossimProjection* ossimSensorModelFactory::createProjection(
    }
 
 
+<<<<<<< HEAD
    ossimRefPtr<ossimplugins::ossimRadarSat2RPCModel> radarSat2RPCModel = new ossimplugins::ossimRadarSat2RPCModel();
    if (radarSat2RPCModel->open(filename))
    {
@@ -649,6 +659,8 @@ ossimProjection* ossimSensorModelFactory::createProjection(
    }
 
 
+=======
+>>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
    ossimFilename pleiadesTest = geomFile;
    if(pleiadesTest.exists())
    {

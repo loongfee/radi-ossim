@@ -42,7 +42,11 @@ using namespace mylib;
 #include <unistd.h>
 #endif 
 
+<<<<<<< HEAD
 const char* VERSION = "1.0.1";
+=======
+const char* VERSION = "1.0.0";
+>>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
 
 static OpenThreads::Barrier bar;
 static int GLOBAL_NUM_THREADS;
@@ -368,11 +372,19 @@ bool createLonLatGrid()
 		cout << "Only HJ satellite data are supported at present." << endl;
 		return false;
 	}
+<<<<<<< HEAD
 	//if (!stationId.upcase().contains("MYC"))
 	//{
 	//	cout << "Only the data from Miyun station are supported at present." << endl;
 	//	return false;
 	//}
+=======
+	if (!stationId.upcase().contains("MYC") && !stationId.upcase().contains("SYC"))
+	{
+		cout << "Only the data from Miyun and Sanya station are supported at present." << endl;
+		return false;
+	}
+>>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
 
 	// 检查输出格式
 	ossimFilename outputFile(pszOutFile);
@@ -512,6 +524,13 @@ int main( int argc, char** argv )
 		//createLonLatGrid();
 		//clockEnd = clock();
 		//printf("Time consuming: %lf s\n", (clockEnd - clockBegin)*1e-3);
+<<<<<<< HEAD
+=======
+		pszInputFile = "E:\\QVProc\\HJ\\01\\HJ1A_C2_033125_20141101_SY030_S1.dat";
+		pszOutFile = "E:\\QVProc\\HJ\\01\\lonlat.tif";
+		ossimInit::instance()->initialize();
+		createLonLatGrid();
+>>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
 		Usage(0);
 	}
 	return 0;

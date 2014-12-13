@@ -309,9 +309,12 @@ bool ossimRadarSat2RPCModel::open(const ossimFilename& file)
       lineSampleToWorld(theImageClipRect.ll(), ll);
       setGroundRect(ul, ur, lr, ll);  // ossimSensorModel method.
    }
+<<<<<<< HEAD
    else{
 	   return false;
    }
+=======
+>>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
 
    if (traceDebug())
    {

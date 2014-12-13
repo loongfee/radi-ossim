@@ -539,7 +539,11 @@ ossimString ossimOgcWktTranslator::fromOssimKwl(const ossimKeywordlist &kwl,
    if(exportString)
    {
       wktString = exportString;
+<<<<<<< HEAD
 	  //std::cout<<wktString<<endl;
+=======
+	  std::cout<<wktString<<endl;
+>>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
       OGRFree(exportString);
    }
 
