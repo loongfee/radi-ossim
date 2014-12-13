@@ -1,0 +1,842 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="otb">
+      <UniqueIdentifier>{d72c8c1d-a0b5-40e8-b603-a8ba71a5ab5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="erssar">
+      <UniqueIdentifier>{78ef2d5b-f19f-4ee5-be58-98efd8c1f27b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EnvisatAsar">
+      <UniqueIdentifier>{fbef719f-25ac-40b9-aa84-3eb21dab9ad7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AlosPalsar">
+      <UniqueIdentifier>{32fc1f30-2159-4834-a5b7-9283a344b6bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RadarSat">
+      <UniqueIdentifier>{46fed140-57b0-4e78-89dd-7aa6bfb033d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="radi">
+      <UniqueIdentifier>{4e7aa15d-6ea2-400d-a91c-36b6d51ae80d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="otb\PlatformPosition.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\RadarSat2NoiseLevel.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\RectangularCoordinate.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\RefPoint.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\SarSensor.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\SceneCoord.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\Sensor.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\SensorParams.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\CivilDateTime.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\Coordinate.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\Ephemeris.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\Equation.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\GalileanEphemeris.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\GeodesicCoordinate.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\GeographicEphemeris.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\GMSTDateTime.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\HermiteInterpolator.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\ImageNoise.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\IncidenceAngles.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\InfoIncidenceAngle.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\InfoSceneCoord.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\JSDDateTime.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\JulianDate.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\MJDDateTime.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="otb\Noise.cpp">
+      <Filter>otb</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\VolumeDir\FilePointerRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\VolumeDir\TextRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\VolumeDir\VolumeDescriptorRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\VolumeDir\VolumeDir.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\VolumeDir\VolumeDirFactory.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\RadarSatRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\RadarSatRecordFactory.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\RadarSatRecordHeader.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\AttitudeData.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\BeamInformationRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\BeamPixelCountRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\CompensationDataRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\DataHistogramRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\DataHistogramSignalData.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\DataPointDataRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\DataQuality.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\DataSetSummary.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\DopplerCentroidEstimateRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\FileDescriptor.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\MisregistrationRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\ProcessingParameters.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\RadiometricCompensationData.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\RadiometricData.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\RadiometryUncertaintyRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\SRGRCoefficientSetRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\CommonRecord\TemperatureSettingsRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\Data\Data.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\Data\DataFactory.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\Data\ImageOptionsFileDescriptor.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\Data\ProcessedDataRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\Leader\DataHistogramProcessedData.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\Leader\Leader.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\Leader\LeaderFactory.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\Leader\PlatformPositionData.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\Leader\PositionVectorRecord.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\Trailer\Trailer.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="RadarSat\Trailer\TrailerFactory.cpp">
+      <Filter>RadarSat</Filter>
+    </ClCompile>
+    <ClCompile Include="AlosPalsar\AlosPalsarData.cpp">
+      <Filter>AlosPalsar</Filter>
+    </ClCompile>
+    <ClCompile Include="AlosPalsar\AlosPalsarDataFileDescriptor.cpp">
+      <Filter>AlosPalsar</Filter>
+    </ClCompile>
+    <ClCompile Include="AlosPalsar\AlosPalsarDataSetSummary.cpp">
+      <Filter>AlosPalsar</Filter>
+    </ClCompile>
+    <ClCompile Include="AlosPalsar\AlosPalsarFacilityData.cpp">
+      <Filter>AlosPalsar</Filter>
+    </ClCompile>
+    <ClCompile Include="AlosPalsar\AlosPalsarFileDescriptor.cpp">
+      <Filter>AlosPalsar</Filter>
+    </ClCompile>
+    <ClCompile Include="AlosPalsar\AlosPalsarLeader.cpp">
+      <Filter>AlosPalsar</Filter>
+    </ClCompile>
+    <ClCompile Include="AlosPalsar\AlosPalsarLeaderFactory.cpp">
+      <Filter>AlosPalsar</Filter>
+    </ClCompile>
+    <ClCompile Include="AlosPalsar\AlosPalsarMapProjectionData.cpp">
+      <Filter>AlosPalsar</Filter>
+    </ClCompile>
+    <ClCompile Include="AlosPalsar\AlosPalsarPlatformPositionData.cpp">
+      <Filter>AlosPalsar</Filter>
+    </ClCompile>
+    <ClCompile Include="AlosPalsar\AlosPalsarPositionVectorRecord.cpp">
+      <Filter>AlosPalsar</Filter>
+    </ClCompile>
+    <ClCompile Include="AlosPalsar\AlosPalsarRadiometricData.cpp">
+      <Filter>AlosPalsar</Filter>
+    </ClCompile>
+    <ClCompile Include="AlosPalsar\AlosPalsarRecord.cpp">
+      <Filter>AlosPalsar</Filter>
+    </ClCompile>
+    <ClCompile Include="AlosPalsar\AlosPalsarRecordFactory.cpp">
+      <Filter>AlosPalsar</Filter>
+    </ClCompile>
+    <ClCompile Include="AlosPalsar\AlosPalsarRecordHeader.cpp">
+      <Filter>AlosPalsar</Filter>
+    </ClCompile>
+    <ClCompile Include="AlosPalsar\AlosPalsarSignalData.cpp">
+      <Filter>AlosPalsar</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvisatAsar\GeolocationGrid.cpp">
+      <Filter>EnvisatAsar</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvisatAsar\MainProcessingParameters.cpp">
+      <Filter>EnvisatAsar</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvisatAsar\mph.cpp">
+      <Filter>EnvisatAsar</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvisatAsar\sph.cpp">
+      <Filter>EnvisatAsar</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvisatAsar\SQ_ADSR.cpp">
+      <Filter>EnvisatAsar</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvisatAsar\SRGRConversionParameters.cpp">
+      <Filter>EnvisatAsar</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvisatAsar\AntennaElevationPatterns.cpp">
+      <Filter>EnvisatAsar</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvisatAsar\ChirpParameters.cpp">
+      <Filter>EnvisatAsar</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvisatAsar\DopplerCentroidParameters.cpp">
+      <Filter>EnvisatAsar</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvisatAsar\dsd.cpp">
+      <Filter>EnvisatAsar</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvisatAsar\EnvisatAsarData.cpp">
+      <Filter>EnvisatAsar</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvisatAsar\EnvisatAsarDataFactory.cpp">
+      <Filter>EnvisatAsar</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvisatAsar\EnvisatAsarRecord.cpp">
+      <Filter>EnvisatAsar</Filter>
+    </ClCompile>
+    <ClCompile Include="EnvisatAsar\EnvisatAsarRecordFactory.cpp">
+      <Filter>EnvisatAsar</Filter>
+    </ClCompile>
+    <ClCompile Include="erssar\ErsSarFileDescriptor.cpp">
+      <Filter>erssar</Filter>
+    </ClCompile>
+    <ClCompile Include="erssar\ErsSarLeader.cpp">
+      <Filter>erssar</Filter>
+    </ClCompile>
+    <ClCompile Include="erssar\ErsSarLeaderFactory.cpp">
+      <Filter>erssar</Filter>
+    </ClCompile>
+    <ClCompile Include="erssar\ErsSarMapProjectionData.cpp">
+      <Filter>erssar</Filter>
+    </ClCompile>
+    <ClCompile Include="erssar\ErsSarPlatformPositionData.cpp">
+      <Filter>erssar</Filter>
+    </ClCompile>
+    <ClCompile Include="erssar\ErsSarPositionVectorRecord.cpp">
+      <Filter>erssar</Filter>
+    </ClCompile>
+    <ClCompile Include="erssar\ErsSarRecord.cpp">
+      <Filter>erssar</Filter>
+    </ClCompile>
+    <ClCompile Include="erssar\ErsSarRecordFactory.cpp">
+      <Filter>erssar</Filter>
+    </ClCompile>
+    <ClCompile Include="erssar\ErsSarRecordHeader.cpp">
+      <Filter>erssar</Filter>
+    </ClCompile>
+    <ClCompile Include="erssar\ErsSarDataSetSummary.cpp">
+      <Filter>erssar</Filter>
+    </ClCompile>
+    <ClCompile Include="erssar\ErsSarFacilityData.cpp">
+      <Filter>erssar</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimPluginReaderFactory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimRadarSat2Model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimRadarSat2ProductDoc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimRadarSat2RPCModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimRadarSat2TiffReader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimRadarSatModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimTerraSarModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimTerraSarProductDoc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimTerraSarTiffReader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimTileMapModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimAlosPalsarModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimCosmoSkymedModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimEnvisatAsarModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimErsSarModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimFormosatDimapSupportData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimFormosatModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimGeometricSarSensorModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimPleiadesDimapSupportData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimPleiadesModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimPluginCommon.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimPluginInit.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ossimPluginProjectionFactory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="radi\ossimHj1Model.cpp">
+      <Filter>radi</Filter>
+    </ClCompile>
+    <ClCompile Include="radi\radiRpcSolver.cpp">
+      <Filter>radi</Filter>
+    </ClCompile>
+    <ClCompile Include="radi\radiRpcModel.cpp">
+      <Filter>radi</Filter>
+    </ClCompile>
+    <ClCompile Include="radi\radiBlockRpcModel.cpp">
+      <Filter>radi</Filter>
+    </ClCompile>
+    <ClCompile Include="radi\radiQVProcSupportData.cpp">
+      <Filter>radi</Filter>
+    </ClCompile>
+    <ClCompile Include="radi\radiBlockAdjustment.cpp">
+      <Filter>radi</Filter>
+    </ClCompile>
+    <ClCompile Include="radi\radiBlockTieGpt.cpp">
+      <Filter>radi</Filter>
+    </ClCompile>
+    <ClCompile Include="radi\radiBlockTieGptSet.cpp">
+      <Filter>radi</Filter>
+    </ClCompile>
+    <ClCompile Include="radi\ossimQVProcSupportData.cpp">
+      <Filter>radi</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="otb\PlatformPosition.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\RadarSat2NoiseLevel.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\RectangularCoordinate.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\RefPoint.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\SarSensor.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\SceneCoord.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\Sensor.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\SensorParams.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\Arithmetic.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\CivilDateTime.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\Coordinate.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\Ephemeris.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\Equation.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\GalileanEphemeris.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\GeodesicCoordinate.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\GeographicEphemeris.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\GMSTDateTime.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\HermiteInterpolator.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\ImageNoise.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\IncidenceAngles.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\InfoIncidenceAngle.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\InfoSceneCoord.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\JSDDateTime.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\JulianDate.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\MJDDateTime.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="otb\Noise.h">
+      <Filter>otb</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\VolumeDir\FilePointerRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\VolumeDir\TextRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\VolumeDir\VolumeDescriptorRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\VolumeDir\VolumeDir.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\VolumeDir\VolumeDirFactory.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\RadarSatRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\RadarSatRecordFactory.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\RadarSatRecordHeader.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\AttitudeData.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\BeamInformationRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\BeamPixelCountRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\CompensationDataRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\DataHistogramRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\DataHistogramSignalData.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\DataPointDataRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\DataQuality.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\DataSetSummary.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\DopplerCentroidEstimateRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\FileDescriptor.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\MisregistrationRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\ProcessingParameters.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\RadiometricCompensationData.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\RadiometricData.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\RadiometryUncertaintyRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\SRGRCoefficientSetRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\CommonRecord\TemperatureSettingsRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\Data\Data.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\Data\DataFactory.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\Data\ImageOptionsFileDescriptor.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\Data\ProcessedDataRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\Leader\DataHistogramProcessedData.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\Leader\Leader.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\Leader\LeaderFactory.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\Leader\PlatformPositionData.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\Leader\PositionVectorRecord.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\Trailer\Trailer.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="RadarSat\Trailer\TrailerFactory.h">
+      <Filter>RadarSat</Filter>
+    </ClInclude>
+    <ClInclude Include="AlosPalsar\AlosPalsarData.h">
+      <Filter>AlosPalsar</Filter>
+    </ClInclude>
+    <ClInclude Include="AlosPalsar\AlosPalsarDataFileDescriptor.h">
+      <Filter>AlosPalsar</Filter>
+    </ClInclude>
+    <ClInclude Include="AlosPalsar\AlosPalsarDataSetSummary.h">
+      <Filter>AlosPalsar</Filter>
+    </ClInclude>
+    <ClInclude Include="AlosPalsar\AlosPalsarFacilityData.h">
+      <Filter>AlosPalsar</Filter>
+    </ClInclude>
+    <ClInclude Include="AlosPalsar\AlosPalsarFileDescriptor.h">
+      <Filter>AlosPalsar</Filter>
+    </ClInclude>
+    <ClInclude Include="AlosPalsar\AlosPalsarLeader.h">
+      <Filter>AlosPalsar</Filter>
+    </ClInclude>
+    <ClInclude Include="AlosPalsar\AlosPalsarLeaderFactory.h">
+      <Filter>AlosPalsar</Filter>
+    </ClInclude>
+    <ClInclude Include="AlosPalsar\AlosPalsarMapProjectionData.h">
+      <Filter>AlosPalsar</Filter>
+    </ClInclude>
+    <ClInclude Include="AlosPalsar\AlosPalsarPlatformPositionData.h">
+      <Filter>AlosPalsar</Filter>
+    </ClInclude>
+    <ClInclude Include="AlosPalsar\AlosPalsarPositionVectorRecord.h">
+      <Filter>AlosPalsar</Filter>
+    </ClInclude>
+    <ClInclude Include="AlosPalsar\AlosPalsarRadiometricData.h">
+      <Filter>AlosPalsar</Filter>
+    </ClInclude>
+    <ClInclude Include="AlosPalsar\AlosPalsarRecord.h">
+      <Filter>AlosPalsar</Filter>
+    </ClInclude>
+    <ClInclude Include="AlosPalsar\AlosPalsarRecordFactory.h">
+      <Filter>AlosPalsar</Filter>
+    </ClInclude>
+    <ClInclude Include="AlosPalsar\AlosPalsarRecordHeader.h">
+      <Filter>AlosPalsar</Filter>
+    </ClInclude>
+    <ClInclude Include="AlosPalsar\AlosPalsarSignalData.h">
+      <Filter>AlosPalsar</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvisatAsar\EnvisatAsarRecordFactory.h">
+      <Filter>EnvisatAsar</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvisatAsar\GeolocationGrid.h">
+      <Filter>EnvisatAsar</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvisatAsar\MainProcessingParameters.h">
+      <Filter>EnvisatAsar</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvisatAsar\mph.h">
+      <Filter>EnvisatAsar</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvisatAsar\sph.h">
+      <Filter>EnvisatAsar</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvisatAsar\SQ_ADSR.h">
+      <Filter>EnvisatAsar</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvisatAsar\SRGRConversionParameters.h">
+      <Filter>EnvisatAsar</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvisatAsar\AntennaElevationPatterns.h">
+      <Filter>EnvisatAsar</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvisatAsar\ChirpParameters.h">
+      <Filter>EnvisatAsar</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvisatAsar\DopplerCentroidParameters.h">
+      <Filter>EnvisatAsar</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvisatAsar\dsd.h">
+      <Filter>EnvisatAsar</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvisatAsar\EnvisatAsarData.h">
+      <Filter>EnvisatAsar</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvisatAsar\EnvisatAsarDataFactory.h">
+      <Filter>EnvisatAsar</Filter>
+    </ClInclude>
+    <ClInclude Include="EnvisatAsar\EnvisatAsarRecord.h">
+      <Filter>EnvisatAsar</Filter>
+    </ClInclude>
+    <ClInclude Include="erssar\ErsSarFileDescriptor.h">
+      <Filter>erssar</Filter>
+    </ClInclude>
+    <ClInclude Include="erssar\ErsSarLeader.h">
+      <Filter>erssar</Filter>
+    </ClInclude>
+    <ClInclude Include="erssar\ErsSarLeaderFactory.h">
+      <Filter>erssar</Filter>
+    </ClInclude>
+    <ClInclude Include="erssar\ErsSarMapProjectionData.h">
+      <Filter>erssar</Filter>
+    </ClInclude>
+    <ClInclude Include="erssar\ErsSarPlatformPositionData.h">
+      <Filter>erssar</Filter>
+    </ClInclude>
+    <ClInclude Include="erssar\ErsSarPositionVectorRecord.h">
+      <Filter>erssar</Filter>
+    </ClInclude>
+    <ClInclude Include="erssar\ErsSarRecord.h">
+      <Filter>erssar</Filter>
+    </ClInclude>
+    <ClInclude Include="erssar\ErsSarRecordFactory.h">
+      <Filter>erssar</Filter>
+    </ClInclude>
+    <ClInclude Include="erssar\ErsSarRecordHeader.h">
+      <Filter>erssar</Filter>
+    </ClInclude>
+    <ClInclude Include="erssar\ErsSarDataSetSummary.h">
+      <Filter>erssar</Filter>
+    </ClInclude>
+    <ClInclude Include="erssar\ErsSarFacilityData.h">
+      <Filter>erssar</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimCosmoSkymedModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimEnvisatAsarModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimErsSarModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimFormosatDimapSupportData.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimFormosatModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimGeometricSarSensorModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimPleiadesDimapSupportData.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimPleiadesModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimPluginCommon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimPluginProjectionFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimPluginReaderFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimRadarSat2Model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimRadarSat2ProductDoc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimRadarSat2RPCModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimRadarSat2TiffReader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimRadarSatModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimTerraSarModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimTerraSarProductDoc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimTerraSarTiffReader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimTileMapModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ossimAlosPalsarModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="radi\ossimHj1Model.h">
+      <Filter>radi</Filter>
+    </ClInclude>
+    <ClInclude Include="radi\radiRpcSolver.h">
+      <Filter>radi</Filter>
+    </ClInclude>
+    <ClInclude Include="radi\radiRpcModel.h">
+      <Filter>radi</Filter>
+    </ClInclude>
+    <ClInclude Include="radi\radiBlockRpcModel.h">
+      <Filter>radi</Filter>
+    </ClInclude>
+    <ClInclude Include="radi\radiQVProcSupportData.h">
+      <Filter>radi</Filter>
+    </ClInclude>
+    <ClInclude Include="radi\radiBlockAdjustment.h">
+      <Filter>radi</Filter>
+    </ClInclude>
+    <ClInclude Include="radi\radiBlockTieGpt.h">
+      <Filter>radi</Filter>
+    </ClInclude>
+    <ClInclude Include="radi\radiBlockTieGptSet.h">
+      <Filter>radi</Filter>
+    </ClInclude>
+    <ClInclude Include="radi\ossimQVProcSupportData.h">
+      <Filter>radi</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="otb\Makefile">
+      <Filter>otb</Filter>
+    </None>
+  </ItemGroup>
+</Project>

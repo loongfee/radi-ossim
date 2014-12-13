@@ -1,0 +1,45 @@
+OSSIM_NULL_PIX_UINT8: 0
+// tile_size: 1024 1024
+// tile_size: 64 64
+tile_size: 512 512
+// tile_size: 256 256
+// tile_size: 128 128
+
+elevation_manager.enabled:  true
+// default_elevation_path:  D:\workspace\dem\srtm90
+// default_elevation_path:  D:\workspace\dem\aster30
+
+// Default height above ellipsoid, for use when no elev data is present, instead of returning NAN:
+elevation_manager.default_height_above_ellipsoid: 0.0
+
+// elevation_manager.elevation_source1.connection_string: D:\workspace\dem\srtm90
+//elevation_manager.elevation_source1.connection_string: D:\workspace\dem\aster30
+//elevation_manager.elevation_source1.type: srtm_directory
+//elevation_manager.elevation_source1.min_open_cells: 25
+//elevation_manager.elevation_source1.max_open_cells: 50
+//elevation_manager.elevation_source1.memory_map_cells: true
+//elevation_manager.elevation_source1.geoid.type: geoid1996
+
+elevation_manager.elevation_source2.connection_string: D:\workspace\dem\srtm90
+elevation_manager.elevation_source2.type: srtm_directory
+elevation_manager.elevation_source2.min_open_cells: 25
+elevation_manager.elevation_source2.max_open_cells: 50
+elevation_manager.elevation_source2.memory_map_cells: true
+elevation_manager.elevation_source2.geoid.type: geoid1996
+
+// elevation_manager.default_height_above_ellipsoid: 40.0
+// elevation_manager.elevation_source1.connection_string: D:\workspace\dem\srtm90
+
+
+// plugin.file1:  D:\opensource\3rdParty\bin\x86\ossim-registration.dll
+plugin.file2:  D:\opensource\3rdParty\bin\x86\ossimgdal_plugin.dll
+// plugin.file3:  D:\opensource\3rdParty\bin\x86\ossimreg_plugin.dll
+plugin.file4:  D:\opensource\3rdParty\bin\x86\ossim_plugin.dll
+
+
+//epsg_database_file1: D:/opensource/ossim/ossim131112/ossim/share/ossim/projection/ossim_epsg_projections-v7_4.csv
+//epsg_database_file2: D:/opensource/ossim/ossim131112/ossim/share/ossim/projection/ossim_harn_state_plane_epsg.csv
+//epsg_database_file3: D:/opensource/ossim/ossim131112/ossim/share/ossim/projection/ossim_state_plane_spcs.csv
+//epsg_database_file4: D:/opensource/ossim/ossim131112/ossim/share/ossim/projection/ossim_harn_state_plane_esri.csv
+
+cache_size: 2048

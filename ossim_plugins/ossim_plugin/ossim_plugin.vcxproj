@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AlosPalsar\AlosPalsarData.cpp" />
+    <ClCompile Include="AlosPalsar\AlosPalsarDataFileDescriptor.cpp" />
+    <ClCompile Include="AlosPalsar\AlosPalsarDataSetSummary.cpp" />
+    <ClCompile Include="AlosPalsar\AlosPalsarFacilityData.cpp" />
+    <ClCompile Include="AlosPalsar\AlosPalsarFileDescriptor.cpp" />
+    <ClCompile Include="AlosPalsar\AlosPalsarLeader.cpp" />
+    <ClCompile Include="AlosPalsar\AlosPalsarLeaderFactory.cpp" />
+    <ClCompile Include="AlosPalsar\AlosPalsarMapProjectionData.cpp" />
+    <ClCompile Include="AlosPalsar\AlosPalsarPlatformPositionData.cpp" />
+    <ClCompile Include="AlosPalsar\AlosPalsarPositionVectorRecord.cpp" />
+    <ClCompile Include="AlosPalsar\AlosPalsarRadiometricData.cpp" />
+    <ClCompile Include="AlosPalsar\AlosPalsarRecord.cpp" />
+    <ClCompile Include="AlosPalsar\AlosPalsarRecordFactory.cpp" />
+    <ClCompile Include="AlosPalsar\AlosPalsarRecordHeader.cpp" />
+    <ClCompile Include="AlosPalsar\AlosPalsarSignalData.cpp" />
+    <ClCompile Include="EnvisatAsar\AntennaElevationPatterns.cpp" />
+    <ClCompile Include="EnvisatAsar\ChirpParameters.cpp" />
+    <ClCompile Include="EnvisatAsar\DopplerCentroidParameters.cpp" />
+    <ClCompile Include="EnvisatAsar\dsd.cpp" />
+    <ClCompile Include="EnvisatAsar\EnvisatAsarData.cpp" />
+    <ClCompile Include="EnvisatAsar\EnvisatAsarDataFactory.cpp" />
+    <ClCompile Include="EnvisatAsar\EnvisatAsarRecord.cpp" />
+    <ClCompile Include="EnvisatAsar\EnvisatAsarRecordFactory.cpp" />
+    <ClCompile Include="EnvisatAsar\GeolocationGrid.cpp" />
+    <ClCompile Include="EnvisatAsar\MainProcessingParameters.cpp" />
+    <ClCompile Include="EnvisatAsar\mph.cpp" />
+    <ClCompile Include="EnvisatAsar\sph.cpp" />
+    <ClCompile Include="EnvisatAsar\SQ_ADSR.cpp" />
+    <ClCompile Include="EnvisatAsar\SRGRConversionParameters.cpp" />
+    <ClCompile Include="erssar\ErsSarDataSetSummary.cpp" />
+    <ClCompile Include="erssar\ErsSarFacilityData.cpp" />
+    <ClCompile Include="erssar\ErsSarFileDescriptor.cpp" />
+    <ClCompile Include="erssar\ErsSarLeader.cpp" />
+    <ClCompile Include="erssar\ErsSarLeaderFactory.cpp" />
+    <ClCompile Include="erssar\ErsSarMapProjectionData.cpp" />
+    <ClCompile Include="erssar\ErsSarPlatformPositionData.cpp" />
+    <ClCompile Include="erssar\ErsSarPositionVectorRecord.cpp" />
+    <ClCompile Include="erssar\ErsSarRecord.cpp" />
+    <ClCompile Include="erssar\ErsSarRecordFactory.cpp" />
+    <ClCompile Include="erssar\ErsSarRecordHeader.cpp" />
+    <ClCompile Include="ossimAlosPalsarModel.cpp" />
+    <ClCompile Include="ossimCosmoSkymedModel.cpp" />
+    <ClCompile Include="ossimEnvisatAsarModel.cpp" />
+    <ClCompile Include="ossimErsSarModel.cpp" />
+    <ClCompile Include="ossimFormosatDimapSupportData.cpp" />
+    <ClCompile Include="ossimFormosatModel.cpp" />
+    <ClCompile Include="ossimGeometricSarSensorModel.cpp" />
+    <ClCompile Include="ossimPleiadesDimapSupportData.cpp" />
+    <ClCompile Include="ossimPleiadesModel.cpp" />
+    <ClCompile Include="ossimPluginCommon.cpp" />
+    <ClCompile Include="ossimPluginInit.cpp" />
+    <ClCompile Include="ossimPluginProjectionFactory.cpp" />
+    <ClCompile Include="ossimPluginReaderFactory.cpp" />
+    <ClCompile Include="ossimRadarSat2Model.cpp" />
+    <ClCompile Include="ossimRadarSat2ProductDoc.cpp" />
+    <ClCompile Include="ossimRadarSat2RPCModel.cpp" />
+    <ClCompile Include="ossimRadarSat2TiffReader.cpp" />
+    <ClCompile Include="ossimRadarSatModel.cpp" />
+    <ClCompile Include="ossimTerraSarModel.cpp" />
+    <ClCompile Include="ossimTerraSarProductDoc.cpp" />
+    <ClCompile Include="ossimTerraSarTiffReader.cpp" />
+    <ClCompile Include="ossimTileMapModel.cpp" />
+    <ClCompile Include="otb\CivilDateTime.cpp" />
+    <ClCompile Include="otb\Coordinate.cpp" />
+    <ClCompile Include="otb\Ephemeris.cpp" />
+    <ClCompile Include="otb\Equation.cpp" />
+    <ClCompile Include="otb\GalileanEphemeris.cpp" />
+    <ClCompile Include="otb\GeodesicCoordinate.cpp" />
+    <ClCompile Include="otb\GeographicEphemeris.cpp" />
+    <ClCompile Include="otb\GMSTDateTime.cpp" />
+    <ClCompile Include="otb\HermiteInterpolator.cpp" />
+    <ClCompile Include="otb\ImageNoise.cpp" />
+    <ClCompile Include="otb\IncidenceAngles.cpp" />
+    <ClCompile Include="otb\InfoIncidenceAngle.cpp" />
+    <ClCompile Include="otb\InfoSceneCoord.cpp" />
+    <ClCompile Include="otb\JSDDateTime.cpp" />
+    <ClCompile Include="otb\JulianDate.cpp" />
+    <ClCompile Include="otb\MJDDateTime.cpp" />
+    <ClCompile Include="otb\Noise.cpp" />
+    <ClCompile Include="otb\PlatformPosition.cpp" />
+    <ClCompile Include="otb\RadarSat2NoiseLevel.cpp" />
+    <ClCompile Include="otb\RectangularCoordinate.cpp" />
+    <ClCompile Include="otb\RefPoint.cpp" />
+    <ClCompile Include="otb\SarSensor.cpp" />
+    <ClCompile Include="otb\SceneCoord.cpp" />
+    <ClCompile Include="otb\Sensor.cpp" />
+    <ClCompile Include="otb\SensorParams.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\AttitudeData.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\BeamInformationRecord.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\BeamPixelCountRecord.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\CompensationDataRecord.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\DataHistogramRecord.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\DataHistogramSignalData.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\DataPointDataRecord.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\DataQuality.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\DataSetSummary.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\DopplerCentroidEstimateRecord.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\FileDescriptor.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\MisregistrationRecord.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\ProcessingParameters.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\RadiometricCompensationData.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\RadiometricData.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\RadiometryUncertaintyRecord.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\SRGRCoefficientSetRecord.cpp" />
+    <ClCompile Include="RadarSat\CommonRecord\TemperatureSettingsRecord.cpp" />
+    <ClCompile Include="RadarSat\Data\Data.cpp" />
+    <ClCompile Include="RadarSat\Data\DataFactory.cpp" />
+    <ClCompile Include="RadarSat\Data\ImageOptionsFileDescriptor.cpp" />
+    <ClCompile Include="RadarSat\Data\ProcessedDataRecord.cpp" />
+    <ClCompile Include="RadarSat\Leader\DataHistogramProcessedData.cpp" />
+    <ClCompile Include="RadarSat\Leader\Leader.cpp" />
+    <ClCompile Include="RadarSat\Leader\LeaderFactory.cpp" />
+    <ClCompile Include="RadarSat\Leader\PlatformPositionData.cpp" />
+    <ClCompile Include="RadarSat\Leader\PositionVectorRecord.cpp" />
+    <ClCompile Include="RadarSat\RadarSatRecord.cpp" />
+    <ClCompile Include="RadarSat\RadarSatRecordFactory.cpp" />
+    <ClCompile Include="RadarSat\RadarSatRecordHeader.cpp" />
+    <ClCompile Include="RadarSat\Trailer\Trailer.cpp" />
+    <ClCompile Include="RadarSat\Trailer\TrailerFactory.cpp" />
+    <ClCompile Include="RadarSat\VolumeDir\FilePointerRecord.cpp" />
+    <ClCompile Include="RadarSat\VolumeDir\TextRecord.cpp" />
+    <ClCompile Include="RadarSat\VolumeDir\VolumeDescriptorRecord.cpp" />
+    <ClCompile Include="RadarSat\VolumeDir\VolumeDir.cpp" />
+    <ClCompile Include="RadarSat\VolumeDir\VolumeDirFactory.cpp" />
+    <ClCompile Include="radi\ossimHj1Model.cpp" />
+    <ClCompile Include="radi\ossimQVProcSupportData.cpp" />
+    <ClCompile Include="radi\radiBlockAdjustment.cpp" />
+    <ClCompile Include="radi\radiBlockRpcModel.cpp" />
+    <ClCompile Include="radi\radiBlockTieGpt.cpp" />
+    <ClCompile Include="radi\radiBlockTieGptSet.cpp" />
+    <ClCompile Include="radi\radiQVProcSupportData.cpp" />
+    <ClCompile Include="radi\radiRpcModel.cpp" />
+    <ClCompile Include="radi\radiRpcSolver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AlosPalsar\AlosPalsarData.h" />
+    <ClInclude Include="AlosPalsar\AlosPalsarDataFileDescriptor.h" />
+    <ClInclude Include="AlosPalsar\AlosPalsarDataSetSummary.h" />
+    <ClInclude Include="AlosPalsar\AlosPalsarFacilityData.h" />
+    <ClInclude Include="AlosPalsar\AlosPalsarFileDescriptor.h" />
+    <ClInclude Include="AlosPalsar\AlosPalsarLeader.h" />
+    <ClInclude Include="AlosPalsar\AlosPalsarLeaderFactory.h" />
+    <ClInclude Include="AlosPalsar\AlosPalsarMapProjectionData.h" />
+    <ClInclude Include="AlosPalsar\AlosPalsarPlatformPositionData.h" />
+    <ClInclude Include="AlosPalsar\AlosPalsarPositionVectorRecord.h" />
+    <ClInclude Include="AlosPalsar\AlosPalsarRadiometricData.h" />
+    <ClInclude Include="AlosPalsar\AlosPalsarRecord.h" />
+    <ClInclude Include="AlosPalsar\AlosPalsarRecordFactory.h" />
+    <ClInclude Include="AlosPalsar\AlosPalsarRecordHeader.h" />
+    <ClInclude Include="AlosPalsar\AlosPalsarSignalData.h" />
+    <ClInclude Include="EnvisatAsar\AntennaElevationPatterns.h" />
+    <ClInclude Include="EnvisatAsar\ChirpParameters.h" />
+    <ClInclude Include="EnvisatAsar\DopplerCentroidParameters.h" />
+    <ClInclude Include="EnvisatAsar\dsd.h" />
+    <ClInclude Include="EnvisatAsar\EnvisatAsarData.h" />
+    <ClInclude Include="EnvisatAsar\EnvisatAsarDataFactory.h" />
+    <ClInclude Include="EnvisatAsar\EnvisatAsarRecord.h" />
+    <ClInclude Include="EnvisatAsar\EnvisatAsarRecordFactory.h" />
+    <ClInclude Include="EnvisatAsar\GeolocationGrid.h" />
+    <ClInclude Include="EnvisatAsar\MainProcessingParameters.h" />
+    <ClInclude Include="EnvisatAsar\mph.h" />
+    <ClInclude Include="EnvisatAsar\sph.h" />
+    <ClInclude Include="EnvisatAsar\SQ_ADSR.h" />
+    <ClInclude Include="EnvisatAsar\SRGRConversionParameters.h" />
+    <ClInclude Include="erssar\ErsSarDataSetSummary.h" />
+    <ClInclude Include="erssar\ErsSarFacilityData.h" />
+    <ClInclude Include="erssar\ErsSarFileDescriptor.h" />
+    <ClInclude Include="erssar\ErsSarLeader.h" />
+    <ClInclude Include="erssar\ErsSarLeaderFactory.h" />
+    <ClInclude Include="erssar\ErsSarMapProjectionData.h" />
+    <ClInclude Include="erssar\ErsSarPlatformPositionData.h" />
+    <ClInclude Include="erssar\ErsSarPositionVectorRecord.h" />
+    <ClInclude Include="erssar\ErsSarRecord.h" />
+    <ClInclude Include="erssar\ErsSarRecordFactory.h" />
+    <ClInclude Include="erssar\ErsSarRecordHeader.h" />
+    <ClInclude Include="ossimAlosPalsarModel.h" />
+    <ClInclude Include="ossimCosmoSkymedModel.h" />
+    <ClInclude Include="ossimEnvisatAsarModel.h" />
+    <ClInclude Include="ossimErsSarModel.h" />
+    <ClInclude Include="ossimFormosatDimapSupportData.h" />
+    <ClInclude Include="ossimFormosatModel.h" />
+    <ClInclude Include="ossimGeometricSarSensorModel.h" />
+    <ClInclude Include="ossimPleiadesDimapSupportData.h" />
+    <ClInclude Include="ossimPleiadesModel.h" />
+    <ClInclude Include="ossimPluginCommon.h" />
+    <ClInclude Include="ossimPluginProjectionFactory.h" />
+    <ClInclude Include="ossimPluginReaderFactory.h" />
+    <ClInclude Include="ossimRadarSat2Model.h" />
+    <ClInclude Include="ossimRadarSat2ProductDoc.h" />
+    <ClInclude Include="ossimRadarSat2RPCModel.h" />
+    <ClInclude Include="ossimRadarSat2TiffReader.h" />
+    <ClInclude Include="ossimRadarSatModel.h" />
+    <ClInclude Include="ossimTerraSarModel.h" />
+    <ClInclude Include="ossimTerraSarProductDoc.h" />
+    <ClInclude Include="ossimTerraSarTiffReader.h" />
+    <ClInclude Include="ossimTileMapModel.h" />
+    <ClInclude Include="otb\Arithmetic.h" />
+    <ClInclude Include="otb\CivilDateTime.h" />
+    <ClInclude Include="otb\Coordinate.h" />
+    <ClInclude Include="otb\Ephemeris.h" />
+    <ClInclude Include="otb\Equation.h" />
+    <ClInclude Include="otb\GalileanEphemeris.h" />
+    <ClInclude Include="otb\GeodesicCoordinate.h" />
+    <ClInclude Include="otb\GeographicEphemeris.h" />
+    <ClInclude Include="otb\GMSTDateTime.h" />
+    <ClInclude Include="otb\HermiteInterpolator.h" />
+    <ClInclude Include="otb\ImageNoise.h" />
+    <ClInclude Include="otb\IncidenceAngles.h" />
+    <ClInclude Include="otb\InfoIncidenceAngle.h" />
+    <ClInclude Include="otb\InfoSceneCoord.h" />
+    <ClInclude Include="otb\JSDDateTime.h" />
+    <ClInclude Include="otb\JulianDate.h" />
+    <ClInclude Include="otb\MJDDateTime.h" />
+    <ClInclude Include="otb\Noise.h" />
+    <ClInclude Include="otb\PlatformPosition.h" />
+    <ClInclude Include="otb\RadarSat2NoiseLevel.h" />
+    <ClInclude Include="otb\RectangularCoordinate.h" />
+    <ClInclude Include="otb\RefPoint.h" />
+    <ClInclude Include="otb\SarSensor.h" />
+    <ClInclude Include="otb\SceneCoord.h" />
+    <ClInclude Include="otb\Sensor.h" />
+    <ClInclude Include="otb\SensorParams.h" />
+    <ClInclude Include="RadarSat\CommonRecord\AttitudeData.h" />
+    <ClInclude Include="RadarSat\CommonRecord\BeamInformationRecord.h" />
+    <ClInclude Include="RadarSat\CommonRecord\BeamPixelCountRecord.h" />
+    <ClInclude Include="RadarSat\CommonRecord\CompensationDataRecord.h" />
+    <ClInclude Include="RadarSat\CommonRecord\DataHistogramRecord.h" />
+    <ClInclude Include="RadarSat\CommonRecord\DataHistogramSignalData.h" />
+    <ClInclude Include="RadarSat\CommonRecord\DataPointDataRecord.h" />
+    <ClInclude Include="RadarSat\CommonRecord\DataQuality.h" />
+    <ClInclude Include="RadarSat\CommonRecord\DataSetSummary.h" />
+    <ClInclude Include="RadarSat\CommonRecord\DopplerCentroidEstimateRecord.h" />
+    <ClInclude Include="RadarSat\CommonRecord\FileDescriptor.h" />
+    <ClInclude Include="RadarSat\CommonRecord\MisregistrationRecord.h" />
+    <ClInclude Include="RadarSat\CommonRecord\ProcessingParameters.h" />
+    <ClInclude Include="RadarSat\CommonRecord\RadiometricCompensationData.h" />
+    <ClInclude Include="RadarSat\CommonRecord\RadiometricData.h" />
+    <ClInclude Include="RadarSat\CommonRecord\RadiometryUncertaintyRecord.h" />
+    <ClInclude Include="RadarSat\CommonRecord\SRGRCoefficientSetRecord.h" />
+    <ClInclude Include="RadarSat\CommonRecord\TemperatureSettingsRecord.h" />
+    <ClInclude Include="RadarSat\Data\Data.h" />
+    <ClInclude Include="RadarSat\Data\DataFactory.h" />
+    <ClInclude Include="RadarSat\Data\ImageOptionsFileDescriptor.h" />
+    <ClInclude Include="RadarSat\Data\ProcessedDataRecord.h" />
+    <ClInclude Include="RadarSat\Leader\DataHistogramProcessedData.h" />
+    <ClInclude Include="RadarSat\Leader\Leader.h" />
+    <ClInclude Include="RadarSat\Leader\LeaderFactory.h" />
+    <ClInclude Include="RadarSat\Leader\PlatformPositionData.h" />
+    <ClInclude Include="RadarSat\Leader\PositionVectorRecord.h" />
+    <ClInclude Include="RadarSat\RadarSatRecord.h" />
+    <ClInclude Include="RadarSat\RadarSatRecordFactory.h" />
+    <ClInclude Include="RadarSat\RadarSatRecordHeader.h" />
+    <ClInclude Include="RadarSat\Trailer\Trailer.h" />
+    <ClInclude Include="RadarSat\Trailer\TrailerFactory.h" />
+    <ClInclude Include="RadarSat\VolumeDir\FilePointerRecord.h" />
+    <ClInclude Include="RadarSat\VolumeDir\TextRecord.h" />
+    <ClInclude Include="RadarSat\VolumeDir\VolumeDescriptorRecord.h" />
+    <ClInclude Include="RadarSat\VolumeDir\VolumeDir.h" />
+    <ClInclude Include="RadarSat\VolumeDir\VolumeDirFactory.h" />
+    <ClInclude Include="radi\ossimHj1Model.h" />
+    <ClInclude Include="radi\ossimQVProcSupportData.h" />
+    <ClInclude Include="radi\radiBlockAdjustment.h" />
+    <ClInclude Include="radi\radiBlockRpcModel.h" />
+    <ClInclude Include="radi\radiBlockTieGpt.h" />
+    <ClInclude Include="radi\radiBlockTieGptSet.h" />
+    <ClInclude Include="radi\radiQVProcSupportData.h" />
+    <ClInclude Include="radi\radiRpcModel.h" />
+    <ClInclude Include="radi\radiRpcSolver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="otb\Makefile" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2747D518-365B-44FD-BA74-C3C100EA0EEB}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>ossim_plugin</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OSSIM_PLUGIN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;OSSIM_PLUGIN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>ARMA_USE_LAPACK;WIN32;NDEBUG;_WINDOWS;_USRDLL;OSSIMUSINGDLL;OSSIMPLUGINSMAKINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./;D:\opensource\3rdParty\include\KL1p;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ossim20.lib;gdal_i.lib;splm.lib;libcholmod.lib;suitesparseconfig.lib;libccolamd.lib;libcolamd.lib;libamd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(THIRD_PARTY_DIR)\bin\x86\$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(THIRD_PARTY_DIR)\lib\x86\$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>ARMA_USE_LAPACK;WIN32;NDEBUG;_WINDOWS;_USRDLL;OSSIMUSINGDLL;OSSIMPLUGINSMAKINGDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\ossim_plugins\ossim_plugin;$(SolutionDir)..\include;$(SolutionDir)..\..\ossim_plugins;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ossim20x64.lib;gdal_i.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(THIRD_PARTY_DIR)\bin\x64\$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(THIRD_PARTY_DIR)\lib\x64\$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
