@@ -105,12 +105,8 @@ public:
    /*!
     * ossimOptimizableProjection
     */
-<<<<<<< HEAD
    //inline virtual bool useForward()const {return false;} //!image to ground faster
-   inline virtual bool useForward()const { return true; } //!image to ground faster
-=======
-   inline virtual bool useForward()const {return false;} //!image to ground faster
->>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
+   inline virtual bool useForward()const { return true; }
    virtual bool setupOptimizer(const ossimString& init_file); //!uses file path to init model
 
    bool initFromMetadata(ossimSpotDimapSupportData* sd);

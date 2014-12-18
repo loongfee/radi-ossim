@@ -214,7 +214,6 @@ void ossimMultiThreadSequencer::setToStartOfSequence()
    //connectMyInputTo(m_inputChain.get());
    //setAreaOfInterest(m_inputChain->getBoundingRect());
 
-<<<<<<< HEAD
    ////// EXPERIMENTAL -- Fetch the first N tiles sequentially:
    //for (ossim_uint32 i=0; i<m_numThreads; ++i)
    //{

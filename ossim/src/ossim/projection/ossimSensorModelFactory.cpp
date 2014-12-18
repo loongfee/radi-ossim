@@ -27,8 +27,6 @@
 static ossimTrace traceExec  = ossimTrace("ossimSensorModelFactory:exec");
 static ossimTrace traceDebug = ossimTrace("ossimSensorModelFactory:debug");
 
-#pragma comment(lib, "ossim_plugin.lib")
-#pragma comment(lib, "mlpack.lib")
 //***
 // Note to programmer: To add a new model, search this file for "ADD_MODEL"
 // to locate places requiring editing. Functional example below...
@@ -44,14 +42,6 @@ static ossimTrace traceDebug = ossimTrace("ossimSensorModelFactory:debug");
 #include <ossim/projection/ossimLandSatModel.h>
 #include <ossim/projection/ossimSpot5Model.h>
 //#include <ossim/radi/ossimHjModel.h>
-#include <ossim_plugin/ossimPleiadesModel.h>
-#include <ossim_plugin/ossimPleiadesDimapSupportData.h>
-#include <ossim_plugin/radi/ossimHj1Model.h>
-#include <ossim_plugin/radi/radiRpcModel.h>
-<<<<<<< HEAD
-#include <ossim_plugin/ossimRadarSat2RPCModel.h>
-=======
->>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
 //#include <ossim/radi/ossimTheosModel.h>
 //#include <ossim/radi/ossimTheosDimapSupportData.h>
 #include <ossim/projection/ossimBuckeyeSensor.h>
@@ -215,25 +205,6 @@ ossimSensorModelFactory::createProjection(const ossimString &name) const
    {
       return new ossimSpot5Model;
    }
-   if(name == STATIC_TYPE_NAME(ossimplugins::ossimPleiadesModel))
-   {
-	   return new ossimplugins::ossimPleiadesModel;
-   }
-   if(name == STATIC_TYPE_NAME(ossimplugins::ossimHj1Model))
-   {
-	   return new ossimplugins::ossimHj1Model;
-   }
-   if(name == STATIC_TYPE_NAME(ossimplugins::radiRpcModel))
-   {
-	   return new ossimplugins::radiRpcModel;
-   }
-<<<<<<< HEAD
-   if (name == STATIC_TYPE_NAME(ossimplugins::ossimRadarSat2RPCModel))
-   {
-	   return new ossimplugins::ossimRadarSat2RPCModel;
-   }
-=======
->>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
    //if(name == STATIC_TYPE_NAME(ossimTheosModel))
    //{
 	  // return new ossimTheosModel;
@@ -305,18 +276,11 @@ ossimSensorModelFactory::getTypeNameList(std::vector<ossimString>& typeList)
    typeList.push_back(STATIC_TYPE_NAME(ossimNitfMapModel));
    typeList.push_back(STATIC_TYPE_NAME(ossimFcsiModel));
    typeList.push_back(STATIC_TYPE_NAME(ossimSpot5Model));
-   typeList.push_back(STATIC_TYPE_NAME(ossimplugins::ossimPleiadesModel));
    typeList.push_back(STATIC_TYPE_NAME(ossimSarModel));
    typeList.push_back(STATIC_TYPE_NAME(ossimRS1SarModel));
    typeList.push_back(STATIC_TYPE_NAME(ossimBuckeyeSensor));
    typeList.push_back(STATIC_TYPE_NAME(ossimSkyBoxLearSensor));
    typeList.push_back(STATIC_TYPE_NAME(ossimIpodSensor));
-   typeList.push_back(STATIC_TYPE_NAME(ossimplugins::ossimHj1Model));
-   typeList.push_back(STATIC_TYPE_NAME(ossimplugins::radiRpcModel));
-<<<<<<< HEAD
-   typeList.push_back(STATIC_TYPE_NAME(ossimplugins::ossimRadarSat2RPCModel));
-=======
->>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
    //typeList.push_back(STATIC_TYPE_NAME(ossimTheosModel));
    typeList.push_back(STATIC_TYPE_NAME(ossimPpjFrameSensor));
    typeList.push_back(STATIC_TYPE_NAME(ossimAlphaSensorHRI));
@@ -611,71 +575,6 @@ ossimProjection* ossimSensorModelFactory::createProjection(
 	  // }
 	  // inf.close();
    //}
-
-   ossimFilename Hj1Test = geomFile;
-   if(!Hj1Test.exists())
-   {
-	   Hj1Test = geomFile.path();
-	   Hj1Test = Hj1Test.dirCat(ossimFilename("DESC.XML"));
-	   if (Hj1Test.exists() == false)
-	   {
-		   Hj1Test = geomFile.path();
-		   Hj1Test = Hj1Test.dirCat(ossimFilename("desc.xml"));
-	   }
-   }
-   if(Hj1Test.exists())
-   {
-	   ossimRefPtr<ossimplugins::ossimQVProcSupportData> meta =
-		   new ossimplugins::ossimQVProcSupportData;
-	   if(meta->loadXmlFile(Hj1Test))
-	   {
-		   model = new ossimplugins::ossimHj1Model(meta.get());
-		   if(!model->getErrorStatus())
-		   {
-			   return model.release();
-		   }
-		   model = 0;
-	   }
-   }
-
-
-<<<<<<< HEAD
-   ossimRefPtr<ossimplugins::ossimRadarSat2RPCModel> radarSat2RPCModel = new ossimplugins::ossimRadarSat2RPCModel();
-   if (radarSat2RPCModel->open(filename))
-   {
-	   if (traceDebug())
-	   {
-		   ossimNotify(ossimNotifyLevel_DEBUG)
-			   << MODULE << " DEBUG: returning ossimQuickbirdRpcModel"
-			   << std::endl;
-	   }
-	   model = radarSat2RPCModel.get();
-	   radarSat2RPCModel = 0;
-	   return model.release();
-   }
-   else
-   {
-	   radarSat2RPCModel = 0;
-   }
-
-
-=======
->>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
-   ossimFilename pleiadesTest = geomFile;
-   if(pleiadesTest.exists())
-   {
-	   ossimRefPtr<ossimplugins::ossimPleiadesModel> pPleiadesModel = new ossimplugins::ossimPleiadesModel();
-	   if(pPleiadesModel->open(pleiadesTest))
-	   {
-		   model = pPleiadesModel.get();
-		   pPleiadesModel = 0;
-		   if(!model->getErrorStatus())
-		   {
-			   return model.release();
-		   }
-		   model = 0;
-	   }
-   }
    
    ossimFilename ppjFilename = filename;
    ppjFilename = ppjFilename.setExtension("ppj");
@@ -751,25 +650,6 @@ ossimProjection* ossimSensorModelFactory::createProjection(
          }
       }
       supData = 0;
-   }
-   
-   // at last test the generic rpc model
-   ossimRefPtr<ossimplugins::radiRpcModel> rpcModel = new ossimplugins::radiRpcModel;
-   if(rpcModel->parseRpcFile(filename))
-   {
-	   if(traceDebug())
-	   {
-		   ossimNotify(ossimNotifyLevel_DEBUG)
-			   << MODULE << " DEBUG: returning radiRpcModel"
-			   << std::endl;
-	   }
-	   model = rpcModel.get();
-	   rpcModel = 0;
-	   return model.release();
-   }
-   else
-   {
-	   rpcModel = 0;
    }
 
    model = new ossimCoarseGridModel(geomFile);

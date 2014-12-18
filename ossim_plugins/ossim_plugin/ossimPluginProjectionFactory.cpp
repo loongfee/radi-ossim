@@ -25,6 +25,11 @@
 #include <ossim/base/ossimNotifyContext.h>
 #include "ossimTileMapModel.h"
 
+// new added model
+#include <radi/ossimHj1Model.h>
+#include <radi/radiRpcModel.h>
+#include <ossimRadarSat2RPCModel.h>
+
 //***
 // Define Trace flags for use within this file:
 //***
@@ -252,6 +257,99 @@ ossimProjection* ossimPluginProjectionFactory::createProjection(
      }
    }
 
+   if (!projection)
+   {
+	   ossimFilename Hj1Test = filename;
+	   if (!Hj1Test.exists())
+	   {
+		   Hj1Test = filename.path();
+		   Hj1Test = Hj1Test.dirCat(ossimFilename("DESC.XML"));
+		   if (Hj1Test.exists() == false)
+		   {
+			   Hj1Test = filename.path();
+			   Hj1Test = Hj1Test.dirCat(ossimFilename("desc.xml"));
+		   }
+	   }
+	   if (Hj1Test.exists())
+	   {
+		   ossimRefPtr<ossimQVProcSupportData> meta =
+			   new ossimQVProcSupportData;
+		   if (meta->loadXmlFile(Hj1Test))
+		   {
+			   projection = new ossimHj1Model(meta.get());
+			   if (!projection->getErrorStatus())
+			   {
+				   return projection.release();
+			   }
+			   projection = 0;
+		   }
+	   }
+   }
+
+   if (!projection)
+   {
+	   ossimRefPtr<ossimRadarSat2RPCModel> radarSat2RPCModel = new ossimRadarSat2RPCModel();
+	   if (radarSat2RPCModel->open(filename))
+	   {
+		   if (traceDebug())
+		   {
+			   ossimNotify(ossimNotifyLevel_DEBUG)
+				   << MODULE << " DEBUG: returning ossimQuickbirdRpcModel"
+				   << std::endl;
+		   }
+		   projection = radarSat2RPCModel.get();
+		   radarSat2RPCModel = 0;
+		   return projection.release();
+	   }
+	   else
+	   {
+		   radarSat2RPCModel = 0;
+	   }
+   }
+
+
+   if (!projection)
+   {
+	   ossimFilename pleiadesTest = filename;
+	   if (pleiadesTest.exists())
+	   {
+		   ossimRefPtr<ossimPleiadesModel> pPleiadesModel = new ossimPleiadesModel();
+		   if (pPleiadesModel->open(pleiadesTest))
+		   {
+			   projection = pPleiadesModel.get();
+			   pPleiadesModel = 0;
+			   if (!projection->getErrorStatus())
+			   {
+				   return projection.release();
+			   }
+			   projection = 0;
+		   }
+	   }
+   }
+
+
+   if (!projection)
+   {
+	   // at last test the generic rpc model
+	   ossimRefPtr<ossimplugins::radiRpcModel> rpcModel = new radiRpcModel;
+	   if (rpcModel->parseRpcFile(filename))
+	   {
+		   if (traceDebug())
+		   {
+			   ossimNotify(ossimNotifyLevel_DEBUG)
+				   << MODULE << " DEBUG: returning radiRpcModel"
+				   << std::endl;
+		   }
+		   projection = rpcModel.get();
+		   rpcModel = 0;
+		   return projection.release();
+	   }
+	   else
+	   {
+		   rpcModel = 0;
+	   }
+   }
+
    return projection.release();
 }
 
@@ -305,6 +403,18 @@ ossimProjection* ossimPluginProjectionFactory::createProjection(
    else if (name == STATIC_TYPE_NAME(ossimPleiadesModel))
    {
      return new ossimPleiadesModel;
+   }
+   if (name == STATIC_TYPE_NAME(ossimHj1Model))
+   {
+	   return new ossimHj1Model;
+   }
+   if (name == STATIC_TYPE_NAME(radiRpcModel))
+   {
+	   return new radiRpcModel;
+   }
+   if (name == STATIC_TYPE_NAME(ossimRadarSat2RPCModel))
+   {
+	   return new ossimRadarSat2RPCModel;
    }
 
    if(traceDebug())
@@ -442,6 +552,9 @@ void ossimPluginProjectionFactory::getTypeNameList(std::vector<ossimString>& typ
    typeList.push_back(STATIC_TYPE_NAME(ossimFormosatModel));
    typeList.push_back(STATIC_TYPE_NAME(ossimTileMapModel));
    typeList.push_back(STATIC_TYPE_NAME(ossimPleiadesModel));
+   typeList.push_back(STATIC_TYPE_NAME(ossimHj1Model));
+   typeList.push_back(STATIC_TYPE_NAME(radiRpcModel));
+   typeList.push_back(STATIC_TYPE_NAME(ossimRadarSat2RPCModel));
 }
 
 bool ossimPluginProjectionFactory::isTileMap(const ossimFilename& filename)const
