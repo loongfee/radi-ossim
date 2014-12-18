@@ -98,11 +98,8 @@
       <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-<<<<<<< HEAD
       <AdditionalIncludeDirectories>..\..\include;$(THIRD_PARTY_DIR)\include;$(THIRD_PARTY_DIR)\include\freetype;D:\opensource\ossim\ossim131112\ossim_plugins\ossim_plugin</AdditionalIncludeDirectories>
-=======
       <AdditionalIncludeDirectories>..\..\include;$(THIRD_PARTY_DIR)\include;$(THIRD_PARTY_DIR)\include\freetype</AdditionalIncludeDirectories>
->>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_WINDLL;_WINDOWS;_USRDLL;OSSIMMAKINGDLL;_LARGE_FILES;HAVE_CONFIG_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4273</DisableSpecificWarnings>
     </ClCompile>

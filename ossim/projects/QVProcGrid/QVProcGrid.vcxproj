@@ -73,11 +73,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-<<<<<<< HEAD
       <OutputFile>D:\opensource\3rdParty\bin\x86\$(TargetName)$(TargetExt)</OutputFile>
-=======
       <OutputFile>$(THIRD_PARTY_DIR)\bin\x86\$(TargetName)$(TargetExt)</OutputFile>
->>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
       <Profile>true</Profile>
     </Link>
   </ItemDefinitionGroup>

@@ -21,7 +21,6 @@ static const ossim_uint32 DEFAULT_MAX_TILE_CACHE_FACTOR = 8; // Must be > 1
 
 ossimMtDebug* ossimMtDebug::m_instance = NULL;
 
-<<<<<<< HEAD
 //#include "D:\opensource\OpenCV\3.0-alpha\build\include\opencv\cv.h"
 //#include "D:\opensource\OpenCV\3.0-alpha\build\include\opencv\cxcore.h"
 //#include "D:\opensource\OpenCV\3.0-alpha\build\include\opencv\highgui.h"
@@ -33,8 +32,6 @@ ossimMtDebug* ossimMtDebug::m_instance = NULL;
 //#pragma comment(lib, "opencv_world300.lib")
 //using namespace cv;
 
-=======
->>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
 //*************************************************************************************************
 // Job's start method performs actual getTile in a thread on cloned chain and saves the result
 // in the sequencer's results cache.
@@ -58,7 +55,6 @@ void ossimMultiThreadSequencer::ossimGetTileJob::start()
       ossimImageSource* source = m_sequencer.m_inputChain->getClone(m_chainID);
       double dt = ossimTimer::instance()->time_s(); //###
 
-<<<<<<< HEAD
 	  if (source != NULL)
 	  {
 		//m_sequencer.m_tileMutex.lock();
@@ -66,18 +62,14 @@ void ossimMultiThreadSequencer::ossimGetTileJob::start()
 		//m_sequencer.m_tileMutex.unlock();
 
 	  }
-=======
       if (source != NULL)
          tile = source->getTile(tileRect);
->>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
       if (!tile.valid())
       {
          tile = m_sequencer.theBlankTile;
          tile->setImageRectangle(tileRect);
       }
       dt = ossimTimer::instance()->time_s() - dt; //###
-
-<<<<<<< HEAD
 
 	  //cv::Mat outMat;
 	  //outMat = cv::Mat(cv::Size(tileRect.width(), tileRect.height()), CV_8UC1);
@@ -90,11 +82,9 @@ void ossimMultiThreadSequencer::ossimGetTileJob::start()
       m_sequencer.setTileInCache(m_tileID, (ossimImageData*)tile->dup(), m_chainID, dt);
 	  //cout << m_tileID << "\t";
 	  //cout << tileRect.toString() << endl;
-=======
       // Give the sequencer the tile. Execution may pause here while waiting for space to free up
       // if the cache is full.
       m_sequencer.setTileInCache(m_tileID, (ossimImageData*)tile->dup(), m_chainID, dt);
->>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
    }
 
    // Unblock the main thread which might be blocked waiting for jobs to finish:
@@ -138,10 +128,7 @@ ossimMultiThreadSequencer::ossimMultiThreadSequencer(ossimImageSource* input,
    m_tileCache(),                       
    m_maxCacheSize (DEFAULT_MAX_TILE_CACHE_FACTOR * num_threads),
    m_maxTileCacheFactor (DEFAULT_MAX_TILE_CACHE_FACTOR),
-<<<<<<< HEAD
    m_tileMutex(),
-=======
->>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
    m_cacheMutex(),
    m_jobMutex(),
    m_totalNumberOfTiles(0),
@@ -236,7 +223,6 @@ void ossimMultiThreadSequencer::setToStartOfSequence()
    //   job->t_launchNewJob = false;
    //   job->start();
    //}
-=======
    //// EXPERIMENTAL -- Fetch the first N tiles sequentially:
    for (ossim_uint32 i=0; i<m_numThreads; ++i)
    {
@@ -245,7 +231,6 @@ void ossimMultiThreadSequencer::setToStartOfSequence()
       job->t_launchNewJob = false;
       job->start();
    }
->>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
 
    // Set up the job queue and fill it with first N jobs:
    ossim_uint32 num_jobs_to_launch =  min<ossim_uint32>(m_numThreads, m_totalNumberOfTiles);
@@ -323,11 +308,7 @@ ossimRefPtr<ossimImageData> ossimMultiThreadSequencer::getNextTile(ossim_uint32 
             }
             m_cacheMutex.unlock();
             print(s1);
-<<<<<<< HEAD
-		 }
-=======
          }
->>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
 
          if (d_timedBlocksDt > 0)
             m_getTileBlock.block(d_timedBlocksDt); 
