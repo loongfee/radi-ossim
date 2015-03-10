@@ -7,7 +7,7 @@
 // Description: Common code for this plugin.
 //
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduCommon.cpp 22448 2013-10-20 20:08:40Z dburken $
+// $Id: ossimKakaduCommon.cpp 22884 2014-09-12 13:14:35Z dburken $
 
 #include "ossimKakaduCommon.h"
 #include "ossimKakaduCompressedTarget.h"
@@ -31,7 +31,7 @@
 
 static const ossimTrace traceDebug( ossimString("ossimKakaduCommon:debug") );
 
-void ossim::getDims(const ossimIrect& rect, kdu_dims& dims)
+void ossim::getDims(const ossimIrect& rect, kdu_core::kdu_dims& dims)
 {
    dims.pos.x = rect.ul().x;
    dims.pos.y = rect.ul().y;
@@ -39,7 +39,7 @@ void ossim::getDims(const ossimIrect& rect, kdu_dims& dims)
    dims.size.y = static_cast<int>(rect.height());
 }
 
-void ossim::getRect(const kdu_dims& dims, ossimIrect& rect)
+void ossim::getRect(const kdu_core::kdu_dims& dims, ossimIrect& rect)
 {
    rect = ossimIrect(dims.pos.x,
                      dims.pos.y,
@@ -47,10 +47,10 @@ void ossim::getRect(const kdu_dims& dims, ossimIrect& rect)
                      dims.pos.y + dims.size.y - 1);
 }
 
-bool ossim::clipRegionToImage(kdu_codestream& codestream,
-                              kdu_dims& region,
+bool ossim::clipRegionToImage(kdu_core::kdu_codestream& codestream,
+                              kdu_core::kdu_dims& region,
                               int discard_levels,
-                              kdu_dims& clipRegion)
+                              kdu_core::kdu_dims& clipRegion)
 {
    // Clip the region to the image dimensions.
 
@@ -59,9 +59,9 @@ bool ossim::clipRegionToImage(kdu_codestream& codestream,
    if ( codestream.exists() )
    {
       codestream.apply_input_restrictions(
-         0, 0, discard_levels, 0, NULL, KDU_WANT_OUTPUT_COMPONENTS);
+         0, 0, discard_levels, 0, NULL, kdu_core::KDU_WANT_OUTPUT_COMPONENTS);
       
-      kdu_dims dims;
+      kdu_core::kdu_dims dims;
       codestream.get_dims(0, dims);
       if ( region.intersects(dims) )
       {
@@ -73,7 +73,7 @@ bool ossim::clipRegionToImage(kdu_codestream& codestream,
    return result;
 }
 
-bool ossim::getCodestreamDimensions(kdu_codestream& codestream,
+bool ossim::getCodestreamDimensions(kdu_core::kdu_codestream& codestream,
                                     std::vector<ossimIrect>& imageDims,
                                     std::vector<ossimIrect>& tileDims)
 {
@@ -84,7 +84,7 @@ bool ossim::getCodestreamDimensions(kdu_codestream& codestream,
 
    if ( codestream.exists() )
    {
-      kdu_coords tileIdx(0, 0);
+      kdu_core::kdu_coords tileIdx(0, 0);
       
       ossim_uint32 levels = codestream.get_min_dwt_levels();
 
@@ -98,9 +98,9 @@ bool ossim::getCodestreamDimensions(kdu_codestream& codestream,
             level, // highest resolution level
             0,     // max_layers (0 = all layers retained)
             NULL,  // expanded out to block boundary.
-            KDU_WANT_OUTPUT_COMPONENTS);
+            kdu_core::KDU_WANT_OUTPUT_COMPONENTS);
          
-         kdu_dims dims;
+         kdu_core::kdu_dims dims;
          codestream.get_dims(0, dims);
          
          // Make the imageRect upper left relative to any sub image offset.
@@ -111,10 +111,10 @@ bool ossim::getCodestreamDimensions(kdu_codestream& codestream,
 
          // Get the tile dimensions.
          
-         kdu_dims mappedRegion;
+         kdu_core::kdu_dims mappedRegion;
          codestream.map_region(0, dims, mappedRegion, true);
          
-         kdu_tile tile = codestream.open_tile(tileIdx);
+         kdu_core::kdu_tile tile = codestream.open_tile(tileIdx);
          if ( tile.exists() )
          {
             codestream.get_tile_dims( tile.get_tile_idx(), 0, dims );
@@ -144,7 +144,7 @@ bool ossim::getCodestreamDimensions(kdu_codestream& codestream,
          0, // highest resolution level
          0,     // max_layers (0 = all layers retained)
          NULL,  // expanded out to block boundary.
-         KDU_WANT_OUTPUT_COMPONENTS);
+         kdu_core::KDU_WANT_OUTPUT_COMPONENTS);
 
       // Should be the same sizes as levels.
       if ( (imageDims.size() != tileDims.size()) ||
@@ -162,11 +162,11 @@ bool ossim::getCodestreamDimensions(kdu_codestream& codestream,
 }
 
 // Takes a channel map and decompresses all bands at once.
-bool ossim::copyRegionToTile(kdu_channel_mapping* channelMapping,
-                             kdu_codestream& codestream,
+bool ossim::copyRegionToTile(kdu_supp::kdu_channel_mapping* channelMapping,
+                             kdu_core::kdu_codestream& codestream,
                              int discard_levels,
-                             kdu_thread_env* threadEnv,
-                             kdu_thread_queue* threadQueue,
+                             kdu_core::kdu_thread_env* threadEnv,
+                             kdu_core::kdu_thread_queue* threadQueue,
                              ossimImageData* destTile)
 {
    bool result = true;
@@ -175,10 +175,10 @@ bool ossim::copyRegionToTile(kdu_channel_mapping* channelMapping,
    {
       try // Kakadu throws exceptions...
       {
-         kdu_dims region;
+         kdu_core::kdu_dims region;
          getDims(destTile->getImageRectangle(), region);
       
-         kdu_dims clipRegion;
+         kdu_core::kdu_dims clipRegion;
          if ( clipRegionToImage(codestream,
                                 region,
                                 discard_levels,
@@ -194,14 +194,15 @@ bool ossim::copyRegionToTile(kdu_channel_mapping* channelMapping,
             const ossimScalarType SCALAR = destTile->getScalarType();
          
             int max_layers = INT_MAX;
-            kdu_coords expand_numerator(1,1);
-            kdu_coords expand_denominator(1,1);
+            kdu_core::kdu_coords expand_numerator(1,1);
+            kdu_core::kdu_coords expand_denominator(1,1);
             bool precise = true;
-            kdu_component_access_mode access_mode = KDU_WANT_OUTPUT_COMPONENTS;
+            kdu_core::kdu_component_access_mode access_mode =
+               kdu_core::KDU_WANT_OUTPUT_COMPONENTS;
             bool fastest = false;
 
             // Start the kdu_region_decompressor.
-            kdu_region_decompressor krd;
+            kdu_supp::kdu_region_decompressor krd;
             if ( krd.start( codestream,
                             channelMapping,
                             -1,
@@ -223,14 +224,14 @@ bool ossim::copyRegionToTile(kdu_channel_mapping* channelMapping,
 
             bool expand_monochrome = false;
             int pixel_gap = 1;
-            kdu_coords buffer_origin;
+            kdu_core::kdu_coords buffer_origin;
             buffer_origin.x = destTile->getImageRectangle().ul().x;
             buffer_origin.y = destTile->getImageRectangle().ul().y;
             int row_gap = region.size.x;
             int suggested_increment = static_cast<int>(destTile->getSize());
             int max_region_pixels = suggested_increment;
-            kdu_dims incomplete_region = clipRegion;
-            kdu_dims new_region;
+            kdu_core::kdu_dims incomplete_region = clipRegion;
+            kdu_core::kdu_dims new_region;
             bool measure_row_gap_in_pixels = true;
          
             // For signed int set precision bit to 0 for kakadu.
@@ -241,7 +242,7 @@ bool ossim::copyRegionToTile(kdu_channel_mapping* channelMapping,
                case OSSIM_UINT8:
                {
                   // Get pointers to the tile buffers.
-                  std::vector<kdu_byte*> channel_bufs(BANDS);
+                  std::vector<kdu_core::kdu_byte*> channel_bufs(BANDS);
                   for ( ossim_uint32 band = 0; band < BANDS; ++band )
                   {
                      channel_bufs[band] = destTile->getUcharBuf(band);
@@ -285,10 +286,11 @@ bool ossim::copyRegionToTile(kdu_channel_mapping* channelMapping,
                case OSSIM_SINT16:
                {
                   // Get pointers to the tile buffers.
-                  std::vector<kdu_uint16*> channel_bufs(BANDS);
+                  std::vector<kdu_core::kdu_uint16*> channel_bufs(BANDS);
                   for ( ossim_uint32 band = 0; band < BANDS; ++band )
                   {
-                     channel_bufs[band] = static_cast<kdu_uint16*>(destTile->getBuf(band));
+                     channel_bufs[band] = static_cast<kdu_core::kdu_uint16*>(
+                        destTile->getBuf(band));
                   }
 
                   while ( !incomplete_region.is_empty() )
@@ -416,7 +418,7 @@ bool ossim::copyRegionToTile(kdu_channel_mapping* channelMapping,
       {
          throw;
       }
-      catch ( kdu_exception exc )
+      catch ( kdu_core::kdu_exception exc )
       {
          // kdu_exception is an int typedef.
          if ( threadEnv != 0 )
@@ -473,10 +475,10 @@ bool ossim::copyRegionToTile(kdu_channel_mapping* channelMapping,
 } // End: ossim::copyRegionToTile
 
 // Takes a codestream and decompresses band at a time.
-bool ossim::copyRegionToTile(kdu_codestream& codestream,
+bool ossim::copyRegionToTile(kdu_core::kdu_codestream& codestream,
                              int discard_levels,
-                             kdu_thread_env* threadEnv,
-                             kdu_thread_queue* threadQueue,
+                             kdu_core::kdu_thread_env* threadEnv,
+                             kdu_core::kdu_thread_queue* threadQueue,
                              ossimImageData* destTile)
 {
    bool result = true;
@@ -485,10 +487,10 @@ bool ossim::copyRegionToTile(kdu_codestream& codestream,
    {
       try // Kakadu throws exceptions...
       {
-         kdu_dims region;
+         kdu_core::kdu_dims region;
          getDims(destTile->getImageRectangle(), region);
 
-         kdu_dims clipRegion;
+         kdu_core::kdu_dims clipRegion;
          if ( clipRegionToImage(codestream,
                                 region,
                                 discard_levels,
@@ -503,12 +505,13 @@ bool ossim::copyRegionToTile(kdu_codestream& codestream,
             const ossimScalarType SCALAR = destTile->getScalarType();
             const ossim_uint32 BANDS = destTile->getNumberOfBands();
             
-            kdu_channel_mapping* mapping = 0;
+            kdu_supp::kdu_channel_mapping* mapping = 0;
             int max_layers = INT_MAX;
-            kdu_coords expand_numerator(1,1);
-            kdu_coords expand_denominator(1,1);
+            kdu_core::kdu_coords expand_numerator(1,1);
+            kdu_core::kdu_coords expand_denominator(1,1);
             bool precise = true;
-            kdu_component_access_mode access_mode = KDU_WANT_OUTPUT_COMPONENTS;
+            kdu_core::kdu_component_access_mode access_mode =
+               kdu_core::KDU_WANT_OUTPUT_COMPONENTS;
             bool fastest = false;
             
             //---
@@ -523,7 +526,7 @@ bool ossim::copyRegionToTile(kdu_codestream& codestream,
                int single_component = band;
             
                // Start the kdu_region_decompressor.
-               kdu_region_decompressor krd;
+               kdu_supp::kdu_region_decompressor krd;
                
                if ( krd.start( codestream,
                                mapping,
@@ -547,14 +550,14 @@ bool ossim::copyRegionToTile(kdu_codestream& codestream,
                vector<int> channel_offsets(1);
                channel_offsets[0] = 0;
                int pixel_gap = 1;
-               kdu_coords buffer_origin;
+               kdu_core::kdu_coords buffer_origin;
                buffer_origin.x = destTile->getImageRectangle().ul().x;
                buffer_origin.y = destTile->getImageRectangle().ul().y;
                int row_gap = region.size.x;
                int suggested_increment = static_cast<int>(destTile->getSize());
                int max_region_pixels = suggested_increment;
-               kdu_dims incomplete_region = clipRegion;
-               kdu_dims new_region;
+               kdu_core::kdu_dims incomplete_region = clipRegion;
+               kdu_core::kdu_dims new_region;
                bool measure_row_gap_in_pixels = true;
                
                // For signed int set precision bit to 0 for kakadu.
@@ -565,7 +568,7 @@ bool ossim::copyRegionToTile(kdu_codestream& codestream,
                   case OSSIM_UINT8:
                   {
                      // Get pointer to the tile buffer.
-                     kdu_byte* buffer = destTile->getUcharBuf(band);
+                     kdu_core::kdu_byte* buffer = destTile->getUcharBuf(band);
                      
                      while ( !incomplete_region.is_empty() )
                      {
@@ -604,7 +607,8 @@ bool ossim::copyRegionToTile(kdu_codestream& codestream,
                   case OSSIM_SINT16:   
                   {
                      // Get pointer to the tile buffer.
-                     kdu_uint16* buffer = static_cast<kdu_uint16*>(destTile->getBuf(band));
+                     kdu_core::kdu_uint16* buffer =
+                        static_cast<kdu_core::kdu_uint16*>(destTile->getBuf(band));
                      
                      while ( !incomplete_region.is_empty() )
                      {
@@ -731,7 +735,7 @@ bool ossim::copyRegionToTile(kdu_codestream& codestream,
       {
          throw;
       }
-      catch ( kdu_exception exc )
+      catch ( kdu_core::kdu_exception exc )
       {
          // kdu_exception is an int typedef.
          if ( threadEnv != 0 )
@@ -880,7 +884,7 @@ ossim_int32 ossim::computeLevels(const ossimIrect& rect)
    return result;
 }
 
-std::ostream& ossim::print(std::ostream& out, kdu_codestream& cs)
+std::ostream& ossim::print(std::ostream& out, kdu_core::kdu_codestream& cs)
 {
    out << "codestream debug:"
        << "exists: " << (cs.exists()?"true":"false");
@@ -890,7 +894,7 @@ std::ostream& ossim::print(std::ostream& out, kdu_codestream& cs)
       out << "\ncomponents: " << BANDS;
       for (int i = 0; i < BANDS; ++i)
       {
-         kdu_dims dims;
+         kdu_core::kdu_dims dims;
          cs.get_dims(i, dims, true);
          out << "\nbit_depth[" << i << "]: " << cs.get_bit_depth(i, true)
              << "\nsigned[" << i << "]: " << cs.get_signed(i, true)
@@ -902,7 +906,7 @@ std::ostream& ossim::print(std::ostream& out, kdu_codestream& cs)
    return out;
 }
 
-std::ostream& ossim::print(std::ostream& out, const kdu_dims& dims)
+std::ostream& ossim::print(std::ostream& out, const kdu_core::kdu_dims& dims)
 {
    out << "pos: ";
    print(out, dims.pos);
@@ -912,7 +916,7 @@ std::ostream& ossim::print(std::ostream& out, const kdu_dims& dims)
    return out;
 }
 
-std::ostream& ossim::print(std::ostream& out, const kdu_coords& coords)
+std::ostream& ossim::print(std::ostream& out, const kdu_core::kdu_coords& coords)
 {
    out << "(" << coords.x << ", " << coords.y << ")";
    return out;

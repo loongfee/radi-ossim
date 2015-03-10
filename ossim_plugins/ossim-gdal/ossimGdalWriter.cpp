@@ -737,10 +737,16 @@ void ossimGdalWriter::writeProjectionInfo(GDALDatasetH dataset)
    ossimRefPtr<ossimImageGeometry> geom = theInputConnection->getImageGeometry();
    if(geom.valid())
    {
-      const ossimMapProjection* mapProj =
-         PTR_CAST(ossimMapProjection, geom->getProjection());
+	   // loong
+    //  const ossimMapProjection* mapProj =
+		  //PTR_CAST(ossimMapProjection, geom->getProjection());
+	   //ossimRefPtr<ossimProjection> Proj = geom->getProjection();
+	   ossimRefPtr<ossimMapProjection> mapProj =
+		   OLD_PTR_CAST(ossimMapProjection, geom->getProjection());
+    //  const ossimMapProjection* mapProj =
+		  //OLD_PTR_CAST(ossimMapProjection, geom->getProjection());
 
-      if (mapProj)
+      if (mapProj != NULL)
       {
          ossim_uint32 pcs_code = mapProj->getPcsCode();
          if (pcs_code == 0)

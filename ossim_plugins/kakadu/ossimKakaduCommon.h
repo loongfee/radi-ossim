@@ -7,7 +7,7 @@
 // Description: Common code for this plugin.
 //
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduCommon.h 22119 2013-01-24 02:26:29Z dburken $
+// $Id: ossimKakaduCommon.h 22884 2014-09-12 13:14:35Z dburken $
 
 #ifndef ossimKakaduCommon_HEADER
 #define ossimKakaduCommon_HEADER 1
@@ -17,16 +17,25 @@
 #include <vector>
 
 class jp2_source;
-class kdu_codestream;
-class kdu_thread_env;
+
+namespace kdu_core
+{
+   class kdu_codestream;
+   class kdu_thread_env;
+   class kdu_thread_queue;
+
+   struct kdu_coords;
+   struct kdu_dims;
+}
+
+namespace kdu_supp
+{
+  struct kdu_channel_mapping;
+}
+
 
 class ossimImageData;
 class ossimIrect;
-
-struct kdu_channel_mapping;
-struct kdu_coords;
-struct kdu_dims;
-class kdu_thread_queue;
 
 namespace ossim
 {
@@ -37,16 +46,16 @@ namespace ossim
     * 
     * @param dims This kdu_dim to initialize.
     */
-   void getDims(const ossimIrect& rect, kdu_dims& dims);
+   void getDims(const ossimIrect& rect, kdu_core::kdu_dims& dims);
    
    /**
-    * @brief Convenience method to convert kdu_dims to ossimIrect.
+    * @brief Convenience method to convert kdu_core::kdu_dims to ossimIrect.
     * 
     * @param dims This kdu_dim to convert.
     * 
     * @param rect The ossimIrect to initialize.
     */
-   void getRect(const kdu_dims& dims, ossimIrect& rect);
+   void getRect(const kdu_core::kdu_dims& dims, ossimIrect& rect);
    
    /**
     * @brief Sets clipRegion from region, and image dimensions for level.
@@ -66,10 +75,10 @@ namespace ossim
     * @return true on success, false if no intersection or there were
     * codestream or pointer issues.
     */
-   bool clipRegionToImage(kdu_codestream& codestream,
-                          kdu_dims& region,
+   bool clipRegionToImage(kdu_core::kdu_codestream& codestream,
+                          kdu_core::kdu_dims& region,
                           int discard_levels,
-                          kdu_dims& clipRegion);
+                          kdu_core::kdu_dims& clipRegion);
    
    /**
     * @brief Gets image and tile dimensions from codestream for each
@@ -89,7 +98,7 @@ namespace ossim
     * @note On entry the arrays are cleared so they will can be empty on
     * failure.
     */
-   bool getCodestreamDimensions(kdu_codestream& codestream,
+   bool getCodestreamDimensions(kdu_core::kdu_codestream& codestream,
                                 std::vector<ossimIrect>& imageDims,
                                 std::vector<ossimIrect>& tileDims);
 
@@ -108,11 +117,11 @@ namespace ossim
     * @param destTile The ossimImageData object to copy to.
     * @return true on success, false on error.
     */
-   bool copyRegionToTile(kdu_channel_mapping* channelMapping,
-                         kdu_codestream& codestream,
+   bool copyRegionToTile(kdu_supp::kdu_channel_mapping* channelMapping,
+                         kdu_core::kdu_codestream& codestream,
                          int discard_levels,
-                         kdu_thread_env* threadEnv,
-                         kdu_thread_queue* threadQueue,
+                         kdu_core::kdu_thread_env* threadEnv,
+                         kdu_core::kdu_thread_queue* threadQueue,
                          ossimImageData* destTile);
    
    /**
@@ -130,10 +139,10 @@ namespace ossim
     * @param destTile The ossimImageData object to copy to.
     * @return true on success, false on error.
     */
-   bool copyRegionToTile(kdu_codestream& codestream,
+   bool copyRegionToTile(kdu_core::kdu_codestream& codestream,
                          int discard_levels,
-                         kdu_thread_env* threadEnv,
-                         kdu_thread_queue* threadQueue,
+                         kdu_core::kdu_thread_env* threadEnv,
+                         kdu_core::kdu_thread_queue* threadQueue,
                          ossimImageData* destTile);
 
    /**
@@ -158,13 +167,13 @@ namespace ossim
    ossim_int32 computeLevels(const ossimIrect& rect);
 
    /** @brief Convenience print method for kdu_codestream */
-   std::ostream& print(std::ostream& out, kdu_codestream& cs);
+   std::ostream& print(std::ostream& out, kdu_core::kdu_codestream& cs);
 
    /** @brief Convenience print method for kdu_dims */
-   std::ostream& print(std::ostream& out, const kdu_dims& dims);
+   std::ostream& print(std::ostream& out, const kdu_core::kdu_dims& dims);
    
    /** @brief Convenience print method for kdu_coords */
-   std::ostream& print(std::ostream& out, const kdu_coords& coords);
+   std::ostream& print(std::ostream& out, const kdu_core::kdu_coords& coords);
 
 } // matches: namespace ossim
 

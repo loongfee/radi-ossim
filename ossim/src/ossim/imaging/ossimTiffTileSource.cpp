@@ -36,6 +36,7 @@
 #include <xtiffio.h>
 #include <geo_normalize.h>
 #include <cstdlib> /* for abs(int) */
+#include <ossim/radi/tifvsi.h>
 
 RTTI_DEF1(ossimTiffTileSource, "ossimTiffTileSource", ossimImageHandler)
 
@@ -427,7 +428,7 @@ bool ossimTiffTileSource::open()
    //---
    // Note:  The 'm' in "rm" is to tell TIFFOpen to not memory map the file.
    //---
-   theTiffPtr = XTIFFOpen(theImageFile.c_str(), "rm");
+   theTiffPtr = WW_VSI_TIFFOpen(theImageFile.c_str(), "rm");
    if (!theTiffPtr)
    {
       if (traceDebug())

@@ -7,7 +7,7 @@
 // Description: OSSIM Kakadu based jp2 writer class definition.
 //
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduJp2Writer.cpp 22111 2013-01-12 18:44:25Z dburken $
+// $Id: ossimKakaduJp2Writer.cpp 22513 2013-12-11 21:45:51Z dburken $
 
 #include "ossimKakaduJp2Writer.h"
 #include "ossimKakaduCommon.h"
@@ -34,7 +34,7 @@
 #include <jp2.h>
 #include <ostream>
 
-static const ossimIpt    DEFAULT_TILE_SIZE(1024, 1024);
+static const ossimIpt DEFAULT_TILE_SIZE(1024, 1024);
 
 RTTI_DEF1(ossimKakaduJp2Writer, "ossimKakaduJp2Writer", ossimImageFileWriter)
 
@@ -46,10 +46,10 @@ static const ossimTrace traceDebug( ossimString("ossimKakaduJp2Writer:debug") );
 
 //---
 // For the "ident" program which will find all exanded:
-// $Id: ossimKakaduJp2Writer.cpp 22111 2013-01-12 18:44:25Z dburken $
+// $Id: ossimKakaduJp2Writer.cpp 22513 2013-12-11 21:45:51Z dburken $
 //---
 #if OSSIM_ID_ENABLED
-static const char OSSIM_ID[] = "$Id: ossimKakaduJp2Writer.cpp 22111 2013-01-12 18:44:25Z dburken $";
+static const char OSSIM_ID[] = "$Id: ossimKakaduJp2Writer.cpp 22513 2013-12-11 21:45:51Z dburken $";
 #endif
 
 ossimKakaduJp2Writer::ossimKakaduJp2Writer()

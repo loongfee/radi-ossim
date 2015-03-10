@@ -15,6 +15,9 @@
 #include <ossim/imaging/ossimImageGeometryRegistry.h>
 #include <ossim/base/ossimTrace.h>
 
+using namespace kdu_core;
+using namespace kdu_supp;
+
 static const ossimTrace traceDebug( ossimString("ossimKakaduJpipHandler:debug") );
 
 RTTI_DEF1(ossimKakaduJpipHandler, "ossimKakaduJpipHandler", ossimImageHandler);
@@ -43,28 +46,53 @@ ossimKakaduJpipHandler::~ossimKakaduJpipHandler()
 void ossimKakaduJpipHandler::close()
 {
    ossimImageHandler::close();
-   m_jp2Family.close();
-   if(m_client)
-   {
-      if(m_client->is_alive())
+
+   // Kakadu kdu_thread_entity::terminate throws exceptions...
+   try
+   {   
+      m_jp2Family.close();
+      if(m_client)
       {
-         m_client->disconnect();
+         if(m_client->is_alive())
+         {
+            m_client->disconnect();
+         }
+         m_client->close();
+         delete m_client;
+         m_client = 0;
       }
-      m_client->close();
-      delete m_client;
-      m_client = 0;
-   }
-   if(m_headerClient)
-   {
-      if(m_headerClient->is_alive())
+      if(m_headerClient)
       {
-         m_headerClient->disconnect();
+         if(m_headerClient->is_alive())
+         {
+            m_headerClient->disconnect();
+         }
+         m_headerClient->close();
+         delete m_headerClient;
+         m_headerClient = 0;
       }
-      m_headerClient->close();
-      delete m_headerClient;
-      m_headerClient = 0;
+      m_request = 0;
    }
-   m_request = 0;
+   catch ( kdu_core::kdu_exception exc )
+   {
+      ostringstream e;
+      e << "ossimKakaduNitfReader::~ossimKakaduNitfReader\n"
+        << "Caught exception from kdu_region_decompressor: " << exc << "\n";
+      ossimNotify(ossimNotifyLevel_WARN) << e.str() << std::endl;
+   }
+   catch ( std::bad_alloc& )
+   {
+      std::string e =
+         "Caught exception from kdu_region_decompressor: std::bad_alloc";
+      ossimNotify(ossimNotifyLevel_WARN) << e << std::endl;
+   }
+   catch( ... )
+   {
+      std::string e =
+         "Caught unhandled exception from kdu_region_decompressor";
+      ossimNotify(ossimNotifyLevel_WARN) << e << std::endl;
+   }   
+   
    deleteRlevelCache();
 }
 
@@ -115,9 +143,9 @@ int ossimKakaduJpipHandler::convertClassIdToKdu(int id)
    return -1;
 }
 
-void ossimKakaduJpipHandler::showBoxes(jp2_input_box* pParentBox)
+void ossimKakaduJpipHandler::showBoxes(kdu_supp::jp2_input_box* pParentBox)
 {
-   jp2_input_box box;
+   kdu_supp::jp2_input_box box;
 
    if(!pParentBox)
    {
@@ -745,50 +773,73 @@ ossimRefPtr<ossimImageData> ossimKakaduJpipHandler::getTile(const  ossimIrect& r
                                                             ossim_uint32 resLevel)
 {
    ossimRefPtr<ossimImageData> result;
-   ossim_int32 nLevels = getNumberOfDecimationLevels()-1;
-   
-   ossim_uint64 scalePower2 = 1<<nLevels;
-   ossim_int32 targetLevel = nLevels - ossim::round<ossim_uint32>(log(1.0+((scalePower2*m_quality)/100.0))/log(2.0));
-   
-   // now try log way
-   if(targetLevel > static_cast<ossim_int32>(resLevel))
+
+   try
    {
-      double scale = 1.0/(1<<targetLevel);
-      ossimDrect scaledRect = rect*ossimDpt(scale, scale);
-      ossimIrect scaledRectRound = scaledRect;
-      scaledRectRound = ossimIrect(scaledRectRound.ul().x - 1,
-                                   scaledRectRound.ul().y - 1,
-                                   scaledRectRound.lr().x + 1,
-                                   scaledRectRound.lr().y + 1);
-      ossimRefPtr<ossimImageData> copy = getTileAtRes(scaledRectRound, targetLevel);
-      copy = (ossimImageData*)copy->dup();
+      ossim_int32 nLevels = getNumberOfDecimationLevels()-1;
+   
+      ossim_uint64 scalePower2 = 1<<nLevels;
+      ossim_int32 targetLevel = nLevels - ossim::round<ossim_uint32>(log(1.0+((scalePower2*m_quality)/100.0))/log(2.0));
+   
+      // now try log way
+      if(targetLevel > static_cast<ossim_int32>(resLevel))
+      {
+         double scale = 1.0/(1<<targetLevel);
+         ossimDrect scaledRect = rect*ossimDpt(scale, scale);
+         ossimIrect scaledRectRound = scaledRect;
+         scaledRectRound = ossimIrect(scaledRectRound.ul().x - 1,
+                                      scaledRectRound.ul().y - 1,
+                                      scaledRectRound.lr().x + 1,
+                                      scaledRectRound.lr().y + 1);
+         ossimRefPtr<ossimImageData> copy = getTileAtRes(scaledRectRound, targetLevel);
+         copy = (ossimImageData*)copy->dup();
     
-      //result->setImageRectangle(rect);
+         //result->setImageRectangle(rect);
       
-      ossimRefPtr<ossimMemoryImageSource> memSource = new ossimMemoryImageSource();
-      ossimRefPtr<ossimImageRenderer> renderer = new ossimImageRenderer();
-      ossimRefPtr<ossimImageViewAffineTransform> transform = new ossimImageViewAffineTransform();
-      transform->scale(1<<targetLevel, 1<<targetLevel);
-      memSource->setImage(copy.get());
-      renderer->connectMyInputTo(memSource.get());
-      renderer->getResampler()->setFilterType("bilinear");
-      renderer->setImageViewTransform(transform.get());
-      result = renderer->getTile(rect);
-      renderer->disconnect();
-      memSource->disconnect();
-      renderer = 0;
-      memSource = 0;
+         ossimRefPtr<ossimMemoryImageSource> memSource = new ossimMemoryImageSource();
+         ossimRefPtr<ossimImageRenderer> renderer = new ossimImageRenderer();
+         ossimRefPtr<ossimImageViewAffineTransform> transform = new ossimImageViewAffineTransform();
+         transform->scale(1<<targetLevel, 1<<targetLevel);
+         memSource->setImage(copy.get());
+         renderer->connectMyInputTo(memSource.get());
+         renderer->getResampler()->setFilterType("bilinear");
+         renderer->setImageViewTransform(transform.get());
+         result = renderer->getTile(rect);
+         renderer->disconnect();
+         memSource->disconnect();
+         renderer = 0;
+         memSource = 0;
+      }
+      else
+      {
+         // we need to apply a quality and then scale to the proper resolution.
+         // so if we want a 50% quality image and they are requesting a reslevel 0 product
+         // we need to query jpip at the next level down and not at 0 and scale the product up
+         // using a bilinear or some form of resampling
+         //
+         result = getTileAtRes(rect, resLevel);
+      }
    }
-   else
+   catch ( kdu_exception exc )
    {
-      // we need to apply a quality and then scale to the proper resolution.
-      // so if we want a 50% quality image and they are requesting a reslevel 0 product
-      // we need to query jpip at the next level down and not at 0 and scale the product up
-      // using a bilinear or some form of resampling
-      //
-      result = getTileAtRes(rect, resLevel);
+      ostringstream e;
+      e << "ossimKakaduNitfReader::~ossimKakaduNitfReader\n"
+        << "Caught exception from kdu_region_decompressor: " << exc << "\n";
+      ossimNotify(ossimNotifyLevel_WARN) << e.str() << std::endl;
    }
-   
+   catch ( std::bad_alloc& )
+   {
+      std::string e =
+         "Caught exception from kdu_region_decompressor: std::bad_alloc";
+      ossimNotify(ossimNotifyLevel_WARN) << e << std::endl;
+   }
+   catch( ... )
+   {
+      std::string e =
+         "Caught unhandled exception from kdu_region_decompressor";
+      ossimNotify(ossimNotifyLevel_WARN) << e << std::endl;
+   }   
+
    return result.get();
 }
 
@@ -893,7 +944,8 @@ ossimRefPtr<ossimImageData>  ossimKakaduJpipHandler::getTileAtRes(const  ossimIr
             window.resolution.x = bounds.width();
             window.resolution.y = bounds.height();
             
-            try{
+            try
+            {
                if(loadClient(m_client, window))
                {
                   //std::cout << "WE LOADED THE CLIENT!!!!" << std::endl;
@@ -927,9 +979,9 @@ ossimRefPtr<ossimImageData>  ossimKakaduJpipHandler::getTileAtRes(const  ossimIr
                            codestream.create(inputBox);
                            codestream.set_persistent();
                            codestream.apply_input_restrictions(
-                                                               0, 0, 
-                                                               resLevel, nQualityLayers, &region, 
-                                                               KDU_WANT_CODESTREAM_COMPONENTS);
+                              0, 0, 
+                              resLevel, nQualityLayers, &region, 
+                              KDU_WANT_CODESTREAM_COMPONENTS);
                            if ( ossim::clipRegionToImage(codestream,
                                                          region,
                                                          resLevel,

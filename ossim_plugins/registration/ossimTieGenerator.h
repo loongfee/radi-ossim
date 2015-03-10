@@ -78,7 +78,6 @@ public:
 
 protected:
    bool getAllFeatures();
-   bool getGridFeaturesParallel(const ossimIrect& rect);
    void writeTiePoints(const vector<ossimTDpt>& tp);
 
 private:

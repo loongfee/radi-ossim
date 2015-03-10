@@ -432,6 +432,18 @@
     <ClCompile Include="radi\ossimQVProcSupportData.cpp">
       <Filter>radi</Filter>
     </ClCompile>
+    <ClCompile Include="radi\radiZY3Model.cpp">
+      <Filter>radi</Filter>
+    </ClCompile>
+    <ClCompile Include="radi\radiZY3SupportData.cpp">
+      <Filter>radi</Filter>
+    </ClCompile>
+    <ClCompile Include="radi\radiCbers04Model.cpp">
+      <Filter>radi</Filter>
+    </ClCompile>
+    <ClCompile Include="radi\radiCbers04SupportData.cpp">
+      <Filter>radi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="otb\PlatformPosition.h">
@@ -831,6 +843,18 @@
       <Filter>radi</Filter>
     </ClInclude>
     <ClInclude Include="radi\ossimQVProcSupportData.h">
+      <Filter>radi</Filter>
+    </ClInclude>
+    <ClInclude Include="radi\radiZY3Model.h">
+      <Filter>radi</Filter>
+    </ClInclude>
+    <ClInclude Include="radi\radiZY3SupportData.h">
+      <Filter>radi</Filter>
+    </ClInclude>
+    <ClInclude Include="radi\radiCbers04Model.h">
+      <Filter>radi</Filter>
+    </ClInclude>
+    <ClInclude Include="radi\radiCbers04SupportData.h">
       <Filter>radi</Filter>
     </ClInclude>
   </ItemGroup>

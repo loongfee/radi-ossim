@@ -13,10 +13,6 @@
 #ifndef ossimOgrInfo_HEADER
 #define ossimOgrInfo_HEADER 1
 
-#include <iosfwd>
-#include <string>
-#include <vector>
-
 #include <ossim/base/ossimConstants.h>
 #include <ossim/support_data/ossimInfoBase.h>
 #include <ossim/base/ossimFilename.h>
@@ -25,6 +21,10 @@
 // #include <ogrsf_frmts/ogrsf_frmts.h>
 #include <ogrsf_frmts.h>
 #include <gdal.h>
+
+#include <iosfwd>
+#include <string>
+#include <vector>
 
 class ossimKeywordlist;
 
@@ -77,9 +77,9 @@ public:
     */
      void parseMetadata(ossimString metaData, ossimKeywordlist& kwl, ossimString metaPrefix)const;
 
-     ossimFilename  theFile;
-     OGRDataSource* ogrDatasource;
-     OGRSFDriver*   ogrDriver;
+     ossimFilename  m_file;
+     OGRDataSource* m_ogrDatasource;
+     OGRSFDriver*   m_ogrDriver;
 };
 
 #endif /* End of "#ifndef ossimOgrInfo_HEADER" */

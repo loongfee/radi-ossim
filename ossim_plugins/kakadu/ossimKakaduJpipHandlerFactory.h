@@ -114,9 +114,6 @@ protected:
    /** @brief hidden from use copy constructor */
    void operator=(const ossimKakaduJpipHandlerFactory&);
 
-   /** static instance of this class */
-   static ossimKakaduJpipHandlerFactory* m_instance;
-
 TYPE_DATA
 };
 

@@ -5,21 +5,15 @@
 #include <ossim/support_data/ossimInfoFactoryRegistry.h>
 #include <ossim/projection/ossimProjectionFactoryRegistry.h>
 
-ossimJpipProjectionFactory* ossimJpipProjectionFactory::m_instance = 0;
-
 RTTI_DEF1(ossimJpipProjectionFactory, "ossimJpipProjectionFactory", ossimProjectionFactoryBase)
 ossimJpipProjectionFactory::ossimJpipProjectionFactory()
 {
-   m_instance = this;
 }
 
 ossimJpipProjectionFactory* ossimJpipProjectionFactory::instance()
 {
-   if(!m_instance)
-   {
-      m_instance = new ossimJpipProjectionFactory();
-   }
-   return m_instance;
+   static ossimJpipProjectionFactory inst;
+   return &inst;
 }
 
 ossimProjection* ossimJpipProjectionFactory::createProjection(const ossimFilename& filename,

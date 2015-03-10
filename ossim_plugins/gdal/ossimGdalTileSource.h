@@ -11,7 +11,7 @@
 // Contains class definition for the class "ossimGdalTileSource".
 //
 //*******************************************************************
-//  $Id: ossimGdalTileSource.h 22281 2013-06-09 14:13:31Z dburken $
+//  $Id: ossimGdalTileSource.h 22960 2014-11-06 15:42:13Z okramer $
 
 #ifndef ossimGdalTileSource_HEADER
 #define ossimGdalTileSource_HEADER 1
@@ -187,7 +187,7 @@ public:
     * @param entryStringList List to initialize with strings associated with
     * entries.
     */
-   virtual void getEntryStringList(
+   virtual void getEntryNames(
       std::vector<ossimString>& entryStringList) const;
    
    virtual bool isOpen()const;

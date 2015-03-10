@@ -7,7 +7,7 @@
 // Description:  Class definition for JPEG2000 JP2 reader.
 //
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduJp2Reader.cpp 22111 2013-01-12 18:44:25Z dburken $
+// $Id: ossimKakaduJp2Reader.cpp 22884 2014-09-12 13:14:35Z dburken $
 
 #include "ossimKakaduJp2Reader.h"
 #include "ossimKakaduCommon.h"
@@ -37,14 +37,21 @@
 #include <ossim/support_data/ossimTiffInfo.h>
 #include <ossim/support_data/ossimTiffWorld.h>
 
-#include <jp2.h>
-#include <kdu_compressed.h> 
+#include <kdu_compressed.h>
+#include <kdu_elementary.h>
 #include <kdu_sample_processing.h>
 #include <kdu_region_decompressor.h>
+#include <jp2.h>
 
 #include <fstream>
 #include <iostream>
 #include <string>
+
+//---
+// Kakadu code has defines that have (kdu_uint32) which should be
+// (kdu_core::kdu_uint32)
+//---
+using namespace kdu_core;
 
 #ifdef OSSIM_ID_ENABLED
 static const char OSSIM_ID[] = "$Id";
@@ -255,13 +262,13 @@ bool ossimKakaduJp2Reader::openJp2File()
 
    bool result = false;
    
-   theJp2FamilySrc = new jp2_family_src();
+   theJp2FamilySrc = new kdu_supp::jp2_family_src();
 
    theJp2FamilySrc->open(theImageFile.chars(), true);
 
    if (theJp2FamilySrc->exists())
    {
-      jp2_source* src = new jp2_source();
+      kdu_supp::jp2_source* src = new kdu_supp::jp2_source();
       theJp2Source = src;
       
       src->open(theJp2FamilySrc);
@@ -270,7 +277,7 @@ bool ossimKakaduJp2Reader::openJp2File()
 
       if (traceDebug())
       {
-         jp2_colour colour = src->access_colour();
+         kdu_supp::jp2_colour colour = src->access_colour();
          if ( colour.exists() )
          {
             ossimNotify(ossimNotifyLevel_DEBUG)
@@ -278,7 +285,7 @@ bool ossimKakaduJp2Reader::openJp2File()
          }
       }
 
-      theThreadEnv = new kdu_thread_env();
+      theThreadEnv = new kdu_core::kdu_thread_env();
          
       theThreadEnv->create(); // Creates the single "owner" thread
 
@@ -909,10 +916,10 @@ ossimRefPtr<ossimImageGeometry> ossimKakaduJp2Reader::getInternalImageGeometry()
       ossimNotify(ossimNotifyLevel_DEBUG) << MODULE << " entered...\n";
    }
    
-   jp2_family_src*   familySrc = new jp2_family_src();
+   kdu_supp::jp2_family_src* familySrc = new kdu_supp::jp2_family_src();
    
    familySrc->open(theImageFile.c_str(), true);
-   jp2_input_box box;
+   kdu_supp::jp2_input_box box;
    box.open(familySrc);
 
    const ossim_uint8 GEOTIFF_UUID[GEOTIFF_UUID_SIZE] = 
@@ -958,10 +965,6 @@ ossimRefPtr<ossimImageGeometry> ossimKakaduJp2Reader::getInternalImageGeometry()
                ossim_uint32 entry = 0;
                ossimKeywordlist kwl; // Used to capture geometry data. 
 
-               // std::cout << ossimString((char*)&boxList[idx].m_buffer.front() + 16,
-               // (char*)&boxList[idx].m_buffer.front() + boxList[idx].m_buffer.size())
-               // << std::endl;
-               
                if ( info.getImageGeometry(str, kwl, entry) )
                {
                   //---
@@ -1169,13 +1172,13 @@ void ossimKakaduJp2Reader::configureChannelMapping()
    }
    else
    {
-      theChannels = new kdu_channel_mapping;
+      theChannels = new kdu_supp::kdu_channel_mapping;
    }
             
    if ( theJp2Source )
    {
       // Currently ignoring alpha:
-      result = theChannels->configure(static_cast<jp2_source*>(theJp2Source), false);
+      result = theChannels->configure(static_cast<kdu_supp::jp2_source*>(theJp2Source), false);
    }
    else
    {

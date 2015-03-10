@@ -177,6 +177,25 @@ ossimImageGeometry* radiRpcSolver::createRpcModel()const
    return new ossimImageGeometry(new ossim2dTo2dIdentityTransform, model);
 }
 
+
+void radiRpcSolver::setRpcModel(radiRpcModel* model)const
+{
+	model->setAttributes(theImageOffset.x,
+		theImageOffset.y,
+		theImageScale.x,
+		theImageScale.y,
+		theGroundOffset.latd(),
+		theGroundOffset.lond(),
+		theGroundOffset.height(),
+		theLatScale,
+		theLonScale,
+		theHeightScale,
+		theXNumCoeffs,
+		theXDenCoeffs,
+		theYNumCoeffs,
+		theYDenCoeffs);
+}
+
 ossimImageGeometry* radiRpcSolver::createRpcProjection()const
 {
    ossimRpcProjection* proj = new ossimRpcProjection;
@@ -794,6 +813,114 @@ void radiRpcSolver::update_normalization_params(const std::vector<ossimDpt>& ima
 	theHeightScale = max(fabs(maxHgt - theGroundOffset.height()), fabs(theGroundOffset.height() - minHgt));
 }
 
+
+void radiRpcSolver::update_normalization_params(ossimTieGptSet* gptSet)
+{
+	// compute the image bounds for the given image points
+	//
+
+	double latSum = 0.0;
+	double lonSum = 0.0;
+	double heightSum = 0.0;
+	double sampSum = 0.0;
+	double lineSum = 0.0;
+
+	ossim_float64 minLat = DBL_MAX;
+	ossim_float64 minLon = DBL_MAX;
+	ossim_float64 minHgt = DBL_MAX;
+	ossim_float64 minSamp = DBL_MAX;
+	ossim_float64 minLine = DBL_MAX;
+
+	ossim_float64 maxLat = -1e10;
+	ossim_float64 maxLon = -1e10;
+	ossim_float64 maxHgt = -1e10;
+	ossim_float64 maxSamp = -1e10;
+	ossim_float64 maxLine = -1e10;
+
+	int nPoints = gptSet->getTiePoints().size();
+	for (unsigned int c = 0; c < nPoints; ++c)
+	{
+		if (ossim::isnan(gptSet->getTiePoints()[c]->getGroundPoint().latd()) == false)
+		{
+			if (minLat > gptSet->getTiePoints()[c]->getGroundPoint().latd())
+			{
+				minLat = gptSet->getTiePoints()[c]->getGroundPoint().latd();
+			}
+			if (maxLat < gptSet->getTiePoints()[c]->getGroundPoint().latd())
+			{
+				maxLat = gptSet->getTiePoints()[c]->getGroundPoint().latd();
+			}
+			latSum += gptSet->getTiePoints()[c]->getGroundPoint().latd();
+		}
+		if (ossim::isnan(gptSet->getTiePoints()[c]->getGroundPoint().lond()) == false)
+		{
+			if (minLon > gptSet->getTiePoints()[c]->getGroundPoint().lond())
+			{
+				minLon = gptSet->getTiePoints()[c]->getGroundPoint().lond();
+			}
+			if (maxLon < gptSet->getTiePoints()[c]->getGroundPoint().lond())
+			{
+				maxLon = gptSet->getTiePoints()[c]->getGroundPoint().lond();
+			}
+			lonSum += gptSet->getTiePoints()[c]->getGroundPoint().lond();
+		}
+		if (!gptSet->getTiePoints()[c]->getGroundPoint().isHgtNan() && theUseElevationFlag)
+		{
+			if (minHgt > gptSet->getTiePoints()[c]->getGroundPoint().height())
+			{
+				minHgt = gptSet->getTiePoints()[c]->getGroundPoint().height();
+			}
+			if (maxHgt < gptSet->getTiePoints()[c]->getGroundPoint().height())
+			{
+				maxHgt = gptSet->getTiePoints()[c]->getGroundPoint().height();
+			}
+			heightSum += gptSet->getTiePoints()[c]->getGroundPoint().height();
+		}
+	}
+
+	for (unsigned int c = 0; c < nPoints; ++c)
+	{
+		if (ossim::isnan(gptSet->getTiePoints()[c]->getImagePoint().samp) == false)
+		{
+			if (minSamp > gptSet->getTiePoints()[c]->getImagePoint().samp)
+			{
+				minSamp = gptSet->getTiePoints()[c]->getImagePoint().samp;
+			}
+			if (maxSamp < gptSet->getTiePoints()[c]->getImagePoint().samp)
+			{
+				maxSamp = gptSet->getTiePoints()[c]->getImagePoint().samp;
+			}
+			sampSum += gptSet->getTiePoints()[c]->getImagePoint().samp;
+		}
+		if (ossim::isnan(gptSet->getTiePoints()[c]->getImagePoint().line) == false)
+		{
+			if (minLine > gptSet->getTiePoints()[c]->getImagePoint().line)
+			{
+				minLine = gptSet->getTiePoints()[c]->getImagePoint().line;
+			}
+			if (maxLine < gptSet->getTiePoints()[c]->getImagePoint().line)
+			{
+				maxLine = gptSet->getTiePoints()[c]->getImagePoint().line;
+			}
+			lineSum += gptSet->getTiePoints()[c]->getImagePoint().line;
+		}
+	}
+	// set the center ground for the offset
+	//
+	theGroundOffset = ossimGpt(latSum / nPoints,
+		lonSum / nPoints,
+		heightSum / nPoints);
+
+	theImageOffset = ossimDpt(sampSum / nPoints, lineSum / nPoints);
+	double sampScale = max(fabs(maxSamp - theImageOffset.samp), fabs(theImageOffset.samp - minSamp));
+	double lineScale = max(fabs(maxLine - theImageOffset.line), fabs(theImageOffset.line - minLine));
+	theImageScale = ossimDpt(sampScale, lineScale);
+
+	theLonScale = max(fabs(maxLon - theGroundOffset.lond()), fabs(theGroundOffset.lond() - minLon));
+	theLatScale = max(fabs(maxLat - theGroundOffset.latd()), fabs(theGroundOffset.latd() - minLat));
+	theHeightScale = max(fabs(maxHgt - theGroundOffset.height()), fabs(theGroundOffset.height() - minHgt));
+}
+
 void radiRpcSolver::normalize(ossimGpt &gpt)
 {
 	gpt.lat = (gpt.lat - theGroundOffset.latd()) / theLatScale;
@@ -1093,5 +1220,133 @@ void radiRpcSolver::solveCoefficients(const std::vector<ossimDpt>& imagePoints,
 	// set the error
 	//
 	theError = sqrt(sumSquareError/imagePoints.size());
+}
+
+void radiRpcSolver::solveCoefficients(ossimTieGptSet* gptSet,
+	bool b_update_normalization_params,
+	EstimationMethodIndex method/* = LASSO*/,
+	double parameter/* = 1e-5*/,
+	const ossimDpt& /* imageShift */)
+{
+
+	// we will first create f which holds the result of f(x,y,z).
+	// This basically holds the cooresponding image point for each
+	// ground control point.  One for x and a second array for y
+	//
+	std::vector<double> f[2];
+	//  Holds the x, y, z vectors
+	//
+	std::vector<double> x;
+	std::vector<double> y;
+	std::vector<double> z;
+	ossim_uint32 c = 0;
+	int nPoints = gptSet->getTiePoints().size();
+	f[0].resize(nPoints);
+	f[1].resize(nPoints);
+	x.resize(nPoints);
+	y.resize(nPoints);
+	z.resize(nPoints);
+
+	if (b_update_normalization_params)
+	{
+		update_normalization_params(gptSet);
+	}
+	for (size_t c = 0; c < nPoints; ++c)
+	{
+		ossimGpt gpt = gptSet->getTiePoints()[c]->getGroundPoint();
+		ossimDpt dpt = gptSet->getTiePoints()[c]->getImagePoint();
+		normalize(gpt);
+		normalize(dpt);
+		f[0][c] = dpt.x;
+		f[1][c] = dpt.y;
+
+		x[c] = gpt.lon;
+		y[c] = gpt.lat;
+		z[c] = gpt.hgt;
+	}
+
+	bool elevationEnabled = theUseElevationFlag;
+
+	// now lets solve the coefficients
+	//
+
+	arma::vec coeffVec;
+	solveAllCoefficients(coeffVec,
+		f[0],
+		f[1],
+		x,
+		y,
+		z,
+		method,
+		parameter);
+
+	std::vector<double> coeff(coeffVec.n_rows);
+
+	for (c = 0; c < coeff.size(); ++c)
+	{
+		coeff[c] = coeffVec[c];
+	}
+	// there are 20 numerator coefficients
+	// and 19 denominator coefficients
+	// I believe that the very first one for the
+	// denominator coefficients is fixed at 1.0
+	//
+	std::copy(coeff.begin(),
+		coeff.begin() + 20,
+		theXNumCoeffs.begin());
+	std::copy(coeff.begin() + 20,
+		coeff.begin() + 39,
+		theXDenCoeffs.begin() + 1);
+	std::copy(coeff.begin() + 39,
+		coeff.begin() + 59,
+		theYNumCoeffs.begin());
+	std::copy(coeff.begin() + 59,
+		coeff.begin() + 78,
+		theYDenCoeffs.begin() + 1);
+	theXDenCoeffs[0] = 1.0;
+	theYDenCoeffs[0] = 1.0;
+
+
+	// now lets compute the RMSE for the given control points by feeding it
+	// back through the modeled RPC
+	//
+	ossim_float64  sumSquareError = 0.0;
+	ossim_uint32 idx = 0;
+
+	//    std::cout << "ground offset height = " << theGroundOffset.height()
+	//              << "Height scale         = " << theHeightScale << std::endl;
+	for (idx = 0; idx<nPoints; idx++)
+	{
+		ossimGpt gpt = gptSet->getTiePoints()[idx]->getGroundPoint();
+		ossimDpt dpt = gptSet->getTiePoints()[idx]->getImagePoint();
+		normalize(dpt);
+		normalize(gpt);
+		ossim_float64 x = gpt.lon;
+		ossim_float64 y = gpt.lat;
+		ossim_float64 z = gpt.hgt;
+
+		if (ossim::isnan(z))
+		{
+			z = 0.0;
+		}
+		else
+		{
+			z = (z - theGroundOffset.height() / theHeightScale);
+		}
+		ossim_float64 imageX = ((eval(theXNumCoeffs, x, y, z) /
+			eval(theXDenCoeffs, x, y, z))*theImageScale.x) + theImageOffset.x;
+
+		ossim_float64 imageY = ((eval(theYNumCoeffs, x, y, z) /
+			eval(theYDenCoeffs, x, y, z))*theImageScale.y) + theImageOffset.y;
+
+		ossimDpt evalPt(imageX, imageY);
+		ossim_float64 len = (evalPt - gptSet->getTiePoints()[idx]->getImagePoint()).length();
+
+		sumSquareError += (len*len);
+	}
+
+	// set the error
+	//
+	theError = sqrt(sumSquareError / nPoints);
 }
 }

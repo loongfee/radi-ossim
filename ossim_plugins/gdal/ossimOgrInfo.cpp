@@ -10,14 +10,17 @@
 // 
 //----------------------------------------------------------------------------
 // $Id: ossimOgrInfo.cpp 2645 2011-05-26 15:21:34Z oscar.kramer $
-#include <fstream>
-#include <iostream>
-#include <iomanip>
-#include <sstream>
 
 #include <ossimOgrInfo.h>
 #include <ossim/base/ossimTrace.h>
 #include <ossim/base/ossimKeywordlist.h>
+
+#include <ogr_api.h>
+
+#include <fstream>
+#include <iostream>
+#include <iomanip>
+#include <sstream>
 
 // Static trace for debugging
 static ossimTrace traceDebug("ossimOgrInfo:debug");
@@ -33,7 +36,8 @@ ossimString getKeyValue(ossimString metaPrefix,
     std::vector<int> indexVector;
     ossimString name = metaNameValue.split(":")[0].downcase().trim().substitute(" ", "_", true);
     ossimString keyValue = ossimString(metaPrefix + prefix + name);
-    std::vector<ossimString> allMatchKeys = kwl.findAllKeysThatMatch(keyValue);
+    std::vector<ossimString> allMatchKeys;
+    kwl.findAllKeysThatMatch(allMatchKeys, keyValue);
 
     if (allMatchKeys.size() == 0)
     {
@@ -81,31 +85,50 @@ ossimString getKeyValue(ossimString metaPrefix,
 
 ossimOgrInfo::ossimOgrInfo()
    : ossimInfoBase(),
-     theFile(),
-     ogrDatasource(0),
-     ogrDriver(0)
+     m_file(),
+     m_ogrDatasource(0),
+     m_ogrDriver(0)
 {
 }
 
 ossimOgrInfo::~ossimOgrInfo()
 {
-  if (ogrDatasource != NULL)
+  if (m_ogrDatasource != NULL)
   {
-    OGRDataSource::DestroyDataSource(ogrDatasource);
-    ogrDatasource = 0;
+    OGRDataSource::DestroyDataSource(m_ogrDatasource);
+    m_ogrDatasource = 0;
   }
 }
 
 bool ossimOgrInfo::open(const ossimFilename& file)
 {
-   theFile = file;
-   ogrDatasource = OGRSFDriverRegistrar::Open(file.c_str(), false, &ogrDriver);
- 
-   if (ogrDatasource == NULL)
+   if ( m_ogrDatasource )
    {
-     return false;
+      OGRDataSource::DestroyDataSource(m_ogrDatasource);
+      m_ogrDatasource = 0;
    }
-   return true;
+
+   // Below interface removed in gdal.
+   // m_file = file;
+   // m_ogrDatasource = OGRSFDriverRegistrar::Open(file.c_str(), false, &m_ogrDriver);
+
+   m_ogrDatasource = (OGRDataSource*) OGROpen( file.c_str(), false, NULL );
+   if ( m_ogrDatasource )
+   {
+      m_ogrDriver = (OGRSFDriver*) m_ogrDatasource->GetDriver();
+      if ( m_ogrDriver )
+      {
+         m_file = file;
+      }
+
+      if ( !m_ogrDriver ) 
+      {
+         OGRDataSource::DestroyDataSource( m_ogrDatasource );
+         m_ogrDatasource = 0;
+      }
+   }
+
+   return ( m_ogrDatasource ? true : false );
 }
 
 void ossimOgrInfo::parseMetadata(ossimString metaData, 
@@ -437,15 +460,15 @@ void ossimOgrInfo::parseMetadata(ossimString metaData,
 
 bool ossimOgrInfo::getKeywordlist(ossimKeywordlist& kwl) const
 {  
-  if (ogrDatasource != NULL)  
+  if (m_ogrDatasource != NULL)  
   {
-    ossimString driverName = getDriverName(ossimString(GDALGetDriverShortName(ogrDriver)).downcase());
+    ossimString driverName = getDriverName(ossimString(GDALGetDriverShortName(m_ogrDriver)).downcase());
 
     ossimString metaPrefix = ossimString(driverName + ".");
 
     //get meta data
     ossimString strValue;
-    char** metaData = 0; // tmp drb ogrDatasource->GetMetadata("metadata");
+    char** metaData = 0; // tmp drb m_ogrDatasource->GetMetadata("metadata");
     ossimString keyName = "tableinfo";
     size_t nLen = strlen(keyName.c_str());
     if (metaData != NULL && driverName == "vpf")
@@ -469,14 +492,14 @@ bool ossimOgrInfo::getKeywordlist(ossimKeywordlist& kwl) const
 
     //get geometry data
     ossimString geomType;
-    int layerCount = ogrDatasource->GetLayerCount();
+    int layerCount = m_ogrDatasource->GetLayerCount();
     ossimString prefixInt = ossimString(metaPrefix + "layer");
     for(int i = 0; i < layerCount; ++i)
     {
       ossimString prefix = prefixInt + ossimString::toString(i) + ".";
       ossimString specialPrefix = "layer" + ossimString::toString(i) + ".";
 
-      OGRLayer* layer = ogrDatasource->GetLayer(i);
+      OGRLayer* layer = m_ogrDatasource->GetLayer(i);
       if(layer)
       {
         //get feature count and geometry type

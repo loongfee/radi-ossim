@@ -7,18 +7,28 @@
 // Author: Garrett Potts
 //
 //*************************************************************************
-// $Id: ossimImageData.cpp 22161 2013-02-25 12:10:04Z gpotts $
+// $Id: ossimImageData.cpp 22981 2014-11-13 22:08:39Z okramer $
 
-#include <ossim/imaging/ossimImageData.h>
-#include <ossim/base/ossimSource.h>
-#include <ossim/base/ossimErrorContext.h>
-#include <ossim/base/ossimIrect.h>
-#include <ossim/base/ossimMultiBandHistogram.h>
+#include <ossim/base/ossimConstants.h>
+#include <ossim/base/ossimErrorCodes.h>
+//#include <ossim/base/ossimErrorContext.h>
+#include <ossim/base/ossimFilename.h>
 #include <ossim/base/ossimHistogram.h>
+//#include <ossim/base/ossimIrect.h>
+#include <ossim/base/ossimKeywordlist.h>
+#include <ossim/base/ossimMultiBandHistogram.h>
+#include <ossim/base/ossimNotify.h>
+#include <ossim/base/ossimRtti.h>
 #include <ossim/base/ossimScalarTypeLut.h>
-
+//#include <ossim/base/ossimSource.h>
+#include <ossim/base/ossimString.h>
+#include <ossim/imaging/ossimImageData.h>
+#include <algorithm>
+#include <cstring>
+#include <fstream>
+#include <iostream>
 #include <iterator>
-#include <ostream>
+//#include <ostream>
 
 
 RTTI_DEF1(ossimImageData, "ossimImageData", ossimRectilinearDataObject)
@@ -1139,6 +1149,7 @@ ossimDataObjectStatus ossimImageData::validate(T /* dummyTemplate */ ) const
    if (m_dataBuffer.size() == 0)
    {
       setDataObjectStatus(OSSIM_NULL);
+      m_percentFull = 0;
       return OSSIM_NULL;
    }
 
@@ -1160,12 +1171,20 @@ ossimDataObjectStatus ossimImageData::validate(T /* dummyTemplate */ ) const
    }
 
    if (!count)
+   {
       setDataObjectStatus(OSSIM_EMPTY);
+      m_percentFull = 0;
+   }
    else if (count == SIZE)
+   {
       setDataObjectStatus(OSSIM_FULL);
+      m_percentFull = 100;
+   }
    else
+   {
       setDataObjectStatus(OSSIM_PARTIAL);
-
+      m_percentFull = 100.0 * count / SIZE;
+   }
    return getDataObjectStatus();
 }
 
@@ -2015,8 +2034,6 @@ bool ossimImageData::isNull(ossim_uint32 offset, ossim_uint32 band)const
       case OSSIM_NORMALIZED_DOUBLE:
       {
          const ossim_float64* buf = static_cast<const ossim_float64*>(getBuf(band))+offset;
-
-		  ossim_float64 pp= getNullPix(band);
          if((*buf) != getNullPix(band))
          {
             return false;
@@ -6436,6 +6453,7 @@ std::ostream& ossimImageData::print(std::ostream& out) const
        << "\nheight:           " << getHeight()
        << "\nimage rectangle:  " << getImageRectangle()
        << "\nindexed:          " << m_indexedFlag
+       << "\nalpha size:       " << m_alpha.size()
        << std::endl;
 
    return ossimRectilinearDataObject::print(out);

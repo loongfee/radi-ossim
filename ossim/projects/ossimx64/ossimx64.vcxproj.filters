@@ -2523,6 +2523,12 @@
     <ClCompile Include="..\..\src\ossim\radi\ossimDFeature.cpp">
       <Filter>radi</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\ossim\radi\vsi.cpp">
+      <Filter>radi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ossim\radi\tiffvsi.cpp">
+      <Filter>radi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\ossim\base\ossimDatumFactory.inc">
@@ -5138,6 +5144,12 @@
       <Filter>radi</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\ossim\radi\ossimblockadjustment.h">
+      <Filter>radi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ossim\radi\vsi.h">
+      <Filter>radi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ossim\radi\tifvsi.h">
       <Filter>radi</Filter>
     </ClInclude>
   </ItemGroup>

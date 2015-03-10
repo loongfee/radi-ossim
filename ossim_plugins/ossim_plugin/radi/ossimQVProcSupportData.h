@@ -73,8 +73,9 @@ public:
    bool loadXmlFile(const ossimFilename& file,
                     bool processSwir=false);
 
-   ossimString   getSpacecraftID()                        const;
+   ossimString   getSpacecraftID()                        const{ return theSpacecraftID; };
    ossimString   getSensorID()                            const;
+   ossimString   getStationID()                            const;
    ossimString   getMetadataVersionString()               const;
    ossimString   getAcquisitionDate()                     const;
    ossimString   getProductionDate()                      const;
@@ -264,10 +265,10 @@ private:
 
 
    ossimString                 theSensorID;
+   ossimString				  theStationID;
    ossimQVProcVersion		  theMetadataVersion;
    ossimFilename               theMetadataFile;
    ossim_uint32				  theProcessing;
-   ossimString				  theStationID;
    ossimString				  theSpacecraftID;
    ossim_uint32				  theResampleRate;
    ossimString				  theStartTime;

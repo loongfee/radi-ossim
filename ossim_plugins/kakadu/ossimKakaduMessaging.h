@@ -7,7 +7,7 @@
 // Description: Common OSSIM Kakadu messaging definitions.
 //
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduMessaging.h 22150 2013-02-11 21:52:07Z dburken $
+// $Id: ossimKakaduMessaging.h 22884 2014-09-12 13:14:35Z dburken $
 
 #ifndef ossimKakaduMessaging_HEADER
 #define ossimKakaduMessaging_HEADER 1
@@ -20,11 +20,11 @@
 /* ========================================================================= */
 /* Set up kakadu messaging services to be sent to ossimNotify.               */
 /* ========================================================================= */
-class kdu_stream_message : public kdu_thread_safe_message
+class kdu_stream_message : public kdu_core::kdu_thread_safe_message
 {
 public: // Member classes
    kdu_stream_message( std::ostream *stream, bool throw_exc )
-      : kdu_thread_safe_message(),
+      : kdu_core::kdu_thread_safe_message(),
         m_stream(stream),
         m_throw_exc(throw_exc)
    {}
@@ -39,7 +39,7 @@ public: // Member classes
       m_stream->flush();
 
       // This call unlocks mutex in kakadu_thread_safe_message:
-      kdu_thread_safe_message::flush(end_of_message);
+      kdu_core::kdu_thread_safe_message::flush(end_of_message);
 
       if (end_of_message && m_throw_exc)
       {
@@ -62,7 +62,7 @@ static kdu_stream_message cout_message(&ossimNotify(ossimNotifyLevel_NOTICE),
                                        false);
 static kdu_stream_message cerr_message(&ossimNotify(ossimNotifyLevel_WARN),
                                        true);
-static kdu_message_formatter pretty_cout(&cout_message);
-static kdu_message_formatter pretty_cerr(&cerr_message);
+static kdu_core::kdu_message_formatter pretty_cout(&cout_message);
+static kdu_core::kdu_message_formatter pretty_cerr(&cerr_message);
 
 #endif /* #ifndef ossimKakaduMessaging_HEADER */

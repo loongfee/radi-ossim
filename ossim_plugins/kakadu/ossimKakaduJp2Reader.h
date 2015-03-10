@@ -9,7 +9,7 @@
 // Specification: ISO/IEC 15444
 //
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduJp2Reader.h 22119 2013-01-24 02:26:29Z dburken $
+// $Id: ossimKakaduJp2Reader.h 22884 2014-09-12 13:14:35Z dburken $
 
 #ifndef ossimKakaduJp2Reader_HEADER
 #define ossimKakaduJp2Reader_HEADER 1
@@ -29,13 +29,23 @@
 #include <vector>
 
 // Forward declarations:
+
 class ossimKeywordlist;
-class jp2_family_src;
-class kdu_compressed_source;
-class kdu_line_buf;
+
 class kdu_tile;
-struct kdu_channel_mapping;
-class kdu_thread_queue;
+
+namespace kdu_core
+{
+   class kdu_compressed_source;
+   class kdu_line_buf;
+   class kdu_thread_queue;
+}
+
+namespace kdu_supp
+{
+   struct kdu_channel_mapping;
+   class jp2_family_src;
+}
 
 /**
  * @brief ossimKakaduJp2Reader class for reading images with JPEG2000
@@ -269,17 +279,18 @@ private:
     */
    void configureChannelMapping();
 
-   jp2_family_src*              theJp2FamilySrc;
-   kdu_compressed_source*       theJp2Source;
-   kdu_channel_mapping*         theChannels;
-   kdu_codestream               theCodestream;
-   kdu_thread_env*              theThreadEnv;
-   kdu_thread_queue*            theOpenTileThreadQueue;
-   ossim_uint32                 theMinDwtLevels;
-   ossim_uint32                 theNumberOfBands;
-   ossimIpt                     theCacheSize;
-   ossimScalarType              theScalarType;
-   ossimIrect                   theImageRect; /** Has sub image offset. */
+   kdu_supp::jp2_family_src*        theJp2FamilySrc;
+   kdu_core::kdu_compressed_source* theJp2Source;
+   kdu_supp::kdu_channel_mapping*   theChannels;
+   kdu_core::kdu_codestream         theCodestream;
+   kdu_core::kdu_thread_env*        theThreadEnv;
+   kdu_core::kdu_thread_queue*      theOpenTileThreadQueue;
+   
+   ossim_uint32                theMinDwtLevels;
+   ossim_uint32                theNumberOfBands;
+   ossimIpt                    theCacheSize;
+   ossimScalarType             theScalarType;
+   ossimIrect                  theImageRect; /** Has sub image offset. */
 
    /** Image dimensions for each level. */
    std::vector<ossimIrect>      theJp2Dims;

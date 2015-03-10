@@ -104,7 +104,7 @@ protected:
    ossimRefPtr<ossimImageData> theTile;
    //static data
    static double theLMS[6*9];
-  // static int ii;
+
 TYPE_DATA
 };
 #endif

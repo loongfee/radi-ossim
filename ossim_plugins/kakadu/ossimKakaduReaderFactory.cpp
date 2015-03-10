@@ -6,7 +6,7 @@
 //
 // Description: Factory for OSSIM JPEG 2000 (J2k) reader using kakadu library.
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduReaderFactory.cpp 22229 2013-04-12 14:13:46Z dburken $
+// $Id: ossimKakaduReaderFactory.cpp 22884 2014-09-12 13:14:35Z dburken $
 
 #include "ossimKakaduReaderFactory.h"
 #include "ossimKakaduJp2Reader.h"
@@ -27,20 +27,14 @@ RTTI_DEF1(ossimKakaduReaderFactory,
           "ossimKakaduReaderFactory",
           ossimImageHandlerFactoryBase);
 
-ossimKakaduReaderFactory* ossimKakaduReaderFactory::theInstance = 0;
-
 ossimKakaduReaderFactory::~ossimKakaduReaderFactory()
 {
-   theInstance = 0;
 }
 
 ossimKakaduReaderFactory* ossimKakaduReaderFactory::instance()
 {
-   if(!theInstance)
-   {
-      theInstance = new ossimKakaduReaderFactory;
-   }
-   return theInstance;
+   static ossimKakaduReaderFactory inst;
+   return &inst;
 }
 
 ossimImageHandler* ossimKakaduReaderFactory::open(const ossimFilename& fileName,

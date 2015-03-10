@@ -26,20 +26,14 @@ RTTI_DEF1(ossimKakaduJpipHandlerFactory,
           "ossimKakaduJpipHandlerFactory",
           ossimImageHandlerFactoryBase);
 
-ossimKakaduJpipHandlerFactory* ossimKakaduJpipHandlerFactory::m_instance = 0;
-
 ossimKakaduJpipHandlerFactory::~ossimKakaduJpipHandlerFactory()
 {
-   m_instance = 0;
 }
 
 ossimKakaduJpipHandlerFactory* ossimKakaduJpipHandlerFactory::instance()
 {
-   if(!m_instance)
-   {
-      m_instance = new ossimKakaduJpipHandlerFactory;
-   }
-   return m_instance;
+   static ossimKakaduJpipHandlerFactory inst;
+   return &inst;
 }
 
 ossimImageHandler* ossimKakaduJpipHandlerFactory::open(const ossimFilename& fileName,
@@ -47,10 +41,11 @@ ossimImageHandler* ossimKakaduJpipHandlerFactory::open(const ossimFilename& file
 {
    static const char* M = "ossimKakaduJpipHandlerFactory::open(filename) -- ";
    if(traceDebug())
+   {
       ossimNotify(ossimNotifyLevel_DEBUG)<<M<<"Entered with filename <"<<fileName<<">\n" ;
-   ossimRefPtr<ossimImageHandler> reader = 0; 
-
+   }
    
+   ossimRefPtr<ossimImageHandler> reader = 0; 
    
    if (traceDebug()) ossimNotify(ossimNotifyLevel_DEBUG)<<M<< "Trying ossimKakaduJpipHandler...";
    reader = new ossimKakaduJpipHandler();

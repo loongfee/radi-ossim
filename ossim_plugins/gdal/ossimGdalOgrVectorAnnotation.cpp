@@ -4,8 +4,8 @@
 // Author:  Garrett Potts
 //
 //*******************************************************************
-//  $Id: ossimGdalOgrVectorAnnotation.cpp 19826 2011-07-15 16:09:16Z dburken $
-#include <sstream>
+//  $Id: ossimGdalOgrVectorAnnotation.cpp 22897 2014-09-25 16:16:13Z dburken $
+
 #include <ossimGdalOgrVectorAnnotation.h>
 #include <ossimOgcWktTranslator.h>
 #include <ossimGdalType.h>
@@ -43,6 +43,8 @@
 #include <ossim/base/ossimUnitTypeLut.h>
 #include <ossim/base/ossimUnitConversionTool.h>
 #include <ossim/support_data/ossimFgdcXmlDoc.h>
+#include <ogr_api.h>
+#include <sstream>
 
 RTTI_DEF2(ossimGdalOgrVectorAnnotation,
           "ossimGdalOgrVectorAnnotation",
@@ -287,7 +289,13 @@ bool ossimGdalOgrVectorAnnotation::open(const ossimFilename& file)
    }
 #endif
    
-   theDataSource = OGRSFDriverRegistrar::Open( file.c_str(), false, &theDriver );
+   // theDataSource = OGRSFDriverRegistrar::Open( file.c_str(), false, &theDriver );
+   theDataSource = (OGRDataSource*) OGROpen( file.c_str(), false, NULL );
+   if ( theDataSource )
+   {
+      theDriver  = (OGRSFDriver*) theDataSource->GetDriver();
+   }
+   
    if ( !theDataSource || !theDriver )
    {
       if(traceDebug())

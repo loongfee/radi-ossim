@@ -43,6 +43,8 @@
 #include <sstream>
 using namespace std;
 
+#include <ossim/radi/tifvsi.h>
+
 RTTI_DEF1(ossimTiffOverviewBuilder,
           "ossimTiffOverviewBuilder",
           ossimOverviewBuilderBase)
@@ -1054,7 +1056,7 @@ TIFF* ossimTiffOverviewBuilder::openTiff(const ossimString& filename) const
    }
 
    // Open:
-   return XTIFFOpen( filename.c_str(), openMode.c_str() );
+   return WW_VSI_TIFFOpen( filename.c_str(), openMode.c_str() );
 }
 
 void ossimTiffOverviewBuilder::closeTiff(TIFF* tif)

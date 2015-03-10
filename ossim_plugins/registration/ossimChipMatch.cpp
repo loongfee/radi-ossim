@@ -8,25 +8,11 @@
 #include "ossimNCC_FFTW.h"
 #include <ossim/projection/ossimProjection.h>
 #include <ossim/projection/ossimProjectionFactoryRegistry.h>
-#include <ossim/projection/ossimLandSatModel.h>
+
 #include <fftw3.h>
 
 #include <iostream> //TBR
-#include <cv.h>
-#include <cxcore.h>
-#include <highgui.h>
-#include "opencv2/core/core.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
-#include "opencv2/highgui/highgui.hpp"
-#include "opencv2/features2d/features2d.hpp"
-#include "opencv2/legacy/legacy.hpp"
-#include "opencv2/nonfree/nonfree.hpp"
-#pragma comment(lib, "opencv_core248.lib")
-#pragma comment(lib, "opencv_features2d248.lib")
-#pragma comment(lib, "opencv_flann248.lib")
-#pragma comment(lib, "opencv_highgui248.lib")
-#pragma comment(lib, "opencv_nonfree248.lib")
-static int ii=0;
+
 RTTI_DEF1( ossimChipMatch, "ossimChipMatch", ossimImageCombiner );
 
 // matrix to get the 2nd order x,y best fit polynomial (least mean squares)
@@ -165,55 +151,6 @@ ossimChipMatch::getTile(const ossimIrect &rect, ossim_uint32 resLevel)
 const vector<ossimTDpt>&
 ossimChipMatch::getFeatures(const ossimIrect &rect, ossim_uint32 resLevel)
 {
-	//	 ossimImageSource* master = PTR_CAST(ossimImageSource, getInput(1)); //use corner input only
- //    ossimImageSource* slave  = PTR_CAST(ossimImageSource, getInput(2));
-	// ossimIrect recttemp1=master->getBoundingRect();
- //    ossimIrect recttemp2=slave->getBoundingRect();
-	// ossimIrect temp;
-	// temp=recttemp2.clipToRect(recttemp1);
-	// /*recttemp1.print(cout);
-	// cout<<endl;
-	// recttemp2.print(cout);
-	// cout<<endl;
-	// temp.print(cout);
-	// cout<<endl;*/
-	// /*ossimKeywordlist kwlM,kwlS;
- //    master->getImageGeometry(kwlM);
- //    slave->getImageGeometry(kwlS);
- //    cout<<kwlM<<endl;
- //    cout<<kwlS<<endl;
- //    ossimProjection* proM = ossimProjectionFactoryRegistry::instance()->createProjection(kwlM);
- //    ossimProjection* proS = ossimProjectionFactoryRegistry::instance()->createProjection(kwlS);
-	// recttemp1.print(cout);
-	// cout<<endl;
-	// recttemp2.print(cout);
-	// cout<<endl;*/
- //  ossimKeywordlist kwlS;
- //   slave->getImageGeometry(kwlS);//cout<<geom<<endl;
- //   ossimProjection* proS = ossimProjectionFactoryRegistry::instance()->createProjection(kwlS);
-	////proS->print(cout);
-	///*ossimIrect temp1(50,50,550,550);
-	//ossimGpt sgptl,sgptr;
-	//ossimDpt dsgptl,dsgptr;
- //  proS->lineSampleToWorld(temp1.ul(),sgptl);
- //  proS->lineSampleToWorld(temp1.lr(),sgptr);
- //  dsgptl=proS->forward(sgptl);
- //  dsgptr=proS->forward(sgptr);
- //  sgptl.print(cout);
- //  cout<<endl;
- //  sgptr.print(cout);
- //  cout<<endl;
- //  dsgptl.print(cout);
- //  cout<<endl;
- //  dsgptr.print(cout);
- //  cout<<endl;*/
-	// if (rect.completely_within(temp))
-	// {
- //     runMatch(rect, resLevel);
-	// }
-	//
- //  return theTies;
-
    runMatch(rect, resLevel);
    return theTies;
 }
@@ -450,466 +387,92 @@ ossimChipMatch::getNumberOfDecimationLevels()const
    return 0;
 }
 
-//bool
-//ossimChipMatch::runMatch(const ossimIrect &rect, ossim_uint32 resLevel)
-//{
-//   //erase stored tie points
-//   theTies.clear();
-//
-//   //get Inputs
-//   ossimImageSource* corner = PTR_CAST(ossimImageSource, getInput(0));
-//   ossimImageSource* master = PTR_CAST(ossimImageSource, getInput(1));
-//   ossimImageSource* slave  = PTR_CAST(ossimImageSource, getInput(2));
-//   if (!corner || !master || !slave)
-//   {
-//      return false;
-//   }
-//
-//   long w = rect.width();
-//   long h = rect.height();
-//   ////////////////////////wwadd/////////////
-//   //get corner data tile (same size as inner tile)
-//   
-//   ////	ossimKeywordlist kwlM,kwlS,temp;
-//   //TBD: use pixel size in meters to change delta_lr according to zoom
-//
-//	ossimRefPtr<ossimImageGeometry> masterGeom=master->getImageGeometry();
-//	ossimRefPtr<ossimImageGeometry> slaveGeom=slave->getImageGeometry();
-//
-//	//ossimString slavename=slave->getLongName();
-//	//ossimLandSatModel* imagep=PTR_CAST(ossimLandSatModel,slaveGeom->getProjection());
-////	ossimRefPtr<ossimFfL7> theFfHdr;
-//	//theFfHdr = new ossimFfL5(file.c_str());
-//	// ossimLandSatModel* model = new ossimLandSatModel (*theFfHdr);
-//	// model->
-//	//ossimUtmProjection* utmM= new ossimUtmProjection;
-//	//ossimUtmProjection* utmS= new ossimUtmProjection;
-//	//utmM->loadState(kwlM);
-//	//utmS->loadState(kwlS);
-//
-//
-//	////////////////////////////////////////////////////////////////////////
-//	////ossimDpt sdptl,sdptr,enl,enr,lsl,lsr;
-//	//utmM->lineSampleToEastingNorthing(rect.ul(),enl);
-//	//utmM->lineSampleToEastingNorthing(rect.lr(),enr);
-// //   mgptl=utmM->inverse(enl);
-//	//mgptr=utmM->inverse(enr);
-//	//
-//	//sdptl=utmS->forward(mgptl);
-//	//
-//	//sdptr=utmS->forward(mgptr);
-//	//
-//	//utmS->eastingNorthingToLineSample(sdptl,lsl);
-//	////cout<<"xiangsuzuobiao="<<lsl<<endl;
-//	//utmS->eastingNorthingToLineSample(sdptr,lsr);
-//	////TmM->lineSampleToEastingNorthing(rect.ul(),enl);
-//	////TmS->lineSampleToEastingNorthing(rect.lr(),enr);
-// ////   mgptl=TmM->inverse(enl);
-//	////mgptr=TmM->inverse(enr);
-//	////
-//	////sdptl=TmS->forward(mgptl);
-//	////
-//	////sdptr=TmS->forward(mgptr);
-//	////
-//	////TmS->eastingNorthingToLineSample(sdptl,lsl);
-//	//////cout<<"xiangsuzuobiao="<<lsl<<endl;
-//	////TmS->eastingNorthingToLineSample(sdptr,lsr);
-//
-//
-//
-//		ossimProjection* MasterProj=	 masterGeom->getProjection();
-//		ossimProjection* SlaveProj=slaveGeom->getProjection();
-//	//ossimLandSatModel* SlaveProj=	 PTR_CAST(ossimLandSatModel,slaveGeom->getProjection());
-//    ossimGpt mgptl,mgptr;
-//	ossimDpt lsl,lsr;
-//	MasterProj->lineSampleToWorld(rect.ul(),mgptl);
-//	SlaveProj->worldToLineSample(mgptl,lsl);
-//	MasterProj->lineSampleToWorld(rect.lr(),mgptr);
-//	SlaveProj->worldToLineSample(mgptr,lsr);
-//
-//	ossimIrect rect1(0,0,0,0),slaveIrect(0,0,0,0);
-//	//cout<<ii++<<endl;
-//	slaveIrect=slave->getBoundingRect(0);
-//	//if ((lsl.x>0)&&lsl.y>0)
-//	if(	slaveIrect.pointWithin(lsl) && slaveIrect.pointWithin(lsr))
-//	{
-//        rect1.set_ulx (lsl.x);
-//		rect1.set_uly (lsl.y);
-//		rect1.set_lrx (lsr.x);
-//		rect1.set_lry (lsr.y);
-//	}
-//	else{
-//		//rect1=rect;
-//		return false;
-//	}
-//
-//	ossimIpt cort;
-//
-//
-//
-//   /////////////////////////////////////////////////////////////////
-//   //get corner data tile (same size as inner tile)
-//   ossimRefPtr<ossimImageData> cornerData = corner->getTile(rect, resLevel);   
-//   if(!cornerData.valid() || !isSourceEnabled())
-//   {
-//      return false;
-//   }
-//   
-//   //TBD: use pixel size in meters to change delta_lr according to zoom
-//
-//   if((cornerData->getDataObjectStatus() != OSSIM_NULL) && (cornerData->getDataObjectStatus() != OSSIM_EMPTY))
-//   {                  
-//      //loop on corners (<>NULL & >=2 TBC)
-//      ossim_uint32 coff=0; //offset (speedup)
-//      ossim_int32 ci=0;
-//      ossim_int32 cj=0;
-//      //chip image radii
-//      ossimIpt delta_mr(getMasterRadius(), getMasterRadius());
-//      ossimIpt delta_lr(getMasterRadius() + (ossim_int32)(ceil(theSlaveAccuracy)),
-//                        getMasterRadius() + (ossim_int32)(ceil(theSlaveAccuracy)) );
-//      for(cj=0;cj<h;++cj) //rows
-//      {
-//         for(ci=0;ci<w;++ci) //cols
-//         {
-//            if (!cornerData->isNull(coff,0))
-//            {
-//               //get master data for specified center + radius
-//               // radius doesn't change with resLevel
-//               ossimIpt delta_mc(ci,cj);
-//               ossimIrect mrect(rect.ul()+delta_mc-delta_mr, rect.ul()+delta_mc+delta_mr); //square, size 2*radius+1 pixels
-//               ossimRefPtr<ossimImageData> masterData = master->getTile(mrect, resLevel); //same resLevel?? TBC
-//               if ((masterData != NULL)
-//                   && (masterData->getDataObjectStatus() != OSSIM_EMPTY) 
-//                   && (masterData->getDataObjectStatus() != OSSIM_PARTIAL))
-//               {
-//
-//				   ///////////////////////////////////////
-//				   	MasterProj->lineSampleToWorld(rect.ul()+delta_mc,mgptl);
-//					SlaveProj->worldToLineSample(mgptl,lsl);
-//					if(	slaveIrect.pointWithin(lsl))
-//					{
-//						 
-//						rect1.set_ulx (lsl.x);
-//						rect1.set_uly (lsl.y);
-//						rect1.set_lrx (lsr.x);
-//						rect1.set_lry (lsr.y);
-//					}
-//					else{
-//						continue;
-//						
-//						}
-//
-//                  //get slave data with bias & extended frame (use accuracy)
-//                  //bias & extension change with scale
-//                //  ossimIpt delta_sc(ci+(ossim_int32)floor(theBias.x+0.5),cj+(ossim_int32)floor(theBias.y+0.5)); //biased center : TBD : convert unit to pixels
-//				    ossimIpt delta_sc((ossim_int32)floor(theBias.x+0.5),(ossim_int32)floor(theBias.y+0.5)); //biased center : TBD : convert unit to pixels
-//
-//                // ossimIrect srect(rect.ul()+delta_sc-delta_lr, rect.ul()+delta_sc+delta_lr); //square, size 2*(radius+accuracy)+1 pixels
-//				  ossimIrect srect1(lsl-delta_lr, lsl+delta_lr); //wwadd
-//                 ossimRefPtr<ossimImageData> slaveData = slave->getTile(srect1, resLevel); //same resLevel?? TBC
-//				  
-//                  if ((slaveData != NULL) 
-//                      && (slaveData->getDataObjectStatus() != OSSIM_EMPTY)
-//                      && (slaveData->getDataObjectStatus() != OSSIM_PARTIAL))
-//                  {
-//                     //find normalized cross-correlation maximum
-//                     //TBD: assuming floating point input
-//                     double dx=0.0;
-//                     double dy=0.0;
-//                     double ncor=0.0;
-//					 
-//               //      getMaxCorrelation(masterData, slaveData, &dx, &dy, &ncor);
-//				//	 cout <<dx <<"   "<<dy<<"   "<<ncor<<endl;
-//				//	 dx=0.0;dy=0.0;ncor=0.0;
-//				//	  ossimRefPtr<ossimImageData> slaveData1 = slave->getTile(srect1, resLevel); //same resLevel?? TBC
-//                    getMaxCorrelation(masterData, slaveData, &dx, &dy, &ncor);
-//				//	 cout <<dx <<"   "<<dy<<"   "<<ncor<<endl;
-//                     //filter on NCC value
-//                     if (ncor >= theMinNCC)
-//                     {
-//                        //create tie point & store
-//						// ossimDpt offset=rect1.ul()+delta_sc-rect.ul()-delta_mc;
-//						 ossimDpt dxy;
-//						// dxy=dxy+offset;
-//					//	 dxy.x=rect1.ul().x+delta_sc.x-delta_lr.x+(dx+delta_lr.x+delta_mr.x-(2*delta_mr.x));
-//					//	 dxy.y=rect1.ul().y+delta_sc.y-delta_lr.y+(dy+delta_lr.y+delta_mr.y-(2*delta_mr.y));
-//						 dxy.x=lsl.x+delta_sc.x+dx;
-//						dxy.y=lsl.y+delta_sc.y+dy;
-//                        theTies.push_back(ossimTDpt( rect.ul()+delta_mc, dxy, ncor ));
-//                     }
-//                  }
-//               }
-//			}
-//            ++coff;
-//		 }
-//      }
-//
-//
-//      return true;
-//   }
-//   return false;
-//}
-
 bool
 ossimChipMatch::runMatch(const ossimIrect &rect, ossim_uint32 resLevel)
 {
-	//erase stored tie points
-	theTies.clear();
+   //erase stored tie points
+   theTies.clear();
 
-	//get Inputs
-	ossimImageSource* corner = PTR_CAST(ossimImageSource, getInput(0));
-	ossimImageSource* master = PTR_CAST(ossimImageSource, getInput(1));
-	ossimImageSource* slave  = PTR_CAST(ossimImageSource, getInput(2));
-	if (!corner || !master || !slave)
-	{
-		return false;
-	}
-		
-	ossimRefPtr<ossimProjection> MasterProj = master->getImageGeometry()->getProjection();
-	ossimRefPtr<ossimProjection> SlaveProj = slave->getImageGeometry()->getProjection();
+   //get Inputs
+   ossimImageSource* corner = PTR_CAST(ossimImageSource, getInput(0));
+   ossimImageSource* master = PTR_CAST(ossimImageSource, getInput(1));
+   ossimImageSource* slave  = PTR_CAST(ossimImageSource, getInput(2));
+   if (!corner || !master || !slave)
+   {
+      return false;
+   }
 
-	long w = rect.width();
-	long h = rect.height();
+   long w = rect.width();
+   long h = rect.height();
+   
+   //get corner data tile (same size as inner tile)
+   ossimRefPtr<ossimImageData> cornerData = corner->getTile(rect, resLevel);   
+   if(!cornerData.valid() || !isSourceEnabled())
+   {
+      return false;
+   }
+   
+   //TBD: use pixel size in meters to change delta_lr according to zoom
 
-	ossimGpt gpt;
-	ossimDpt lsl,lsr;
-	MasterProj->lineSampleToWorld(rect.ul(),gpt);
-	SlaveProj->worldToLineSample(gpt,lsl);
-	MasterProj->lineSampleToWorld(rect.lr(),gpt);
-	SlaveProj->worldToLineSample(gpt,lsr);
-	
-	ossimIrect slaveIrect =slave->getBoundingRect(0);
-	if(	!(slaveIrect.pointWithin(lsl) && slaveIrect.pointWithin(lsr)))
-	{
-		return false;
-	}
+   if((cornerData->getDataObjectStatus() != OSSIM_NULL) && (cornerData->getDataObjectStatus() != OSSIM_EMPTY))
+   {                  
+      //loop on corners (<>NULL & >=2 TBC)
+      ossim_uint32 coff=0; //offset (speedup)
+      ossim_int32 ci=0;
+      ossim_int32 cj=0;
+      //chip image radii
+      ossimIpt delta_mr(getMasterRadius(), getMasterRadius());
+      ossimIpt delta_lr(getMasterRadius() + (ossim_int32)(ceil(theSlaveAccuracy)),
+                        getMasterRadius() + (ossim_int32)(ceil(theSlaveAccuracy)) );
 
-	//get corner data tile (same size as inner tile)
-	ossimRefPtr<ossimImageData> cornerData = corner->getTile(rect, resLevel);   
-	if(!cornerData.valid() || !isSourceEnabled())
-	{
-		return false;
-	}
+      for(cj=0;cj<h;++cj) //rows
+      {
+         for(ci=0;ci<w;++ci) //cols
+         {
+            if (!cornerData->isNull(coff,0))
+            {
+               //get master data for specified center + radius
+               // radius doesn't change with resLevel
+               ossimIpt delta_mc(ci,cj);
+               ossimIrect mrect(rect.ul()+delta_mc-delta_mr, rect.ul()+delta_mc+delta_mr); //square, size 2*radius+1 pixels
+               ossimRefPtr<ossimImageData> masterData = master->getTile(mrect, resLevel); //same resLevel?? TBC
+               if ((masterData != NULL)
+                   && (masterData->getDataObjectStatus() != OSSIM_EMPTY) 
+                   && (masterData->getDataObjectStatus() != OSSIM_PARTIAL))
+               {
+                  //get slave data with bias & extended frame (use accuracy)
+                  //bias & extension change with scale
+                  ossimIpt delta_sc(ci+(ossim_int32)floor(theBias.x+0.5),cj+(ossim_int32)floor(theBias.y+0.5)); //biased center : TBD : convert unit to pixels
+                  ossimIrect srect(rect.ul()+delta_sc-delta_lr, rect.ul()+delta_sc+delta_lr); //square, size 2*(radius+accuracy)+1 pixels
+                  ossimRefPtr<ossimImageData> slaveData = slave->getTile(srect, resLevel); //same resLevel?? TBC
+                  if ((slaveData != NULL) 
+                      && (slaveData->getDataObjectStatus() != OSSIM_EMPTY)
+                      && (slaveData->getDataObjectStatus() != OSSIM_PARTIAL))
+                  {
+                     //find normalized cross-correlation maximum
+                     //TBD: assuming floating point input
+                     double dx=0.0;
+                     double dy=0.0;
+                     double ncor=0.0;
 
-	//TBD: use pixel size in meters to change delta_lr according to zoom
-
-	if((cornerData->getDataObjectStatus() != OSSIM_NULL) && (cornerData->getDataObjectStatus() != OSSIM_EMPTY))
-	{                  
-		//loop on corners (<>NULL & >=2 TBC)
-		ossim_uint32 coff=0; //offset (speedup)
-		ossim_int32 ci=0;
-		ossim_int32 cj=0;
-		//chip image radii
-		ossimIpt delta_mr(getMasterRadius(), getMasterRadius());
-		ossimIpt delta_lr(getMasterRadius() + (ossim_int32)(ceil(theSlaveAccuracy)),
-			getMasterRadius() + (ossim_int32)(ceil(theSlaveAccuracy)) );
-
-		for(cj=0;cj<h;++cj) //rows
-		{
-			for(ci=0;ci<w;++ci) //cols
-			{
-				if (!cornerData->isNull(coff,0))
-				{
-					//get master data for specified center + radius
-					// radius doesn't change with resLevel
-					ossimIpt delta_mc(ci,cj);
-					ossimIrect mrect(rect.ul()+delta_mc-delta_mr, rect.ul()+delta_mc+delta_mr); //square, size 2*radius+1 pixels
-					ossimRefPtr<ossimImageData> masterData = master->getTile(mrect, resLevel); //same resLevel?? TBC
-					if ((masterData != NULL)
-						&& (masterData->getDataObjectStatus() != OSSIM_EMPTY) 
-						&& (masterData->getDataObjectStatus() != OSSIM_PARTIAL))
-					{
-						//get slave data with bias & extended frame (use accuracy)
-						//bias & extension change with scale
-						ossimGpt gpt;
-						MasterProj->lineSampleToWorld(rect.ul()+delta_mc, gpt);
-						ossimDpt sc;
-						SlaveProj->worldToLineSample(gpt, sc);
-						//ossimIpt delta_mc(ci+(ossim_int32)floor(theBias.x+0.5),cj+(ossim_int32)floor(theBias.y+0.5)); //biased center : TBD : convert unit to pixels
-						ossimIrect srect(sc-delta_lr, sc+delta_lr); //square, size 2*(radius+accuracy)+1 pixels
-						ossimRefPtr<ossimImageData> slaveData = slave->getTile(srect, resLevel); //same resLevel?? TBC
-						if ((slaveData != NULL) 
-							&& (slaveData->getDataObjectStatus() != OSSIM_EMPTY)
-							&& (slaveData->getDataObjectStatus() != OSSIM_PARTIAL))
-						{
-							//find normalized cross-correlation maximum
-							//TBD: assuming floating point input
-							double dx=0.0;
-							double dy=0.0;
-							double ncor=0.0;
-
-
-							cv::Mat masterMat = cv::Mat(cv::Size(mrect.width(), mrect.height()), CV_64FC1);
-							masterMat.data = static_cast<uchar*>(masterData->getBuf(0));
-							cv::imwrite("master.png", masterMat);
-
-							cv::Mat slaveMat = cv::Mat(cv::Size(srect.width(), srect.height()), CV_64FC1);
-							slaveMat.data = static_cast<uchar*>(slaveData->getBuf(0));
-							cv::imwrite("slave.png", slaveMat);
-
-							getMaxCorrelation(masterData, slaveData, &dx, &dy, &ncor);
-
-							//filter on NCC value
-							if (ncor >= theMinNCC)
-							{
-								//create tie point & store
-								theTies.push_back(ossimTDpt( rect.ul()+delta_mc, sc+ossimDpt(dx,dy), ncor ));
-							}
-						}
-					}
-				}
-				++coff;
-			}
-		}
-		return true;
-	}
-	return false;
+                     getMaxCorrelation(masterData, slaveData, &dx, &dy, &ncor);
+                     
+                     //filter on NCC value
+                     if (ncor >= theMinNCC)
+                     {
+                        //create tie point & store
+                        theTies.push_back(ossimTDpt( rect.ul()+delta_mc, ossimDpt(dx,dy), ncor ));
+                     }
+                  }
+               }
+            }
+            ++coff;
+         }
+      }
+      return true;
+   }
+   return false;
 }
-
-//bool
-//	ossimChipMatch::runMatch(const ossimIrect &rect, ossim_uint32 resLevel)
-//{
-//	//erase stored tie points
-//	theTies.clear();
-//
-//	//get Inputs
-//	ossimImageSource* corner = PTR_CAST(ossimImageSource, getInput(0));
-//	ossimImageSource* master = PTR_CAST(ossimImageSource, getInput(1));
-//	ossimImageSource* slave  = PTR_CAST(ossimImageSource, getInput(2));
-//	if (!corner || !master || !slave)
-//	{
-//		return false;
-//	}
-//
-//	long w = rect.width();
-//	long h = rect.height();
-//	////////////////////////wwadd/////////////
-//	//get corner data tile (same size as inner tile)
-//
-//	ossimRefPtr<ossimImageGeometry> masterGeom=master->getImageGeometry();
-//	ossimRefPtr<ossimImageGeometry> slaveGeom=slave->getImageGeometry();
-//	
-//	ossimProjection* MasterProj = masterGeom->getProjection();
-//	ossimProjection* SlaveProj = slaveGeom->getProjection();
-//	//ossimLandSatModel* SlaveProj=	 PTR_CAST(ossimLandSatModel,slaveGeom->getProjection());
-//	ossimGpt gpt;
-//	ossimDpt mul,mlr;
-//
-//	SlaveProj->lineSampleToWorld(rect.ul(),gpt);
-//	MasterProj->worldToLineSample(gpt,mul);
-//	SlaveProj->lineSampleToWorld(rect.lr(),gpt);
-//	MasterProj->worldToLineSample(gpt,mlr);
-//
-//	ossimIrect mrect;
-//
-//	ossimIrect masterIrect = master->getBoundingRect(0);
-//	if(	masterIrect.pointWithin(mul) && masterIrect.pointWithin(mlr))
-//	{
-//		mrect = ossimIrect(mul, mlr);
-//	}
-//	else{
-//		return false;
-//	}
-//
-//	ossimIpt cort;
-//
-//	/////////////////////////////////////////////////////////////////
-//	//get corner data tile (same size as inner tile)
-//	ossimRefPtr<ossimImageData> cornerData = corner->getTile(rect, resLevel);   
-//	if(!cornerData.valid() || !isSourceEnabled())
-//	{
-//		return false;
-//	}
-//
-//	//TBD: use pixel size in meters to change delta_lr according to zoom
-//
-//	if((cornerData->getDataObjectStatus() != OSSIM_NULL) && (cornerData->getDataObjectStatus() != OSSIM_EMPTY))
-//	{                  
-//		//loop on corners (<>NULL & >=2 TBC)
-//		ossim_uint32 coff=0; //offset (speedup)
-//		ossim_int32 ci=0;
-//		ossim_int32 cj=0;
-//		//chip image radii
-//		ossimIpt delta_sr(getMasterRadius(), getMasterRadius());
-//		ossimIpt delta_lr(getMasterRadius() + (ossim_int32)(ceil(theSlaveAccuracy)),
-//			getMasterRadius() + (ossim_int32)(ceil(theSlaveAccuracy)) );
-//		for(cj=0;cj<h;++cj) //rows
-//		{
-//			for(ci=0;ci<w;++ci) //cols
-//			{
-//				if (!cornerData->isNull(coff,0))
-//				{
-//					//get master data for specified center + radius
-//					// radius doesn't change with resLevel
-//					ossimIpt delta_sc(ci,cj);
-//					ossimIrect srect(rect.ul()+delta_sc-delta_sr, rect.ul()+delta_sc+delta_sr); //square, size 2*radius+1 pixels
-//					ossimRefPtr<ossimImageData> slaveData = slave->getTile(srect, resLevel); //same resLevel?? TBC
-//					if ((slaveData != NULL)
-//						&& (slaveData->getDataObjectStatus() != OSSIM_EMPTY) 
-//						&& (slaveData->getDataObjectStatus() != OSSIM_PARTIAL))
-//					{
-//
-//						///////////////////////////////////////
-//						ossimDpt mc;
-//						ossimGpt gpt;
-//						SlaveProj->lineSampleToWorld(rect.ul()+delta_sc,gpt);
-//						MasterProj->worldToLineSample(gpt,mc);
-//						if(	!masterIrect.pointWithin(mc))
-//						{
-//							continue;
-//						}
-//
-//						//get slave data with bias & extended frame (use accuracy)
-//						//bias & extension change with scale
-//						//  ossimIpt delta_sc(ci+(ossim_int32)floor(theBias.x+0.5),cj+(ossim_int32)floor(theBias.y+0.5)); //biased center : TBD : convert unit to pixels
-//						ossimIpt delta_mc((ossim_int32)floor(theBias.x+0.5),(ossim_int32)floor(theBias.y+0.5)); //biased center : TBD : convert unit to pixels
-//
-//						// ossimIrect srect(rect.ul()+delta_sc-delta_lr, rect.ul()+delta_sc+delta_lr); //square, size 2*(radius+accuracy)+1 pixels
-//						ossimIrect mrect1(mc-delta_lr, mc+delta_lr);
-//						ossimRefPtr<ossimImageData> masterData = master->getTile(mrect1, resLevel); //same resLevel?? TBC
-//
-//						if ((masterData != NULL) 
-//							&& (masterData->getDataObjectStatus() != OSSIM_EMPTY)
-//							&& (masterData->getDataObjectStatus() != OSSIM_PARTIAL))
-//						{
-//							//find normalized cross-correlation maximum
-//							//TBD: assuming floating point input
-//							double dx=0.0;
-//							double dy=0.0;
-//							double ncor=0.0;
-//
-//							//      getMaxCorrelation(masterData, slaveData, &dx, &dy, &ncor);
-//							//	 cout <<dx <<"   "<<dy<<"   "<<ncor<<endl;
-//							//	 dx=0.0;dy=0.0;ncor=0.0;
-//							//	  ossimRefPtr<ossimImageData> slaveData1 = slave->getTile(srect1, resLevel); //same resLevel?? TBC
-//							//getMaxCorrelation(masterData, slaveData, &dx, &dy, &ncor);
-//							getMaxCorrelation(slaveData, masterData, &dx, &dy, &ncor);
-//							//	 cout <<dx <<"   "<<dy<<"   "<<ncor<<endl;
-//							//filter on NCC value
-//							if (ncor >= theMinNCC)
-//							{
-//								//create tie point & store
-//								// ossimDpt offset=rect1.ul()+delta_sc-rect.ul()-delta_mc;
-//								ossimDpt dxy;
-//								// dxy=dxy+offset;
-//								//	 dxy.x=rect1.ul().x+delta_sc.x-delta_lr.x+(dx+delta_lr.x+delta_mr.x-(2*delta_mr.x));
-//								//	 dxy.y=rect1.ul().y+delta_sc.y-delta_lr.y+(dy+delta_lr.y+delta_mr.y-(2*delta_mr.y));
-//								dxy.x=mc.x+delta_mc.x+dx;
-//								dxy.y=mc.y+delta_mc.y+dy;
-//								theTies.push_back(ossimTDpt( dxy, ossimDpt(ci,cj), ncor ));
-//							}
-//						}
-//					}
-//				}
-//				++coff;
-//			}
-//		}
-//
-//
-//		return true;
-//	}
-//	return false;
-//}
 
 void
 ossimChipMatch::getMaxCorrelation(ossimRefPtr<ossimImageData> Mchip, ossimRefPtr<ossimImageData> Schip, 

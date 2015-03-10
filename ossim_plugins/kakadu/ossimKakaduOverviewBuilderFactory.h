@@ -9,7 +9,7 @@
 // Description: The ossim kakadu overview builder factory.
 //
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduOverviewBuilderFactory.h 19904 2011-08-05 17:50:32Z dburken $
+// $Id: ossimKakaduOverviewBuilderFactory.h 22884 2014-09-12 13:14:35Z dburken $
 
 #ifndef ossimKakaduOverviewBuilderFactory_HEADER
 #define ossimKakaduOverviewBuilderFactory_HEADER 1
@@ -64,7 +64,6 @@ private:
    /** operator= hidden from use. */
    void operator=(const ossimKakaduOverviewBuilderFactory& rhs);
 
-   static ossimKakaduOverviewBuilderFactory* theInstance;
 };
 
 #endif /* #ifndef ossimKakaduOverviewBuilderFactory_HEADER */

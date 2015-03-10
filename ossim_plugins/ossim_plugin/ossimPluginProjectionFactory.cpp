@@ -27,7 +27,9 @@
 
 // new added model
 #include <radi/ossimHj1Model.h>
+#include <radi/radiZY3Model.h>
 #include <radi/radiRpcModel.h>
+#include <radi/radiCbers04Model.h>
 #include <ossimRadarSat2RPCModel.h>
 
 //***
@@ -259,33 +261,62 @@ ossimProjection* ossimPluginProjectionFactory::createProjection(
 
    if (!projection)
    {
-	   ossimFilename Hj1Test = filename;
-	   if (!Hj1Test.exists())
+	   ossimFilename testFile = filename;
+	   if (testFile.exists())
 	   {
-		   Hj1Test = filename.path();
-		   Hj1Test = Hj1Test.dirCat(ossimFilename("DESC.XML"));
-		   if (Hj1Test.exists() == false)
+		   testFile = filename.path();
+		   testFile = testFile.dirCat(ossimFilename("DESC.XML"));
+		   if (testFile.exists() == false)
 		   {
-			   Hj1Test = filename.path();
-			   Hj1Test = Hj1Test.dirCat(ossimFilename("desc.xml"));
+			   testFile = filename.path();
+			   testFile = testFile.dirCat(ossimFilename("desc.xml"));
 		   }
-	   }
-	   if (Hj1Test.exists())
-	   {
 		   ossimRefPtr<ossimQVProcSupportData> meta =
 			   new ossimQVProcSupportData;
-		   if (meta->loadXmlFile(Hj1Test))
+		   if (meta->loadXmlFile(testFile))
 		   {
-			   projection = new ossimHj1Model(meta.get());
-			   if (!projection->getErrorStatus())
+			   if (meta->getSpacecraftID().upcase().contains("HJ"))
 			   {
-				   return projection.release();
+				   // HJ1
+
+				   projection = new ossimHj1Model(meta.get());
+				   if (!projection->getErrorStatus())
+				   {
+					   return projection.release();
+				   }
+				   projection = 0;
+
 			   }
-			   projection = 0;
+			   else if (meta->getSpacecraftID().upcase().contains("ZY 3"))
+			   {
+				   // ZY3
+				   projection = new radiZY3Model(meta.get());
+				   if (!projection->getErrorStatus())
+				   {
+					   return projection.release();
+				   }
+				   projection = 0;
+
+			   }
+			   else if (meta->getSpacecraftID().upcase().contains("CBERS04"))
+			   {
+				   // Cbers04
+				   projection = new radiCbers04Model(meta.get());
+				   if (!projection->getErrorStatus())
+				   {
+					   return projection.release();
+				   }
+				   projection = 0;
+
+			   }
+			   else
+			   {
+				   projection = 0;
+			   }
 		   }
 	   }
    }
-
+   
    if (!projection)
    {
 	   ossimRefPtr<ossimRadarSat2RPCModel> radarSat2RPCModel = new ossimRadarSat2RPCModel();
@@ -404,15 +435,23 @@ ossimProjection* ossimPluginProjectionFactory::createProjection(
    {
      return new ossimPleiadesModel;
    }
-   if (name == STATIC_TYPE_NAME(ossimHj1Model))
+   else if (name == STATIC_TYPE_NAME(ossimHj1Model))
    {
 	   return new ossimHj1Model;
    }
-   if (name == STATIC_TYPE_NAME(radiRpcModel))
+   else if (name == STATIC_TYPE_NAME(radiZY3Model))
+   {
+	   return new radiZY3Model;
+   }
+   else if (name == STATIC_TYPE_NAME(radiCbers04Model))
+   {
+	   return new radiCbers04Model;
+   }
+   else if (name == STATIC_TYPE_NAME(radiRpcModel))
    {
 	   return new radiRpcModel;
    }
-   if (name == STATIC_TYPE_NAME(ossimRadarSat2RPCModel))
+   else if (name == STATIC_TYPE_NAME(ossimRadarSat2RPCModel))
    {
 	   return new ossimRadarSat2RPCModel;
    }
@@ -514,7 +553,47 @@ ossimProjection* ossimPluginProjectionFactory::createProjection(
          {
             result = 0;
          }
-      }
+	  }
+	  else if (type == "ossimHj1Model")
+	  {
+		  result = new ossimHj1Model();
+		  if (!result->loadState(kwl, prefix))
+		  {
+			  result = 0;
+		  }
+	  }
+	  else if (type == "radiZY3Model")
+	  {
+		  result = new radiZY3Model();
+		  if (!result->loadState(kwl, prefix))
+		  {
+			  result = 0;
+		  }
+	  }
+	  else if (type == "radiCbers04Model")
+	  {
+		  result = new radiCbers04Model();
+		  if (!result->loadState(kwl, prefix))
+		  {
+			  result = 0;
+		  }
+	  }
+	  else if (type == "radiRpcModel")
+	  {
+		  result = new radiRpcModel();
+		  if (!result->loadState(kwl, prefix))
+		  {
+			  result = 0;
+		  }
+	  }
+	  else if (type == "ossimRadarSat2RPCModel")
+	  {
+		  result = new ossimRadarSat2RPCModel();
+		  if (!result->loadState(kwl, prefix))
+		  {
+			  result = 0;
+		  }
+	  }
 
    }
 
@@ -553,6 +632,8 @@ void ossimPluginProjectionFactory::getTypeNameList(std::vector<ossimString>& typ
    typeList.push_back(STATIC_TYPE_NAME(ossimTileMapModel));
    typeList.push_back(STATIC_TYPE_NAME(ossimPleiadesModel));
    typeList.push_back(STATIC_TYPE_NAME(ossimHj1Model));
+   typeList.push_back(STATIC_TYPE_NAME(radiZY3Model));
+   typeList.push_back(STATIC_TYPE_NAME(radiCbers04Model));
    typeList.push_back(STATIC_TYPE_NAME(radiRpcModel));
    typeList.push_back(STATIC_TYPE_NAME(ossimRadarSat2RPCModel));
 }

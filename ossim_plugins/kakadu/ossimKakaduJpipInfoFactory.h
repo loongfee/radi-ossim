@@ -1,5 +1,5 @@
 #ifndef ossimKakaduJpipInfoFactory_HEADER
-#define ossimKakaduJpipInfoFactory_HEADER
+#define ossimKakaduJpipInfoFactory_HEADER 1
 #include <ossim/support_data/ossimInfoFactoryInterface.h>
 
 class ossimKakaduJpipInfoFactory : public ossimInfoFactoryInterface
@@ -31,9 +31,7 @@ private:
    
    /** hidden from use operator = */
    const ossimKakaduJpipInfoFactory& operator=(const ossimKakaduJpipInfoFactory& rhs);
-   
-   /** The single instance of this class. */
-   static ossimKakaduJpipInfoFactory* m_instance;
+
 };
 
 #endif

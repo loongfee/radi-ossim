@@ -169,7 +169,8 @@ public:
     */
    virtual ossimObject* dup() const;
 
-   inline virtual bool useForward()const {return false;}
+   //inline virtual bool useForward()const { return false; }
+   inline virtual bool useForward()const { return true; }
 
    /** @brief uses file path to init model */
    virtual bool setupOptimizer(const ossimString& init_file);

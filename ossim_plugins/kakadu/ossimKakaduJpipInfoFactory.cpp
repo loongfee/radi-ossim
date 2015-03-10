@@ -3,21 +3,14 @@
 #include <ossim/base/ossimRefPtr.h>
 #include <iostream>
 
-ossimKakaduJpipInfoFactory* ossimKakaduJpipInfoFactory::m_instance = 0;
-
 ossimKakaduJpipInfoFactory::~ossimKakaduJpipInfoFactory()
 {
-   
 }
 
 ossimKakaduJpipInfoFactory* ossimKakaduJpipInfoFactory::instance()
 {
-   if(!m_instance)
-   {
-      m_instance = new ossimKakaduJpipInfoFactory();
-   }
-   
-   return m_instance;
+   static ossimKakaduJpipInfoFactory inst;
+   return &inst;
 }
 
 ossimInfoBase* ossimKakaduJpipInfoFactory::create(const ossimFilename& file) const
@@ -35,7 +28,6 @@ ossimInfoBase* ossimKakaduJpipInfoFactory::create(const ossimFilename& file) con
 /** hidden from use default constructor */
 ossimKakaduJpipInfoFactory::ossimKakaduJpipInfoFactory()
 {
-   m_instance = this;
 }
 
 /** hidden from use copy constructor */

@@ -10,7 +10,7 @@
 // ostream for writing to the file.
 //
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduCompressedTarget.cpp 20660 2012-03-02 16:34:49Z dburken $
+// $Id: ossimKakaduCompressedTarget.cpp 22884 2014-09-12 13:14:35Z dburken $
 
 #include "ossimKakaduCompressedTarget.h"
 #include <iostream>
@@ -43,7 +43,7 @@ void ossimKakaduCompressedTarget::setStream(std::ostream* stream)
    }
 }
 
-bool ossimKakaduCompressedTarget::write(const kdu_byte *buf, int num_bytes)
+bool ossimKakaduCompressedTarget::write(const kdu_core::kdu_byte *buf, int num_bytes)
 {
    if ( m_restorePosition == 0 )
    {
@@ -74,7 +74,7 @@ bool ossimKakaduCompressedTarget::write(const kdu_byte *buf, int num_bytes)
    return result;
 }
 
-bool ossimKakaduCompressedTarget::start_rewrite(kdu_long backtrack)
+bool ossimKakaduCompressedTarget::start_rewrite(kdu_core::kdu_long backtrack)
 {
    bool result = false;
    if (m_stream)

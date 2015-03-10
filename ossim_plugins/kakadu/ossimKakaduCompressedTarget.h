@@ -10,7 +10,7 @@
 // ostream for writing to the file.
 //
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduCompressedTarget.h 20660 2012-03-02 16:34:49Z dburken $
+// $Id: ossimKakaduCompressedTarget.h 22884 2014-09-12 13:14:35Z dburken $
 
 #ifndef ossimKakaduCompressedTarget_HEADER
 #define ossimKakaduCompressedTarget_HEADER 1
@@ -25,7 +25,7 @@
  * that uses an ostream for writing to the file.
  */
 class ossimKakaduCompressedTarget :
-   public kdu_compressed_target
+   public kdu_core::kdu_compressed_target
 {
 public:
 
@@ -51,9 +51,9 @@ public:
     * @param num_bytes The number of bytes to write.
     * @return true on success, false on error.
     */
-   virtual bool write(const kdu_byte *buf, int num_bytes);
+   virtual bool write(const kdu_core::kdu_byte *buf, int num_bytes);
 
-   virtual bool start_rewrite(kdu_long backtrack);
+   virtual bool start_rewrite(kdu_core::kdu_long backtrack);
 
    virtual bool end_rewrite();
 

@@ -180,7 +180,9 @@ void radiRpcModel::setAttributes(ossim_float64 sampleOffset,
    theSampOffset = sampleOffset;
    theLatOffset  = latOffset;
    theLonOffset  = lonOffset;
-   theHgtOffset  = heightOffset;
+   theHgtOffset = heightOffset;
+   theCosMapRot = 1;
+   theSinMapRot = 0;
 
    if(xNumeratorCoeffs.size() == 20)
    {

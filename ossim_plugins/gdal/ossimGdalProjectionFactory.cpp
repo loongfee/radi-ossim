@@ -8,7 +8,7 @@
 //   Contains implementation of class ossimMapProjectionFactory
 //
 //*****************************************************************************
-//  $Id: ossimGdalProjectionFactory.cpp 20673 2012-03-05 19:39:24Z sbortman $
+//  $Id: ossimGdalProjectionFactory.cpp 22734 2014-04-15 19:28:42Z gpotts $
 #include <sstream>
 #include "ossimGdalProjectionFactory.h"
 #include "ossimGdalTileSource.h"
@@ -49,11 +49,15 @@ ossimProjection* ossimGdalProjectionFactory::createProjection(const ossimFilenam
                                                              ossim_uint32 entryIdx)const
 {
    ossimKeywordlist kwl;
-   if(ossimString(filename).trim().empty()) return 0;
 //    ossimRefPtr<ossimImageHandler> h = new ossimGdalTileSource;
-   GDALDatasetH  h = GDALOpen(filename.c_str(), GA_ReadOnly);
+   //std::cout << "ossimGdalProjectionFactory::createProjection: " << filename << std::endl;
+   GDALDatasetH  h; 
    GDALDriverH   driverH = 0;
    ossimProjection* proj = 0;
+
+   if(ossimString(filename).trim().empty()) return 0;
+
+   h = GDALOpen(filename.c_str(), GA_ReadOnly);
    if(h)
    {
       driverH = GDALGetDatasetDriver( h );
@@ -107,7 +111,7 @@ ossimProjection* ossimGdalProjectionFactory::createProjection(const ossimFilenam
                   ossimGpt gpt(gcpList[idx].dfGCPY,
                                gcpList[idx].dfGCPX,
                                gcpList[idx].dfGCPZ);
-                  tieSet.addTiePoint(new ossimTieGpt(gpt, dpt, .5,ossimString::toString(idx)));
+                  tieSet.addTiePoint(new ossimTieGpt(gpt, dpt, .5));
                }
 
                //ossimPolynomProjection* tempProj = new ossimPolynomProjection;

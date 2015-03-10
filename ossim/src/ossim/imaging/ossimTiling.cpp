@@ -10,7 +10,7 @@
 // Description: implementation for image generator
 //
 //*************************************************************************
-// $Id: ossimTiling.cpp 20103 2011-09-17 16:10:42Z dburken $
+// $Id: ossimTiling.cpp 22668 2014-03-10 16:52:03Z dburken $
 
 #include <sstream>
 #include <iomanip>
@@ -932,9 +932,8 @@ std::ostream& ossimTiling::print(std::ostream& out) const
 
    if (theMapProjection.valid())
    {
-	   //out << "\ntheMapProjection:\n" << theMapProjection->print(out);
-	   out << "\ntheMapProjection:\n";
-	   theMapProjection->print(out) << endl;
+      out << "\ntheMapProjection:\n";
+      theMapProjection->print(out);
    }
    else
    {

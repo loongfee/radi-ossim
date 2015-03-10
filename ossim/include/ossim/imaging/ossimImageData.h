@@ -9,7 +9,7 @@
 // Description: Container class for a tile of image data.
 //
 //*******************************************************************
-// $Id: ossimImageData.h 22358 2013-08-06 23:08:21Z dburken $
+// $Id: ossimImageData.h 22981 2014-11-13 22:08:39Z okramer $
 #ifndef ossimImageData_HEADER
 #define ossimImageData_HEADER 1
 
@@ -880,6 +880,11 @@ public:
    /** @return The indexed flag. */
    bool getIndexedFlag() const;
    
+   /**
+    * Returns the percentage (0-100) of data buffer containing non-null (valid) entries.
+    * Undefined until validate() is called.
+    */
+   ossim_float64 percentFull() const { return m_percentFull; }
    
    virtual bool saveState(ossimKeywordlist& kwl, const char* prefix=0)const;
    virtual bool loadState(const ossimKeywordlist& kwl, const char* prefix=0);
@@ -1170,6 +1175,11 @@ protected:
 
    /** Indicates data contains palette indexes. */
    bool m_indexedFlag;
+
+   /** percentage (0-100) of image tile that has valid (non-null) pixel values. This is computed
+    * in validate() method.
+    */
+   mutable ossim_float64 m_percentFull;
 
 private:
 

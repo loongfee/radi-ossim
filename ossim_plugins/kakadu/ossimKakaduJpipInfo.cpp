@@ -6,6 +6,12 @@
 #include <ossim/support_data/ossimTiffInfo.h>
 #include <ossim/projection/ossimProjectionFactoryRegistry.h>
 
+//---
+// Kakadu code has defines that have (kdu_uint32) which should be
+// (kdu_core::kdu_uint32)
+//---
+using namespace kdu_core;
+
 ossimKakaduJpipInfo::ossimKakaduJpipInfo()
 {
    

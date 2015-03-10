@@ -14,7 +14,7 @@
 
 // date format = (yyyymmdd)
 #ifndef OSSIM_BUILD_DATE
-#  define OSSIM_BUILD_DATE "(20140722)"
+#  define OSSIM_BUILD_DATE "(20141219)"
 #endif
 
 #endif /* End of #ifndef ossimVersion_HEADER */

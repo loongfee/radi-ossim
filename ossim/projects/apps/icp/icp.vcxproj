@@ -133,8 +133,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <Optimization>Full</Optimization>
-      <AdditionalIncludeDirectories>$(OSSIM_HOME)\include;$(OSSIM_DEPENDENCIES)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(THIRD_PARTY_DIR)\include;$(THIRD_PARTY_DIR)\include\freetype;D:\opensource\3rdParty\include\OpenThreads;D:\opensource\3rdParty\include;..\..\ossim\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>
@@ -144,9 +144,10 @@
       </DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>ossim.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)bin\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(OSSIM_DEPENDENCIES)\jpeg-6b;$(OSSIM_DEPENDENCIES)\lib;$(OSSIM_HOME)\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(THIRD_PARTY_DIR)\bin\x86\$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -183,13 +184,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\src\apps\ossim-icp\ossim-icp.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\ossim\ossim.vcxproj">
-      <Project>{3c21b2d0-9488-42f1-9f1e-c59b2054ceb4}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
+    <ClCompile Include="ossim-icp.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

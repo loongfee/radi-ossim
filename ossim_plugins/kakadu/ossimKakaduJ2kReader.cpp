@@ -11,7 +11,7 @@
 // Class definition for JPEG2000 (J2K) reader.
 //
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduJ2kReader.cpp 22119 2013-01-24 02:26:29Z dburken $
+// $Id: ossimKakaduJ2kReader.cpp 23026 2014-12-10 00:35:40Z dburken $
 
 #include "ossimKakaduJ2kReader.h"
 #include "ossimKakaduCommon.h"
@@ -193,7 +193,7 @@ ossim_uint32 ossimKakaduJ2kReader::getNumberOfLines(
    ossim_uint32 result = 0;
    if (resLevel < getNumberOfDecimationLevels())
    {
-      result = theSizRecord.theYsiz;
+      result = theSizRecord.m_Ysiz;
       if ( resLevel > 0 )
       {
          ossimDpt dpt;
@@ -213,7 +213,7 @@ ossim_uint32 ossimKakaduJ2kReader::getNumberOfSamples(
    ossim_uint32 result = 0;
    if (resLevel < getNumberOfDecimationLevels())
    {
-      result = theSizRecord.theXsiz;
+      result = theSizRecord.m_Xsiz;
       if ( resLevel > 0 )
       {
          ossimDpt dpt;
@@ -288,7 +288,7 @@ bool ossimKakaduJ2kReader::open()
          }
          else
          {
-            theThreadEnv = new kdu_thread_env();
+            theThreadEnv = new kdu_core::kdu_thread_env();
          }
          
          theThreadEnv->create(); // Creates the single "owner" thread
@@ -330,7 +330,7 @@ bool ossimKakaduJ2kReader::open()
             theCodestream.set_persistent(); // ????
             theCodestream.enable_restart(); // ????
             
-            kdu_dims region_of_interest;
+            kdu_core::kdu_dims region_of_interest;
             region_of_interest.pos.x = 0;
             region_of_interest.pos.y = 0;
             region_of_interest.size.x = getNumberOfSamples(0);
@@ -343,7 +343,7 @@ bool ossimKakaduJ2kReader::open()
                0, // max_layers (0 = all layers retained)
                &region_of_interest, // expanded out to block boundary.
                //KDU_WANT_CODESTREAM_COMPONENTS);
-               KDU_WANT_OUTPUT_COMPONENTS);
+               kdu_core::KDU_WANT_OUTPUT_COMPONENTS);
             
             // Set the scalar:
             theScalarType = theSizRecord.getScalarType();
@@ -359,8 +359,8 @@ bool ossimKakaduJ2kReader::open()
                // Initialize the image rect.
                theImageRect = ossimIrect(0,
                                          0,
-                                         theSizRecord.theXsiz-1,
-                                         theSizRecord.theYsiz-1);
+                                         theSizRecord.m_Xsiz-1,
+                                         theSizRecord.m_Ysiz-1);
 
                // Initialize the cache.
                if (theCacheId != -1)
@@ -368,7 +368,7 @@ bool ossimKakaduJ2kReader::open()
                   ossimAppFixedTileCache::instance()->deleteCache(theCacheId);
                   theCacheId = -1;
                }
-               ossimIpt tileSize(theSizRecord.theXTsiz, theSizRecord.theYTsiz);
+               ossimIpt tileSize(theSizRecord.m_XTsiz, theSizRecord.m_YTsiz);
 
                // Stretch to tile boundary for the cache.
                ossimIrect fullImgRect = theImageRect;
@@ -649,20 +649,20 @@ bool ossimKakaduJ2kReader::getOverviewTile(ossim_uint32 resLevel,
 
 ossim_uint32 ossimKakaduJ2kReader::getNumberOfInputBands() const
 {
-   return theSizRecord.theCsiz;
+   return theSizRecord.m_Csiz;
 }
 
 ossim_uint32 ossimKakaduJ2kReader::getNumberOfOutputBands()const
 {
-   return theSizRecord.theCsiz;
+   return theSizRecord.m_Csiz;
 }
 
 ossim_uint32 ossimKakaduJ2kReader::getImageTileWidth() const
 {
    ossim_uint32 result = 0;
-   if ( (theSizRecord.theXTsiz <= 1024) && (theSizRecord.theYTsiz <= 1024) )
+   if ( (theSizRecord.m_XTsiz <= 1024) && (theSizRecord.m_YTsiz <= 1024) )
    {
-      result = theSizRecord.theXTsiz;
+      result = theSizRecord.m_XTsiz;
    }
    return result;
 }
@@ -670,9 +670,9 @@ ossim_uint32 ossimKakaduJ2kReader::getImageTileWidth() const
 ossim_uint32 ossimKakaduJ2kReader::getImageTileHeight() const
 {
    ossim_uint32 result = 0;
-   if ( (theSizRecord.theXTsiz <= 1024) && (theSizRecord.theYTsiz <= 1024) )
+   if ( (theSizRecord.m_XTsiz <= 1024) && (theSizRecord.m_YTsiz <= 1024) )
    {
-      result = theSizRecord.theYTsiz;
+      result = theSizRecord.m_YTsiz;
    }
    return result;
 }

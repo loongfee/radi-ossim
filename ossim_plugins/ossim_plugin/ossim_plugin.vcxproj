@@ -149,9 +149,13 @@
     <ClCompile Include="radi\radiBlockRpcModel.cpp" />
     <ClCompile Include="radi\radiBlockTieGpt.cpp" />
     <ClCompile Include="radi\radiBlockTieGptSet.cpp" />
+    <ClCompile Include="radi\radiCbers04Model.cpp" />
+    <ClCompile Include="radi\radiCbers04SupportData.cpp" />
     <ClCompile Include="radi\radiQVProcSupportData.cpp" />
     <ClCompile Include="radi\radiRpcModel.cpp" />
     <ClCompile Include="radi\radiRpcSolver.cpp" />
+    <ClCompile Include="radi\radiZY3Model.cpp" />
+    <ClCompile Include="radi\radiZY3SupportData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlosPalsar\AlosPalsarData.h" />
@@ -284,9 +288,13 @@
     <ClInclude Include="radi\radiBlockRpcModel.h" />
     <ClInclude Include="radi\radiBlockTieGpt.h" />
     <ClInclude Include="radi\radiBlockTieGptSet.h" />
+    <ClInclude Include="radi\radiCbers04Model.h" />
+    <ClInclude Include="radi\radiCbers04SupportData.h" />
     <ClInclude Include="radi\radiQVProcSupportData.h" />
     <ClInclude Include="radi\radiRpcModel.h" />
     <ClInclude Include="radi\radiRpcSolver.h" />
+    <ClInclude Include="radi\radiZY3Model.h" />
+    <ClInclude Include="radi\radiZY3SupportData.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="otb\Makefile" />

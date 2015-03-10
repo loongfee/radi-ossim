@@ -26,6 +26,8 @@
 #include <ossim/projection/ossimProjectionFactoryRegistry.h>
 #include <ossim/projection/ossimEquDistCylProjection.h>
 
+#include <ogr_api.h>
+
 RTTI_DEF1(ossimOgrVectorTileSource,
           "ossimOgrVectorTileSource",
           ossimImageHandler);
@@ -91,146 +93,154 @@ ossimOgrVectorTileSource::~ossimOgrVectorTileSource()
 bool ossimOgrVectorTileSource::open()
 {
    const char* MODULE = "ossimOgrVectorTileSource::open";
-  
-   if (isOgrVectorDataSource() == false)
+
+   if(traceDebug())
    {
-      close();
-      return false;
+      ossimNotify(ossimNotifyLevel_NOTICE)
+         << MODULE << " entered...\nFile: " << theImageFile.c_str() << std::endl;
    }
 
    if(isOpen())
    {
       close();
    }
-
-   theDataSource = OGRSFDriverRegistrar::Open(theImageFile,
-                                              false);
-
-   if (theDataSource)
+  
+   if ( isOgrVectorDataSource() )
    {
-      int layerCount = theDataSource->GetLayerCount();
-      theLayerVector.resize(layerCount);
-      if(layerCount)
+      //---
+      // Old interface removed in gdal. 
+      // theDataSource = OGRSFDriverRegistrar::Open(theImageFile,
+      //                                            false);
+      //---
+      theDataSource = (OGRDataSource*) OGROpen( theImageFile.c_str(), false, NULL );
+      if (theDataSource)
       {
-         for(int i = 0; i < layerCount; ++i)
+         int layerCount = theDataSource->GetLayerCount();
+         theLayerVector.resize(layerCount);
+         if(layerCount)
          {
-            OGRLayer* layer = theDataSource->GetLayer(i);
-            if(layer)
+            for(int i = 0; i < layerCount; ++i)
             {
-               OGRSpatialReference* spatialReference = layer->GetSpatialRef();
-
-               if(!spatialReference)
+               OGRLayer* layer = theDataSource->GetLayer(i);
+               if(layer)
+               {
+                  OGRSpatialReference* spatialReference = layer->GetSpatialRef();
+                  
+                  if(!spatialReference)
+                  {
+                     if(traceDebug())
+                     {
+                        ossimNotify(ossimNotifyLevel_NOTICE)
+                           << MODULE
+                           << " No spatial reference given, assuming geographic"
+                           << endl;
+                     }
+                  }
+               }
+               else
                {
                   if(traceDebug())
                   {
                      ossimNotify(ossimNotifyLevel_NOTICE)
+                        
                         << MODULE
-                        << " No spatial reference given, assuming geographic"
-                        << endl;
+                        << " layer " << i << " is null." << endl;
                   }
                }
-            }
-            else
-            {
-               if(traceDebug())
+               
+               if (layer)
                {
-                  ossimNotify(ossimNotifyLevel_NOTICE)
-
-                     << MODULE
-                     << " layer " << i << " is null." << endl;
-               }
-            }
-
-            if (layer)
-            {
-               layer->GetExtent(&theBoundingExtent, true);
-
-               ossimRefPtr<ossimProjection> proj = createProjFromReference(layer->GetSpatialRef());
-               ossimRefPtr<ossimImageGeometry> imageGeometry = 0;
-               bool isDefaultProjection = false;
-               if(proj.valid())
-               {
-                  imageGeometry = new ossimImageGeometry(0, proj.get());
-               }
-
-               ossimMapProjection* mapProj = 0;
-               if(imageGeometry.valid())
-               {
-                  mapProj = PTR_CAST(ossimMapProjection, imageGeometry->getProjection());
-               }
-               else
-               {
-                  mapProj = createDefaultProj();
-                  imageGeometry = new ossimImageGeometry(0, mapProj);
-                  isDefaultProjection = true;
-               }
-
-               if(mapProj)
-               {
-                  ossimDrect rect(theBoundingExtent.MinX,
-                                  theBoundingExtent.MaxY,
-                                  theBoundingExtent.MaxX,
-                                  theBoundingExtent.MinY,
-                                  OSSIM_RIGHT_HANDED);
-            
-                  std::vector<ossimGpt> points;
-                  if (isDefaultProjection || mapProj->isGeographic())
+                  layer->GetExtent(&theBoundingExtent, true);
+                  
+                  ossimRefPtr<ossimProjection> proj = createProjFromReference(layer->GetSpatialRef());
+                  ossimRefPtr<ossimImageGeometry> imageGeometry = 0;
+                  bool isDefaultProjection = false;
+                  if(proj.valid())
                   {
-                     ossimGpt g1(rect.ul().y, rect.ul().x);
-                     ossimGpt g2(rect.ur().y, rect.ur().x);
-                     ossimGpt g3(rect.lr().y, rect.lr().x);
-                     ossimGpt g4(rect.ll().y, rect.ll().x);
-
-                     points.push_back(g1);
-                     points.push_back(g2);
-                     points.push_back(g3);
-                     points.push_back(g4);
+                     imageGeometry = new ossimImageGeometry(0, proj.get());
+                  }
+                  
+                  ossimMapProjection* mapProj = 0;
+                  if(imageGeometry.valid())
+                  {
+                     mapProj = PTR_CAST(ossimMapProjection, imageGeometry->getProjection());
                   }
                   else
                   {
-                     ossimGpt g1 = mapProj->inverse(rect.ul());
-                     ossimGpt g2 = mapProj->inverse(rect.ur());
-                     ossimGpt g3 = mapProj->inverse(rect.lr());
-                     ossimGpt g4 = mapProj->inverse(rect.ll());
-
-                     points.push_back(g1);
-                     points.push_back(g2);
-                     points.push_back(g3);
-                     points.push_back(g4);
+                     mapProj = createDefaultProj();
+                     imageGeometry = new ossimImageGeometry(0, mapProj);
+                     isDefaultProjection = true;
                   }
-            
-                  std::vector<ossimDpt> rectTmp;
-                  rectTmp.resize(4);
 
-                  for(std::vector<ossimGpt>::size_type index=0; index < 4; ++index)
+                  if(mapProj)
                   {
-                     imageGeometry->worldToLocal(points[(int)index], rectTmp[(int)index]);
+                     ossimDrect rect(theBoundingExtent.MinX,
+                                     theBoundingExtent.MaxY,
+                                     theBoundingExtent.MaxX,
+                                     theBoundingExtent.MinY,
+                                     OSSIM_RIGHT_HANDED);
+            
+                     std::vector<ossimGpt> points;
+                     if (isDefaultProjection || mapProj->isGeographic())
+                     {
+                        ossimGpt g1(rect.ul().y, rect.ul().x);
+                        ossimGpt g2(rect.ur().y, rect.ur().x);
+                        ossimGpt g3(rect.lr().y, rect.lr().x);
+                        ossimGpt g4(rect.ll().y, rect.ll().x);
+
+                        points.push_back(g1);
+                        points.push_back(g2);
+                        points.push_back(g3);
+                        points.push_back(g4);
+                     }
+                     else
+                     {
+                        ossimGpt g1 = mapProj->inverse(rect.ul());
+                        ossimGpt g2 = mapProj->inverse(rect.ur());
+                        ossimGpt g3 = mapProj->inverse(rect.lr());
+                        ossimGpt g4 = mapProj->inverse(rect.ll());
+
+                        points.push_back(g1);
+                        points.push_back(g2);
+                        points.push_back(g3);
+                        points.push_back(g4);
+                     }
+            
+                     std::vector<ossimDpt> rectTmp;
+                     rectTmp.resize(4);
+
+                     for(std::vector<ossimGpt>::size_type index=0; index < 4; ++index)
+                     {
+                        imageGeometry->worldToLocal(points[(int)index], rectTmp[(int)index]);
+                     }
+
+                     ossimDrect rect2 = ossimDrect(rectTmp[0],
+                                                   rectTmp[1],
+                                                   rectTmp[2],
+                                                   rectTmp[3]);
+
+                     theLayerVector[i] = new ossimOgrVectorLayerNode(rect2);
+                     theLayerVector[i]->setGeoImage(imageGeometry);
+
+                     // Initialize the image geometry to the first layer's geometry:
+                     if (i == 0)
+                        theImageGeometry = imageGeometry;
                   }
-
-                  ossimDrect rect2 = ossimDrect(rectTmp[0],
-                                                rectTmp[1],
-                                                rectTmp[2],
-                                                rectTmp[3]);
-
-                  theLayerVector[i] = new ossimOgrVectorLayerNode(rect2);
-                  theLayerVector[i]->setGeoImage(imageGeometry);
-
-                  // Initialize the image geometry to the first layer's geometry:
-                  if (i == 0)
-                     theImageGeometry = imageGeometry;
                }
             }
+               
+         } // if(layerCount)
+         else
+         {
+            OGR_DS_Destroy( theDataSource );
+            theDataSource = 0;
          }
-      }
-   }
-   else
-   {
-      delete theDataSource;
-      theDataSource = 0;
-      return false;
-   }
-
-   return (theDataSource!=0);
+            
+      } // Matches: if (theDataSource)
+         
+   } // Matches: if ( isOgrVectorDataSource() )
+   
+   return ( theDataSource ? true : false );
 }
 
 //*******************************************************************
@@ -300,7 +310,7 @@ void ossimOgrVectorTileSource::close()
 }
 
 ossimRefPtr<ossimImageData> ossimOgrVectorTileSource::getTile(
-   const ossimIrect& tileRect, ossim_uint32 resLevel)
+   const ossimIrect& /* tileRect */, ossim_uint32 /* resLevel */)
 {
    return 0;
 }
@@ -389,17 +399,17 @@ bool ossimOgrVectorTileSource::isOgrVectorDataSource()const
    return true;
 }
 
-double ossimOgrVectorTileSource::getNullPixelValue(ossim_uint32 band)const
+double ossimOgrVectorTileSource::getNullPixelValue(ossim_uint32 /* band */)const
 {
    return 0.0;
 }
 
-double ossimOgrVectorTileSource::getMinPixelValue(ossim_uint32 band)const
+double ossimOgrVectorTileSource::getMinPixelValue(ossim_uint32 /* band */)const
 {
    return 0.0;
 }
 
-double ossimOgrVectorTileSource::getMaxPixelValue(ossim_uint32 band)const
+double ossimOgrVectorTileSource::getMaxPixelValue(ossim_uint32 /* band */)const
 {
    return 0.0;
 }
@@ -408,7 +418,7 @@ bool ossimOgrVectorTileSource::setCurrentEntry(ossim_uint32 entryIdx)
 {
    if(theLayerVector.size() > 0)
    {
-      if ((ossim_int32)theLayerVector.size() > entryIdx)
+      if (theLayerVector.size() > entryIdx)
       {
          theImageGeometry = 0;
          theImageBound.makeNan();

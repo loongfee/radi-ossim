@@ -8,7 +8,7 @@
 //
 // Description: Factory for OSSIM Kakadu writers.
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduWriterFactory.cpp 20208 2011-11-04 15:19:25Z dburken $
+// $Id: ossimKakaduWriterFactory.cpp 22884 2014-09-12 13:14:35Z dburken $
 
 #include "ossimKakaduWriterFactory.h"
 #include "ossimKakaduJp2Writer.h"
@@ -17,24 +17,18 @@
 #include <ossim/base/ossimRefPtr.h>
 #include <ossim/imaging/ossimImageFileWriter.h>
 
-ossimKakaduWriterFactory* ossimKakaduWriterFactory::theInstance = 0;
-
 RTTI_DEF1(ossimKakaduWriterFactory,
           "ossimKakaduWriterFactory",
           ossimImageWriterFactoryBase);
 
 ossimKakaduWriterFactory::~ossimKakaduWriterFactory()
 {
-   theInstance = 0;
 }
 
 ossimKakaduWriterFactory* ossimKakaduWriterFactory::instance()
 {
-   if(!theInstance)
-   {
-      theInstance = new ossimKakaduWriterFactory;
-   }
-   return theInstance;
+   static ossimKakaduWriterFactory inst;
+   return &inst;
 }
 
 ossimImageFileWriter* ossimKakaduWriterFactory::createWriterFromExtension(

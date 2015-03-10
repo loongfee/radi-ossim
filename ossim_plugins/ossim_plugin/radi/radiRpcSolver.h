@@ -14,6 +14,7 @@
 
 #include <vector>
 #include <ossim/base/ossimRefPtr.h>
+#include <ossim/base/ossimTieGptSet.h>
 #include <ossim/base/ossimDpt.h>
 #include <ossim/base/ossimGpt.h>
 #include <ossim/base/ossimDrect.h>
@@ -22,6 +23,7 @@
 #include <ossim/projection/ossimRpcModel.h>
 #include <ossim/projection/ossimRpcProjection.h>
 #include <ossimPluginConstants.h>
+#include <ossim_plugin/radi/radiRpcModel.h>
 
 #include <mlpack/methods/lars/lars.hpp>
 using namespace arma;
@@ -134,6 +136,11 @@ public:
 	   EstimationMethodIndex method = LASSO,
 	   double parameter = 1e-5,
                           const ossimDpt& imageShift = ossimDpt(0.0,0.0));
+   void radiRpcSolver::solveCoefficients(ossimTieGptSet* gptSet,
+	   bool b_update_normalization_params = true,
+	   EstimationMethodIndex method = LASSO,
+	   double parameter = 1e-5,
+	   const ossimDpt& imageShift = ossimDpt(0.0, 0.0));
 
    /**
     * Creates and Rpc model from the coefficients
@@ -141,6 +148,7 @@ public:
    ossimImageGeometry* createRpcModel()const;
    ossimImageGeometry* createRpcXyz2RcModel(ossimMapProjection* proj)const;
    ossimImageGeometry* createRpcRcz2XyModel(ossimMapProjection* proj)const;
+   void radiRpcSolver::setRpcModel(radiRpcModel* model)const;
    /**
     * Create a simple rpc projection which is a dumbed down
     * rpc model.
@@ -194,6 +202,7 @@ public:
    ossimRefPtr<ossimNitfRegisteredTag> getNitfRpcBTag() const;
    void update_normalization_params(const std::vector<ossimDpt>& imagePoints,
 	   const std::vector<ossimGpt>& groundControlPoints);
+   void update_normalization_params(ossimTieGptSet* gptSet);
    void normalize(ossimGpt &gpt);
    void denormalize(ossimGpt &gpt);
    void normalize(ossimDpt &dpt);

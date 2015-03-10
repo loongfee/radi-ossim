@@ -7,26 +7,19 @@
 // Description: The ossim kakadu overview builder factory.
 //
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduOverviewBuilderFactory.cpp 19904 2011-08-05 17:50:32Z dburken $
+// $Id: ossimKakaduOverviewBuilderFactory.cpp 22884 2014-09-12 13:14:35Z dburken $
 
 #include "ossimKakaduOverviewBuilderFactory.h"
 #include "ossimKakaduNitfOverviewBuilder.h"
 
-ossimKakaduOverviewBuilderFactory*
-ossimKakaduOverviewBuilderFactory::theInstance = 0;
-
 ossimKakaduOverviewBuilderFactory* ossimKakaduOverviewBuilderFactory::instance()
 {
-   if ( !theInstance )
-   {
-      theInstance = new ossimKakaduOverviewBuilderFactory();
-   }
-   return theInstance;
+   static ossimKakaduOverviewBuilderFactory inst;
+   return &inst;
 }
 
 ossimKakaduOverviewBuilderFactory::~ossimKakaduOverviewBuilderFactory()
 {
-   theInstance = 0;
 }
 
 ossimOverviewBuilderBase* ossimKakaduOverviewBuilderFactory::createBuilder(

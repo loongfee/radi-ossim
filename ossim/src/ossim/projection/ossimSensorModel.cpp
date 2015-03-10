@@ -2320,40 +2320,40 @@ ossimSensorModel::buildNormalEquation(const vector< ossimTieFeature >& tieFeatur
 ossimGpt
 ossimSensorModel::getInverseDeriv(int parmIdx, const ossimDpt& ipos, double hdelta)
 {   
-   /*double den = 0.5/hdelta;
+   double den = 0.5/hdelta;
    ossimGpt res,gd;
    double middle = getAdjustableParameter(parmIdx);
    setAdjustableParameter(parmIdx, middle + hdelta, true);
-   res = inverse_do(ipos,ossimGpt(ipos.lon, ipos.lat, 0.0));
-   //res = inverse(ipos);
+   //res = inverse_do(ipos,ossimGpt(ipos.lon, ipos.lat, 0.0));
+   res = inverse(ipos);
    setAdjustableParameter(parmIdx, middle - hdelta, true);
-   //gd = inverse(ipos);
-   gd = inverse_do(ipos,ossimGpt(ipos.lon, ipos.lat, 0.0));
+   gd = inverse(ipos);
+   //gd = inverse_do(ipos,ossimGpt(ipos.lon, ipos.lat, 0.0));
    setAdjustableParameter(parmIdx, middle, true);
    res.lon = den*(res.lon - gd.lon) * 100000.0; //TBC : approx meters
    res.lat = den*(res.lat - gd.lat) * 100000.0 * cos(gd.lat / 180.0 * M_PI);
-   res.hgt = den*(res.hgt - gd.hgt);*/
+   res.hgt = den*(res.hgt - gd.hgt);
 
-	double den = 0.5/hdelta;
-	ossimGpt res(0,0),gd;
-	ossimDpt dptres,dptgd;
-	double middle = getAdjustableParameter(parmIdx);
-	//set parm to high value
-	setAdjustableParameter(parmIdx, middle + hdelta, true);
-	ossimGpt gpt;
-	res = inverse(ipos);
-	//set parm to low value and gte difference
-	setAdjustableParameter(parmIdx, middle - hdelta, true);
-	gd = inverse(ipos);
+	//double den = 0.5/hdelta;
+	//ossimGpt res(0,0),gd;
+	//ossimDpt dptres,dptgd;
+	//double middle = getAdjustableParameter(parmIdx);
+	////set parm to high value
+	//setAdjustableParameter(parmIdx, middle + hdelta, true);
+	//ossimGpt gpt;
+	//res = inverse(ipos);
+	////set parm to low value and gte difference
+	//setAdjustableParameter(parmIdx, middle - hdelta, true);
+	//gd = inverse(ipos);
 
-	//reset parm
-	setAdjustableParameter(parmIdx, middle, true);
-	if(!m_proj) return res;
-	dptres=m_proj->forward(res);
-	dptgd=m_proj->forward(gd);
-	res.lon = den*(dptres.lon - dptgd.lon); //TBC : approx meters
-	res.lat = den*(dptres.lat - dptgd.lat);// * 100000.0 * cos(gd.lat / 180.0 * M_PI);
-	res.hgt = den*(res.hgt - gd.hgt);
+	////reset parm
+	//setAdjustableParameter(parmIdx, middle, true);
+	//if(!m_proj) return res;
+	//dptres=m_proj->forward(res);
+	//dptgd=m_proj->forward(gd);
+	//res.lon = den*(dptres.lon - dptgd.lon); //TBC : approx meters
+	//res.lat = den*(dptres.lat - dptgd.lat);// * 100000.0 * cos(gd.lat / 180.0 * M_PI);
+	//res.hgt = den*(res.hgt - gd.hgt);
 
    return res;
 }
@@ -2393,7 +2393,6 @@ ossimSensorModel::getResidue(const ossimTieGptSet& tieSet, bool useImageObs/* = 
    const vector<ossimRefPtr<ossimTieGpt> >& theTPV = tieSet.getTiePoints();
    vector<ossimRefPtr<ossimTieGpt> >::const_iterator tit;
    unsigned long c=1;
-   if(!m_proj) return residue;
    if (useImageObs)
    { 
      ossimDpt resIm;
@@ -2403,7 +2402,9 @@ ossimSensorModel::getResidue(const ossimTieGptSet& tieSet, bool useImageObs/* = 
          residue(c++) = resIm.x;
          residue(c++) = resIm.y;
       }
-   } else {
+   }
+   else {
+	   if (!m_proj) return residue;
 	   ossimGpt gd;
 	   ossimDpt tmplast,tmpnew;	// loong
       for (tit = theTPV.begin() ; tit != theTPV.end() ; ++tit)

@@ -10,7 +10,7 @@
 // blocks using kakadu library for decompression.
 //
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduNitfReader.h 22119 2013-01-24 02:26:29Z dburken $
+// $Id: ossimKakaduNitfReader.h 22884 2014-09-12 13:14:35Z dburken $
 
 #ifndef ossimKakaduNitfReader_HEADER
 #define ossimKakaduNitfReader_HEADER 1
@@ -22,11 +22,19 @@
 #include <fstream>
 
 // Forward declarations:
-class kdu_line_buf;
-class jp2_family_src;
-class jp2_source;
-struct kdu_channel_mapping;
-class kdu_thread_queue;
+
+namespace kdu_core
+{
+   class kdu_thread_queue;
+}
+
+namespace kdu_supp
+{
+   class jp2_family_src;
+   class jp2_source;
+   struct kdu_channel_mapping;
+}
+
 
 
 /**
@@ -34,7 +42,7 @@ class kdu_thread_queue;
  * (J2K) compressed blocks using kakadu library for decompression. 
  */
 class OSSIM_PLUGINS_DLL ossimKakaduNitfReader :
-   public ossimNitfTileSource, public kdu_compressed_source
+   public ossimNitfTileSource, public kdu_core::kdu_compressed_source
 {
 public:
 
@@ -280,7 +288,7 @@ protected:
     *
     * @return Actual bytes read.
     */
-   virtual ossim_int32 read(kdu_byte *buf, ossim_int32 num_bytes);
+   virtual ossim_int32 read(kdu_core::kdu_byte *buf, ossim_int32 num_bytes);
 
    /**
     * @brief Seek method.
@@ -291,7 +299,7 @@ protected:
     *
     * @return true on success, false on error.
     */
-   virtual bool seek(kdu_long offset);
+   virtual bool seek(kdu_core::kdu_long offset);
 
    /**
     * @brief Get file position relative to the start of code stream offset.
@@ -300,7 +308,7 @@ protected:
     *
     * @return Position in codestream.
     */   
-   virtual kdu_long get_pos();
+   virtual kdu_core::kdu_long get_pos();
 
 private:
 
@@ -332,12 +340,13 @@ private:
 
    std::streamoff m_startOfCodestreamOffset;
 
-   jp2_family_src*            m_jp2FamilySrc;
-   jp2_source*                m_jp2Source;
-   kdu_channel_mapping*       m_channels;
-   kdu_codestream             m_codestream;
-   kdu_thread_env*            m_threadEnv;
-   kdu_thread_queue*          m_openTileThreadQueue;
+   kdu_supp::jp2_family_src*      m_jp2FamilySrc;
+   kdu_supp::jp2_source*          m_jp2Source;
+   kdu_supp::kdu_channel_mapping* m_channels;
+   kdu_core::kdu_codestream       m_codestream;
+   kdu_core::kdu_thread_env*      m_threadEnv;
+   kdu_core::kdu_thread_queue*    m_openTileThreadQueue;
+   
    ossim_uint32               m_sourcePrecisionBits;
    ossim_uint32               m_minDwtLevels;
    
@@ -362,13 +371,13 @@ inline ossim_int32 ossimKakaduNitfReader::get_capabilities()
    return ( KDU_SOURCE_CAP_SEEKABLE | KDU_SOURCE_CAP_SEQUENTIAL );
 }
 
-inline ossim_int32 ossimKakaduNitfReader::read(kdu_byte *buf, ossim_int32 num_bytes)
+inline ossim_int32 ossimKakaduNitfReader::read(kdu_core::kdu_byte *buf, ossim_int32 num_bytes)
 {
    theFileStr.read((char*)buf, num_bytes);
    return theFileStr.gcount();
 }
 
-inline bool ossimKakaduNitfReader::seek(kdu_long offset)
+inline bool ossimKakaduNitfReader::seek(kdu_core::kdu_long offset)
 {
    // If the last byte is read, the eofbit must be reset. 
    if ( theFileStr.eof() )
@@ -383,13 +392,13 @@ inline bool ossimKakaduNitfReader::seek(kdu_long offset)
    return theFileStr.good();
 }
 
-inline kdu_long ossimKakaduNitfReader::get_pos()
+inline kdu_core::kdu_long ossimKakaduNitfReader::get_pos()
 {
    //---
    // Must subtract the SOC(start of code stream) from the real file position
    // since positions are relative to SOC.
    //---
-   return static_cast<kdu_long>(theFileStr.tellg() - m_startOfCodestreamOffset );
+   return static_cast<kdu_core::kdu_long>(theFileStr.tellg() - m_startOfCodestreamOffset );
 }
 
 #endif /* #ifndef ossimKakaduNitfReader_HEADER */

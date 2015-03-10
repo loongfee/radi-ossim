@@ -20,12 +20,7 @@
 #include <ossim/base/ossimXmlDocument.h>
 #include <ossim/base/ossimFilenameProperty.h>
 #include <ossim/base/ossimStringProperty.h>
-////////////////////wwadd
-#include <ossim/projection/ossimLandSatModel.h>
-#include <ossim/imaging/ossimImageGeometryRegistry.h>
-#include <ossim/imaging/ossimImageGeometryFactory.h>
-#include <ossim\parallel\ossimMultiThreadSequencer.h>
-/////////////////////////////////////////////////////
+
 using namespace std;
 
 static ossimTrace traceDebug("ossimImageCorrelator:debug");
@@ -170,7 +165,6 @@ ossimMapProjection* ossimImageCorrelator::getOutputProjection()
    ossimMapProjection* mop = 0;
 
    ossimRefPtr<ossimImageGeometry> geom = getOutputImageGeometry();
-  
    if( geom.valid() )
    {
       if ( geom->getProjection() )
@@ -230,12 +224,11 @@ bool ossimImageCorrelator::buildRenderer(
    {
       chain->add(new ossimCacheTileSource);
       ossimRefPtr<ossimImageGeometry> geom = chain->getImageGeometry();
-
       if(geom.valid()&&geom->getProjection())
       {       
          ossimImageViewProjectionTransform* transform = new ossimImageViewProjectionTransform;
-		 transform->setImageGeometry(geom.get()); 
-         transform->setViewGeometry(new ossimImageGeometry(0, geom->getProjection()));
+         transform->setImageGeometry(geom.get());
+         transform->setViewGeometry(new ossimImageGeometry(0, outProjection));
          renderer->setImageViewTransform(transform);
          renderer->getResampler()->setFilterType(stype);
          chain->add(renderer);
@@ -279,26 +272,8 @@ ossimImageCorrelator::execute()
       cerr<<"ossimImageCorrelator"<<"::execute can't create handler for master image "<< theMaster <<endl;
       return false;
    }
-    ossimRefPtr<ossimImageGeometry> geomq = handlerM->getImageGeometry();
-   	//  ossimKeywordlist ddk;
-	//   geomq->saveState(ddk);
-	//   cout<<"kkkkkkkkkkkkkkkkkkkkkkkk"<<endl;
-	//   ddk.print(cout);
-
    theMChain->add(handlerM.get());
    handlerS = ossimImageHandlerRegistry::instance()->open(theSlave);
-
-//         ossimKeywordlist geomK;
-//   ossimLandSatModel* model = new ossimLandSatModel (theSlave);
-//   model->saveState(geomK);
-//    ossimProjection* landsatmodel=PTR_CAST(ossimProjection,model);
-//  // ossimProjection* landsatmodel=ossimProjectionFactoryRegistry::instance()->createProjection(geomK);
-////   ossimImageGeometry* pp=ossimImageGeometryRegistry::instance()->createGeometry((geomK);
-// //  handlerS->getImageGeometry()->setProjection(pp);
-//	geomq=handlerS->getImageGeometry();
-//   geomq->setProjection(landsatmodel);
-//   handlerS->setImageGeometry(geomq.get());
- 
    if (!handlerS)
    {
       cerr<<"ossimImageCorrelator"<<"::execute can't create handler for slave image  "<< theSlave <<endl;
@@ -352,7 +327,6 @@ ossimImageCorrelator::execute()
       rendererM = new ossimImageRenderer;
       
       result = buildRenderer(theMChain.get(), outProj, rendererM.get()); //TBD : update method //index 0 is for master
-
       if (!result) return result;
       
       rendererS = new ossimImageRenderer;  
@@ -371,8 +345,6 @@ ossimImageCorrelator::execute()
    //init casters
    caster[0]->setOutputScalarType(OSSIM_FLOAT64);
    caster[1]->setOutputScalarType(OSSIM_FLOAT64);
-   //caster[0]->setOutputScalarType(OSSIM_UINT8);
-   //caster[1]->setOutputScalarType(OSSIM_UINT8);
 
    //init matcher
    matcher->setSlaveAccuracy(getSlaveAccuracy() * getScaleRatio()); //adapt pixel radius according to scale
@@ -393,39 +365,11 @@ ossimImageCorrelator::execute()
    caster[0]->connectMyInputTo(0, theMChain.get());
    caster[1]->connectMyInputTo(0, theSChain.get());
    cornerDetector->connectMyInputTo(0,theMChain.get());
-   //cornerDetector->connectMyInputTo(0,theSChain.get());
    matcher->connectMyInputTo(0,cornerDetector.get());
    matcher->connectMyInputTo(1,caster[0].get()); // master
-   matcher->connectMyInputTo(2,caster[1].get()); // slave
+   matcher->connectMyInputTo(2,caster[0].get()); // slave
+   generator->connectMyInputTo(0,matcher.get());
 
-
-   int nThreads = OpenThreads::GetNumberOfProcessors() * 2;
-   ossimRefPtr<ossimMultiThreadSequencer> sequencer = new ossimMultiThreadSequencer(0, nThreads);
-
-   generator->connectMyInputTo(0, sequencer.get());
-    generator->connectMyInputTo(0,matcher.get());
-
-   /////////////////////////////
-//      ossimKeywordlist geomK;
-//   ossimLandSatModel* model = new ossimLandSatModel (theSlave);
-//   model->saveState(geomK);
-//
-//   ossimProjection* landsatmodel=ossimProjectionFactoryRegistry::instance()->createProjection(geomK);
-////   ossimImageGeometry* pp=ossimImageGeometryRegistry::instance()->createGeometry((geomK);
-// //  handlerS->getImageGeometry()->setProjection(pp);
-// / geomq=handlerS->getImageGeometry();
-//   geomq->setProjection(landsatmodel);
-//   handlerS->setImageGeometry(geomq.get());
-//    matcher->connectMyInputTo(3,geomq.get());
-//  // 	   geomq->saveState(ddk);
-//	//   cout<<"kkkkkkkkkkkkkkkkkkkkkkkk"<<endl;
-//	//   ddk.print(cout);
-//	//   cout<<"kkkkkkkkkkkkkkkkkkkkkkkk"<<endl;
-// //  geomK.clear();
-//
-//     
-
-   ////////////////////////////////////////////
    // -- 4 -- run
    result = generator->execute();
 
@@ -438,7 +382,7 @@ ossimImageCorrelator::execute()
 
    //get image<->original image transform for slave
    ossimImageViewTransform* st = rendererS->getImageViewTransform();
-   int i=0;
+
    ossimRefPtr<ossimImageGeometry> geom = getOutputImageGeometry();
    if ( geom.valid() )
    {
@@ -450,11 +394,10 @@ ossimImageCorrelator::execute()
          //set master ground pos
          geom->localToWorld( it->getMasterPoint() , *tgi ); //TBC : is it always lon/lat WGS84?
          //set slave image position
-		// st->viewToImage( it->getMasterPoint()+it->getSlavePoint() , tgi->refImagePoint() );
-		 tgi->setImagePoint(it->getSlavePoint());
+         st->viewToImage( it->getMasterPoint() + it->getSlavePoint() , tgi->refImagePoint() );
          //set score
          tgi->setScore(it->score);
-		 tgi->GcpNumberID=ossimString::toString(i++);
+         
          //add to list
          theTset.addTiePoint(tgi);
       }
@@ -469,7 +412,7 @@ ossimImageCorrelator::execute()
    icov(1,1)= std::pow(0.5 * st->getOutputMetersPerPixel().x / st->getInputMetersPerPixel().x, 2);
    icov(2,2)= std::pow(0.5 * st->getOutputMetersPerPixel().y / st->getInputMetersPerPixel().y, 2);
    theTset.setImageCov(icov);
-  
+
    //master ground precision (degrees)
    NEWMAT::SymmetricMatrix gcov(3);
    gcov=0.0;

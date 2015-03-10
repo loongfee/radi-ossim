@@ -2,22 +2,14 @@
 #include "ossimKakaduJpipHandler.h"
 #include <ossim/projection/ossimProjectionFactoryRegistry.h>
 
-ossimKakaduJpipImageGeometryFactory* ossimKakaduJpipImageGeometryFactory::m_instance = 0;
-
-
 ossimKakaduJpipImageGeometryFactory::ossimKakaduJpipImageGeometryFactory()
 {
-   m_instance = this;
 }
 
 ossimKakaduJpipImageGeometryFactory* ossimKakaduJpipImageGeometryFactory::instance()
 {
-   if(!m_instance)
-   {
-      m_instance = new ossimKakaduJpipImageGeometryFactory();
-   }
-   
-   return m_instance;
+   static ossimKakaduJpipImageGeometryFactory inst;
+   return &inst;
 }
 
 ossimImageGeometry* ossimKakaduJpipImageGeometryFactory::createGeometry(const ossimString& typeName)const

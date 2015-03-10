@@ -9,7 +9,7 @@
 // Contains class implementaiton for the class "ossimGdalTileSource".
 //
 //*******************************************************************
-//  $Id: ossimGdalTileSource.cpp 22281 2013-06-09 14:13:31Z dburken $
+//  $Id: ossimGdalTileSource.cpp 22960 2014-11-06 15:42:13Z okramer $
 
 #include "ossimGdalTileSource.h"
 #include "ossimGdalType.h"
@@ -1185,7 +1185,7 @@ ossimRefPtr<ossimImageGeometry> ossimGdalTileSource::getInternalImageGeometry() 
                   gpt = ossimGpt(gcpList[idx].dfGCPY, gcpList[idx].dfGCPX, gcpList[idx].dfGCPZ);
                }
                
-			   tieSet.addTiePoint(new ossimTieGpt(gpt, dpt, .5,ossimString::toString(idx)));
+               tieSet.addTiePoint(new ossimTieGpt(gpt, dpt, .5));
                
                if (traceDebug())
                {
@@ -1255,19 +1255,19 @@ ossimRefPtr<ossimImageGeometry> ossimGdalTileSource::getInternalImageGeometry() 
             ossimDpt ul = rect.ul();
             tieSet.addTiePoint(new ossimTieGpt(ossimGpt(geoTransform[3] + ul.x*geoTransform[4] + ul.y*geoTransform[5],
                geoTransform[0] + ul.x*geoTransform[1] + ul.y*geoTransform[2]), 
-               ul, .5,ossimString::toString(1)));
+               ul, .5));
             ossimDpt ur = rect.ur();
             tieSet.addTiePoint(new ossimTieGpt(ossimGpt(geoTransform[3] + ur.x*geoTransform[4] + ur.y*geoTransform[5],
                geoTransform[0] + ur.x*geoTransform[1] + ur.y*geoTransform[2]), 
-               ur, .5,ossimString::toString(2)));
+               ur, .5));
             ossimDpt lr = rect.lr();
             tieSet.addTiePoint(new ossimTieGpt(ossimGpt(geoTransform[3] + lr.x*geoTransform[4] + lr.y*geoTransform[5],
                geoTransform[0] + lr.x*geoTransform[1] + lr.y*geoTransform[2]), 
-               lr, .5,ossimString::toString(3)));
+               lr, .5));
             ossimDpt ll = rect.ll();
             tieSet.addTiePoint(new ossimTieGpt(ossimGpt(geoTransform[3] + ll.x*geoTransform[4] + ll.y*geoTransform[5],
                geoTransform[0] + ll.x*geoTransform[1] + ll.y*geoTransform[2]), 
-               ll, .5,ossimString::toString(4)));
+               ll, .5));
             ossimRefPtr<ossimBilinearProjection> bilinProj = new ossimBilinearProjection;
             bilinProj->optimizeFit(tieSet);
 
@@ -2150,7 +2150,7 @@ void ossimGdalTileSource::getEntryList(std::vector<ossim_uint32>& entryList) con
    }
 }
 
-void ossimGdalTileSource:: getEntryStringList(std::vector<ossimString>& entryStringList) const
+void ossimGdalTileSource:: getEntryNames(std::vector<ossimString>& entryStringList) const
 {
    if (theSubDatasets.size())
    {
@@ -2158,7 +2158,7 @@ void ossimGdalTileSource:: getEntryStringList(std::vector<ossimString>& entryStr
    }
    else
    {
-      ossimImageHandler::getEntryStringList(entryStringList);
+      ossimImageHandler::getEntryNames(entryStringList);
    }
 }
 

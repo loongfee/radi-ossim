@@ -8,7 +8,7 @@
 // object.
 //
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduCompressor.h 21251 2012-07-07 17:16:29Z dburken $
+// $Id: ossimKakaduCompressor.h 22884 2014-09-12 13:14:35Z dburken $
 
 #ifndef ossimKakaduCompressor_HEADER
 #define ossimKakaduCompressor_HEADER 1
@@ -18,18 +18,25 @@
 #include <ossim/base/ossimProperty.h>
 #include <ossim/base/ossimRefPtr.h>
 #include <ossim/base/ossimString.h>
+
 #include <kdu_compressed.h>
+#include <kdu_elementary.h>
 #include <kdu_sample_processing.h>
 #include <kdu_stripe_compressor.h>
+
 #include <iosfwd>
 
 class ossimFilename;
 class ossimImageData;
 class ossimImageGeometry;
 class ossimIpt;
-class jp2_family_tgt;
-class jp2_target;
 class ossimKakaduCompressedTarget;
+
+namespace kdu_supp
+{
+   class jp2_family_tgt;
+   class jp2_target; 
+}
 
 class ossimKakaduCompressor
 {
@@ -224,7 +231,7 @@ public:
    
 private:
 
-   void initializeCodingParams(kdu_params* cod, const ossimIrect& imageRect);
+   void initializeCodingParams(kdu_core::kdu_params* cod, const ossimIrect& imageRect);
    
    int  getNumberOfLayers() const;
 
@@ -241,7 +248,7 @@ private:
     * @param imageRect The image rectangle.
     * @param levels Number of levels.
     */
-   void setLevels(kdu_params* cod,
+   void setLevels(kdu_core::kdu_params* cod,
                   const ossimIrect& imageRect,
                   ossim_int32 levels);
 
@@ -255,7 +262,7 @@ private:
     * @param xSize
     * @param ySize
     */   
-   void setCodeBlockSize(kdu_params* cod,
+   void setCodeBlockSize(kdu_core::kdu_params* cod,
                          ossim_int32 xSize,
                          ossim_int32 ySize);
 
@@ -273,7 +280,7 @@ private:
     * @param corder The progression order which should be one of the above
     * enumerations.
     */   
-   void setProgressionOrder(kdu_params* cod,
+   void setProgressionOrder(kdu_core::kdu_params* cod,
                             ossim_int32 corder);
 
    /**
@@ -290,7 +297,7 @@ private:
     * @param kernel The kernel which should be one of the above enumerations.
     */   
    
-   void setWaveletKernel(kdu_params* cod, ossim_int32 kernel);
+   void setWaveletKernel(kdu_core::kdu_params* cod, ossim_int32 kernel);
 
    /**
     * @brief Sets the number of quality layers.
@@ -299,23 +306,23 @@ private:
     *
     * @param layers.
     */   
-   void setQualityLayers(kdu_params* cod, ossim_int32 layers);
+   void setQualityLayers(kdu_core::kdu_params* cod, ossim_int32 layers);
 
    void setTlmTileCount(ossim_uint32 tilesToWrite);
 
    ossimKakaduCompressedTarget* m_target;
-   jp2_family_tgt*              m_jp2FamTgt;
-   jp2_target*                  m_jp2Target;
-   kdu_codestream               m_codestream;
-
-   kdu_thread_env*              m_threadEnv;
-   kdu_thread_queue*            m_threadQueue;
+   
+   kdu_supp::jp2_family_tgt*    m_jp2FamTgt;
+   kdu_supp::jp2_target*        m_jp2Target;
+   kdu_core::kdu_codestream     m_codestream;
+   kdu_core::kdu_thread_env*    m_threadEnv;
+   kdu_core::kdu_thread_queue*  m_threadQueue;
 
    /** Num specs provided in 'flush' calls. */
    int                          m_layerSpecCount;
 
    /** Layer sizes provided in 'flush' calls. */
-   std::vector<kdu_long>        m_layerByteSizes;
+   std::vector<kdu_core::kdu_long> m_layerByteSizes;
    
    /** Layer slopes array provided in 'flush' calls. */
    // std::vector<kdu_uint16>      m_layerSlopes;

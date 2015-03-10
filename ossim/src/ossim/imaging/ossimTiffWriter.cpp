@@ -47,6 +47,8 @@
 #include <algorithm>
 #include <sstream>
 
+#include <ossim/radi/tifvsi.h>
+
 static ossimTrace traceDebug("ossimTiffWriter:debug");
 static const char* TIFF_WRITER_OUTPUT_TILE_SIZE_X_KW = "output_tile_size_x";
 static const char* TIFF_WRITER_OUTPUT_TILE_SIZE_Y_KW = "output_tile_size_y";
@@ -129,7 +131,7 @@ bool ossimTiffWriter::openTiff()
       }
       
       // Open the new file.
-      theTif = XTIFFOpen( theFilename.c_str(), openMode.c_str() );
+      theTif = WW_VSI_TIFFOpen( theFilename.c_str(), openMode.c_str() );
       if ( theTif )
       {
          status = true;

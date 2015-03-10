@@ -1693,20 +1693,34 @@ void ossimQVProcSupportData::getVelocityEcf(const ossim_float64& time,
 void ossimQVProcSupportData::getAttitude(const ossim_float64& time,
                                             ossimDpt3d& at)  const
 {
+	double t;
 	double delta_t = 0.0;
 	if (theSensorID.upcase().contains("HJ-1A"))
 	{
 		//2008-9-6 12:14:38.15 (bj)
 		//2008-9-6 4:14:38.15 (utc)
 		delta_t = ((1710*24.0+4)*60.0+14)*60.0+38.15;
+		t = time - delta_t;
 	}
 	else if(theSensorID.upcase().contains("HJ-1B"))
 	{
 		//2008-9-6 12:16:15.79 (bj)
 		//2008-9-6 4:16:15.79 (utc)
 		delta_t = ((1710*24.0+4)*60.0+16)*60.0+15.79;
+		t = time - delta_t;
 	}
-	double t = time - delta_t;
+	else if (theSensorID.upcase().contains("ZY 3"))
+	{
+		//2008-9-6 12:16:15.79 (bj)
+		//2008-9-6 4:16:15.79 (utc)
+		t = time;
+	}
+	else if (theSensorID.upcase().contains("CBERS04"))
+	{
+		//2008-9-6 12:16:15.79 (bj)
+		//2008-9-6 4:16:15.79 (utc)
+		t = time;
+	}
    if (theAttSampTimes.empty())
    {
      at.makeNan();
@@ -1739,12 +1753,12 @@ void ossimQVProcSupportData::getAttitude(const ossim_float64& time,
    ossim_float64 dtt0 = dt0;
    ossim_float64 dtt = dt;
 
-   //at = (theAttitudeSamples[i+1]*dt1 + theAttitudeSamples[i]*dt0)/dt;
+   at = (theAttitudeSamples[i+1]*dt1 + theAttitudeSamples[i]*dt0)/dt;
 
-   at = getAttitude(i)*(1.0+2.0*dtt1/dtt)*dtt0*dtt0/(dtt*dtt)
-	   + getAttitude(i+1)*(1.0+2.0*dtt0/dtt)*dtt1*dtt1/(dtt*dtt)
-	   + getAttitudeVel(i)*dtt1*dtt0*dtt0/(dtt*dtt)
-	   - getAttitudeVel(i+1)*dtt0*dtt1*dtt1/(dtt*dtt);
+   //at = getAttitude(i)*(1.0+2.0*dtt1/dtt)*dtt0*dtt0/(dtt*dtt)
+	  // + getAttitude(i+1)*(1.0+2.0*dtt0/dtt)*dtt1*dtt1/(dtt*dtt)
+	  // + getAttitudeVel(i)*dtt1*dtt0*dtt0/(dtt*dtt)
+	  // - getAttitudeVel(i+1)*dtt0*dtt1*dtt1/(dtt*dtt);
 }
 
 void ossimQVProcSupportData::extrapolateAttitude(const ossim_float64& time, ossimDpt3d& at) const
@@ -1754,61 +1768,61 @@ void ossimQVProcSupportData::extrapolateAttitude(const ossim_float64& time, ossi
    if (last_samp < 1)
       return;
 
-   //ossimDpt3d dAtt, dAtt_dt;
-   //double dt, delta_t;
+   ossimDpt3d dAtt, dAtt_dt;
+   double dt, delta_t;
 
    //ossim_float64 line_time = 4.369e-3;
    // Determine whether extrapolating at the front or the back of the range:
    if (time < getAttSampTime(0))
    {
-   //   dt = theAttSampTimes[1] - theAttSampTimes[0];
-   //   dAtt = (theAttitudeSamples[1]+theAttitudeBias[1]) - (theAttitudeSamples[0]+theAttitudeBias[0]);
-   //   dAtt_dt = dAtt/dt;
-   //   delta_t = time - theAttSampTimes[0];
-   //   //at = (theAttitudeSamples[0]+theAttitudeBias[0]) + (dAtt_dt*delta_t);
+      dt = theAttSampTimes[1] - theAttSampTimes[0];
+      dAtt = (theAttitudeSamples[1]+theAttitudeBias[1]) - (theAttitudeSamples[0]+theAttitudeBias[0]);
+      dAtt_dt = dAtt/dt;
+      delta_t = time - theAttSampTimes[0];
+      //at = (theAttitudeSamples[0]+theAttitudeBias[0]) + (dAtt_dt*delta_t);
 
-	  //int i = 0;
-	  //ossim_float64 dt1   = time - theAttSampTimes[i];
-	  //ossim_float64 dt0   = theAttSampTimes[i+1] - time;
-	  //ossim_float64 dt    = theAttSampTimes[i+1] - theAttSampTimes[i];
+	  int i = 0;
+	  ossim_float64 dt1   = time - theAttSampTimes[i];
+	  ossim_float64 dt0   = theAttSampTimes[i+1] - time;
+	  ossim_float64 dt    = theAttSampTimes[i+1] - theAttSampTimes[i];
 	  //ossim_float64 dtt1 = dt1 * line_time;
 	  //ossim_float64 dtt0 = dt0 * line_time;
 	  //ossim_float64 dtt = dt * line_time;
 
-	  //at = (theAttitudeSamples[i+1]*dt1 + theAttitudeSamples[i]*dt0)/dt;
+	  at = (theAttitudeSamples[i+1]*dt1 + theAttitudeSamples[i]*dt0)/dt;
 
 	  ////at = (theAttitudeSamples[i]+theAttitudeBias[i])*(1.0+2.0*dtt1/dtt)*dtt0*dtt0/(dtt*dtt)
 		 //// + (theAttitudeSamples[i+1]+theAttitudeBias[i+1])*(1.0+2.0*dtt0/dtt)*dtt1*dtt1/(dtt*dtt)
 		 //// + theAttitudeVelSamples[i]*dtt1*dtt0*dtt0/(dtt*dtt)
 		 //// - theAttitudeVelSamples[i+1]*dtt0*dtt1*dtt1/(dtt*dtt);
-	   double dt = (time - getAttSampTime(0));
-	   at = getAttitude(0) + getAttitudeVel(0)*dt;
+	   //double dt = (time - getAttSampTime(0));
+	   //at = getAttitude(0) + getAttitudeVel(0)*dt;
    }
    else if (time >= getAttSampTime(theAttSampTimes.size()-1))
    {
-   //   dt = theAttSampTimes[last_samp] - theAttSampTimes[last_samp-1];
-   //   dAtt = (theAttitudeSamples[last_samp]+theAttitudeBias[last_samp]) - (theAttitudeSamples[last_samp-1]+theAttitudeBias[last_samp-1]);
-   //   dAtt_dt = dAtt/dt;
-   //   delta_t = time - theAttSampTimes[last_samp];
-	  ////at = (theAttitudeSamples[last_samp]+theAttitudeBias[last_samp]) + (dAtt_dt*delta_t);
+      dt = theAttSampTimes[last_samp] - theAttSampTimes[last_samp-1];
+      dAtt = (theAttitudeSamples[last_samp]+theAttitudeBias[last_samp]) - (theAttitudeSamples[last_samp-1]+theAttitudeBias[last_samp-1]);
+      dAtt_dt = dAtt/dt;
+      delta_t = time - theAttSampTimes[last_samp];
+	  //at = (theAttitudeSamples[last_samp]+theAttitudeBias[last_samp]) + (dAtt_dt*delta_t);
 
-	  //int i = last_samp-1;
-	  //ossim_float64 line_time = 4.369e-3;
-	  //ossim_float64 dt1   = time - theAttSampTimes[i];
-	  //ossim_float64 dt0   = theAttSampTimes[i+1] - time;
-	  //ossim_float64 dt    = theAttSampTimes[i+1] - theAttSampTimes[i];
-	  //ossim_float64 dtt1 = dt1 * line_time;
-	  //ossim_float64 dtt0 = dt0 * line_time;
-	  //ossim_float64 dtt = dt * line_time;
+	  int i = last_samp-1;
+	  ossim_float64 line_time = 4.369e-3;
+	  ossim_float64 dt1   = time - theAttSampTimes[i];
+	  ossim_float64 dt0   = theAttSampTimes[i+1] - time;
+	  ossim_float64 dt    = theAttSampTimes[i+1] - theAttSampTimes[i];
+	  ossim_float64 dtt1 = dt1 * line_time;
+	  ossim_float64 dtt0 = dt0 * line_time;
+	  ossim_float64 dtt = dt * line_time;
 
-	  //at = (theAttitudeSamples[i+1]*dt1 + theAttitudeSamples[i]*dt0)/dt;
+	  at = (theAttitudeSamples[i+1]*dt1 + theAttitudeSamples[i]*dt0)/dt;
 
-	  ////at = (theAttitudeSamples[i]+theAttitudeBias[i])*(1.0+2.0*dtt1/dtt)*dtt0*dtt0/(dtt*dtt)
-		 //// + (theAttitudeSamples[i+1]+theAttitudeBias[i+1])*(1.0+2.0*dtt0/dtt)*dtt1*dtt1/(dtt*dtt)
-		 //// + theAttitudeVelSamples[i]*dtt1*dtt0*dtt0/(dtt*dtt)
-	  //// - theAttitudeVelSamples[i+1]*dtt0*dtt1*dtt1/(dtt*dtt);
-	  ossim_float64 dt = (time - getAttSampTime(last_samp));
-	  at = getAttitude(last_samp) + getAttitudeVel(last_samp)*dt;
+	  //////at = (theAttitudeSamples[i]+theAttitudeBias[i])*(1.0+2.0*dtt1/dtt)*dtt0*dtt0/(dtt*dtt)
+		 ////// + (theAttitudeSamples[i+1]+theAttitudeBias[i+1])*(1.0+2.0*dtt0/dtt)*dtt1*dtt1/(dtt*dtt)
+		 ////// + theAttitudeVelSamples[i]*dtt1*dtt0*dtt0/(dtt*dtt)
+	  ////// - theAttitudeVelSamples[i+1]*dtt0*dtt1*dtt1/(dtt*dtt);
+	  //ossim_float64 dt = (time - getAttSampTime(last_samp));
+	  //at = getAttitude(last_samp) + getAttitudeVel(last_samp)*dt;
    }
 
    return;
@@ -2079,6 +2093,12 @@ void ossimQVProcSupportData::printInfo(ostream& os) const
 ossimString ossimQVProcSupportData::getSensorID() const
 {
   return theSensorID;
+}
+
+
+ossimString ossimQVProcSupportData::getStationID() const
+{
+	return theStationID;
 }
 
 ossimString   ossimQVProcSupportData::getMetadataVersionString() const

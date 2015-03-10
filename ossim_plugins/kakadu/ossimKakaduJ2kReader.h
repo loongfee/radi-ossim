@@ -9,7 +9,7 @@
 // Class declaration for JPEG2000 (J2K) reader.
 //
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduJ2kReader.h 22119 2013-01-24 02:26:29Z dburken $
+// $Id: ossimKakaduJ2kReader.h 22884 2014-09-12 13:14:35Z dburken $
 
 #ifndef ossimKakaduJ2kReader_HEADER
 #define ossimKakaduJ2kReader_HEADER 1
@@ -31,15 +31,18 @@ class ossimImageData;
 #include <kdu_compressed.h>
 // #include <kdu_region_decompressor.h>
 
-class kdu_line_buf;
-class kdu_thread_queue;
+namespace kdu_core
+{
+   class kdu_line_buf;
+   class kdu_thread_queue;
+}
 
 /**
  * @brief ossimKakaduJ2kReader class for reading images with JPEG2000
  * (J2K) compressed blocks using kakadu library for decompression. 
  */
 class OSSIM_PLUGINS_DLL ossimKakaduJ2kReader :
-   public ossimImageHandler, public kdu_compressed_source
+   public ossimImageHandler, public kdu_core::kdu_compressed_source
 {
 public:
 
@@ -232,7 +235,7 @@ protected:
     *
     * @return Actual bytes read.
     */
-   virtual ossim_int32 read(kdu_byte *buf, ossim_int32 num_bytes);
+   virtual ossim_int32 read(kdu_core::kdu_byte *buf, ossim_int32 num_bytes);
 
    /**
     * @brief Seek method.
@@ -243,7 +246,7 @@ protected:
     *
     * @return true on success, false on error.
     */
-   virtual bool seek(kdu_long offset);
+   virtual bool seek(kdu_core::kdu_long offset);
 
    /**
     * @brief Get file position relative to the start of code stream offset.
@@ -252,7 +255,7 @@ protected:
     *
     * @return Position in codestream.
     */   
-   virtual kdu_long get_pos();
+   virtual kdu_core::kdu_long get_pos();
 
 private:
 
@@ -290,9 +293,9 @@ private:
     */
    bool loadTile(ossim_uint32 x, ossim_uint32 y);
 
-   kdu_codestream               theCodestream;
-   kdu_thread_env*              theThreadEnv;
-   kdu_thread_queue*            theOpenTileThreadQueue;
+   kdu_core::kdu_codestream     theCodestream;
+   kdu_core::kdu_thread_env*    theThreadEnv;
+   kdu_core::kdu_thread_queue*  theOpenTileThreadQueue;
    ossim_uint32                 theSourcePrecisionBits;
    ossim_uint32                 theMinDwtLevels;
    std::ifstream                theFileStr;
@@ -315,14 +318,14 @@ inline ossim_int32 ossimKakaduJ2kReader::get_capabilities()
    return ( KDU_SOURCE_CAP_SEEKABLE );
 }
 
-inline ossim_int32 ossimKakaduJ2kReader::read(kdu_byte *buf,
+inline ossim_int32 ossimKakaduJ2kReader::read(kdu_core::kdu_byte *buf,
                                               ossim_int32 num_bytes)
 {
    theFileStr.read((char*)buf, num_bytes);
    return theFileStr.gcount();
 }
 
-inline bool ossimKakaduJ2kReader::seek(kdu_long offset)
+inline bool ossimKakaduJ2kReader::seek(kdu_core::kdu_long offset)
 {
    // If the last byte is read, the eofbit must be reset. 
    if ( theFileStr.eof() )
@@ -338,13 +341,13 @@ inline bool ossimKakaduJ2kReader::seek(kdu_long offset)
    return theFileStr.good();
 }
 
-inline kdu_long ossimKakaduJ2kReader::get_pos()
+inline kdu_core::kdu_long ossimKakaduJ2kReader::get_pos()
 {
    //---
    // Must subtract the SOC(start of code stream) from the real file position
    // since positions are relative to SOC.
    //---
-   return static_cast<kdu_long>(theFileStr.tellg());
+   return static_cast<kdu_core::kdu_long>(theFileStr.tellg());
 }
 
 #endif /* #ifndef ossimKakaduJ2kReader_HEADER */

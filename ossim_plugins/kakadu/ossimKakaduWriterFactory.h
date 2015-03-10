@@ -8,7 +8,7 @@
 //
 // Description: Factory for OSSIM Kakadu writers.
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduWriterFactory.h 19904 2011-08-05 17:50:32Z dburken $
+// $Id: ossimKakaduWriterFactory.h 22884 2014-09-12 13:14:35Z dburken $
 
 #ifndef ossimKakaduWriterFactory_HEADER
 #define ossimKakaduWriterFactory_HEADER 1
@@ -105,9 +105,6 @@ protected:
 
    /** @brief hidden from use copy constructor */
    void operator=(const ossimKakaduWriterFactory&);
-
-   /** static instance of this class */
-   static ossimKakaduWriterFactory* theInstance;
 
 TYPE_DATA
 };

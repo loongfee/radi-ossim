@@ -768,6 +768,8 @@
     <ClCompile Include="..\..\src\ossim\radi\ossimGFeature.cpp" />
     <ClCompile Include="..\..\src\ossim\radi\ossimTieFeature.cpp" />
     <ClCompile Include="..\..\src\ossim\radi\ossimXiAn80Datum.cpp" />
+    <ClCompile Include="..\..\src\ossim\radi\tiffvsi.cpp" />
+    <ClCompile Include="..\..\src\ossim\radi\vsi.cpp" />
     <ClCompile Include="..\..\src\ossim\support_data\ossimAigBounds.cpp" />
     <ClCompile Include="..\..\src\ossim\support_data\ossimAigDataFileHeader.cpp" />
     <ClCompile Include="..\..\src\ossim\support_data\ossimAigHeader.cpp" />
@@ -1649,6 +1651,8 @@
     <ClInclude Include="..\..\include\ossim\radi\ossimGFeature.h" />
     <ClInclude Include="..\..\include\ossim\radi\ossimTieFeature.h" />
     <ClInclude Include="..\..\include\ossim\radi\ossimXiAn80Datum.h" />
+    <ClInclude Include="..\..\include\ossim\radi\tifvsi.h" />
+    <ClInclude Include="..\..\include\ossim\radi\vsi.h" />
     <ClInclude Include="..\..\include\ossim\support_data\ossimAigBounds.h" />
     <ClInclude Include="..\..\include\ossim\support_data\ossimAigDataFileHeader.h" />
     <ClInclude Include="..\..\include\ossim\support_data\ossimAigHeader.h" />

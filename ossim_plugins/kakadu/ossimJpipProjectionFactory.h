@@ -1,5 +1,5 @@
 #ifndef ossimJpipProjectionFactory_HEADER
-#define ossimJpipProjectionFactory_HEADER
+#define ossimJpipProjectionFactory_HEADER 1
 #include <ossim/projection/ossimProjectionFactoryBase.h>
 
 class ossimJpipProjectionFactory : public ossimProjectionFactoryBase
@@ -38,7 +38,7 @@ public:
    
 protected:
    ossimJpipProjectionFactory();
-   static ossimJpipProjectionFactory*  m_instance;
+
 TYPE_DATA;
 };
 

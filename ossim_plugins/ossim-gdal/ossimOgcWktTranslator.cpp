@@ -491,8 +491,8 @@ ossimString ossimOgcWktTranslator::fromOssimKwl(const ossimKeywordlist &kwl,
            << endl;
    }
    
-   //if (pcsCodeName.empty()) // if(pcsCodeVal >= EPSG_CODE_MAX)
-	//if(pcsCodeVal >= EPSG_CODE_MAX)
+   if (pcsCodeName.empty()) // if(pcsCodeVal >= EPSG_CODE_MAX)
+	if(pcsCodeVal >= EPSG_CODE_MAX)
    {
       datumType =  datumType.upcase();
       
@@ -539,11 +539,7 @@ ossimString ossimOgcWktTranslator::fromOssimKwl(const ossimKeywordlist &kwl,
    if(exportString)
    {
       wktString = exportString;
-<<<<<<< HEAD
 	  //std::cout<<wktString<<endl;
-=======
-	  std::cout<<wktString<<endl;
->>>>>>> eece97ce97498d36848fb9537c42afa70ece6116
       OGRFree(exportString);
    }
 

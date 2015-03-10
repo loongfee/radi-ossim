@@ -48,6 +48,8 @@
 #include <sstream>
 #include <cstdlib>
 
+#include <ossim/radi/tifvsi.h>
+
 static const ossimGeoTiffCoordTransformsLut COORD_TRANS_LUT;
 static const ossimGeoTiffDatumLut DATUM_LUT;
 OpenThreads::Mutex ossimGeoTiff::theMutex;
@@ -868,7 +870,7 @@ bool ossimGeoTiff::writeJp2GeotiffBox(const ossimFilename& tmpFile,
    //---
    bool result = true;
    
-   TIFF* tiff = XTIFFOpen(tmpFile.c_str(), "w");
+   TIFF* tiff = WW_VSI_TIFFOpen(tmpFile.c_str(), "w");
    if (tiff)
    {
       // Write the projection info out.
@@ -966,7 +968,7 @@ bool ossimGeoTiff::readTags(const ossimFilename& file, ossim_uint32 entryIdx)
 {
    bool result = false;
    
-   TIFF* tiff = XTIFFOpen(file.c_str(), "r");
+   TIFF* tiff = WW_VSI_TIFFOpen(file.c_str(), "r");
    if(tiff)
    {
       result = readTags(tiff, entryIdx, true);
@@ -1427,7 +1429,9 @@ bool ossimGeoTiff::addImageGeometry(ossimKeywordlist& kwl, const char* prefix) c
    double y_tie_point = 0.0;
    ossim_uint32 tieCount = (ossim_uint32)theTiePoint.size()/6;
 
-   if( (theScale.size() == 3) && (tieCount == 1))
+   // loong
+   if ((theScale.size() == 3))
+   //if( (theScale.size() == 3) && (tieCount == 1))
    {
       //---
       // Shift the tie point to the (0, 0) position if it's not already.

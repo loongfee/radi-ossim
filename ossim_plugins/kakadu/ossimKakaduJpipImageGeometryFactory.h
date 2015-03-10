@@ -1,5 +1,5 @@
 #ifndef ossimKakaduJpipImageGeometryFactory_HEADER
-#define ossimKakaduJpipImageGeometryFactory_HEADER
+#define ossimKakaduJpipImageGeometryFactory_HEADER 1
 #include <ossim/imaging/ossimImageGeometryFactoryBase.h>
 
 class ossimImageHandler;
@@ -37,8 +37,6 @@ public:
    
 protected:
    ossimKakaduJpipImageGeometryFactory();
-   
-   static ossimKakaduJpipImageGeometryFactory* m_instance;
 
 };
 

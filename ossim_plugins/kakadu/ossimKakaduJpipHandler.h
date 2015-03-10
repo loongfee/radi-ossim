@@ -25,7 +25,7 @@
 class  ossimKakaduJpipHandler : public ossimImageHandler
 {
 public:
-   typedef std::vector<kdu_byte> ByteBuffer;
+   typedef std::vector<kdu_core::kdu_byte> ByteBuffer;
    struct Box
    {
       ossim_uint32 m_type;
@@ -71,15 +71,15 @@ protected:
    ossimRefPtr<ossimImageData> getTileAtRes(const  ossimIrect& rect,
                                             ossim_uint32 resLevel=0);
    //void extractXmlRecurse(ossimString& xmlBoxes, jp2_input_box* pParentBox=0);
-   virtual void extractBoxes(BoxList& boxList, jp2_input_box* pParentBox);
-   void showBoxes(jp2_input_box* pParentBox=0);
-   bool makeConnectionIfNeeded(kdu_client* client);
+   virtual void extractBoxes(BoxList& boxList, kdu_supp::jp2_input_box* pParentBox);
+   void showBoxes(kdu_supp::jp2_input_box* pParentBox=0);
+   bool makeConnectionIfNeeded(kdu_supp::kdu_client* client);
    //virtual bool initializeImplementation();
    int convertClassIdToKdu(int id);
    void allocateTile();
    void deleteRlevelCache();
-   void performRlevelSetup(kdu_codestream& codestream);   
-   bool loadClient(kdu_client* client, kdu_window& window);
+   void performRlevelSetup(kdu_core::kdu_codestream& codestream);   
+   bool loadClient(kdu_supp::kdu_client* client, kdu_supp::kdu_window& window);
    bool openStream();
    void flushCache();
    void initializeRlevelCache();
@@ -100,9 +100,9 @@ protected:
    ossimRefPtr<ossimImageData> m_tile;
    
    ossim_float32   m_quality;
-   kdu_client*     m_headerClient;
-   kdu_client*     m_client;
-   jp2_family_src  m_jp2Family;
+   kdu_supp::kdu_client*     m_headerClient;
+   kdu_supp::kdu_client*     m_client;
+   kdu_supp::jp2_family_src  m_jp2Family;
    int             m_requestQueueId;
    RLevelBlockSizeList m_rlevelTileSize;
    RLevelCacheList m_rlevelBlockCache;

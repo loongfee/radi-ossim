@@ -7,7 +7,7 @@
 // Description: A gdal data set from an ossim image handler.
 //
 //----------------------------------------------------------------------------
-// $Id: ossimGdalDataset.cpp 15766 2009-10-20 12:37:09Z gpotts $
+// $Id: ossimGdalDataset.cpp 23003 2014-11-24 17:13:40Z dburken $
 
 
 #include <fstream>
@@ -30,7 +30,7 @@ void	GDALRegister_ossimGdalDataset(void);
 CPL_C_END
 
 #ifdef OSSIM_ID_ENABLED
-static const char OSSIM_ID[] = "$Id: ossimGdalDataset.cpp 15766 2009-10-20 12:37:09Z gpotts $";
+static const char OSSIM_ID[] = "$Id: ossimGdalDataset.cpp 23003 2014-11-24 17:13:40Z dburken $";
 #endif
 
 ossimGdalDataset::ossimGdalDataset()
@@ -273,7 +273,7 @@ CPLErr ossimGdalDatasetRasterBand::IReadBlock(int nBlockXOff,
    return CE_None;
 }
 
-double ossimGdalDatasetRasterBand::GetNoDataValue( int *pbSuccess )
+double ossimGdalDatasetRasterBand::GetNoDataValue( int * /* pbSuccess */)
 
 {
    if (traceDebug())

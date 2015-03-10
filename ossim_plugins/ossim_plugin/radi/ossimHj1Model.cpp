@@ -472,9 +472,14 @@ void ossimHj1Model::computeSatToOrbRotation(NEWMAT::Matrix& result, ossim_float6
    //att.x = -att.x;
    //att.y = -att.y;
    //att.z = -att.z;
+
    //---
    // Apply the attitude adjustable parameters:
    //---
+   double dt = theRefImagingTime - t;
+   att.x += thePitchOffset*1e-3;
+   att.y += theRollOffset*1e-3;
+   att.z += theYawOffset*1e-3;
 
    //---
    // Compute trig functions to populate rotation matrices: ANGLES IN RADIANS
@@ -1274,6 +1279,9 @@ void ossimHj1Model::imagingRay(const ossimDpt& image_point,
 	bool runtime_dbflag = 0;
 	NEWMAT::Matrix satToOrbit;
 	ossimDpt iPt = image_point;
+
+	iPt.x += theCcdCenterXOffset;
+	iPt.y += theCcdCenterYOffset;
 	//iPt.samp += theSpotSubImageOffset.samp;
 	//iPt.line += theSpotSubImageOffset.line;
 
@@ -1376,9 +1384,9 @@ void ossimHj1Model::imagingRay(const ossimDpt& image_point,
 	double sa = sin(a);
 	double ca = cos(a);
 	ossimDpt3d att(0.0, 0.0, 0.0);
-	att.x += thePitchOffset;
-	att.y += theRollOffset;
-	att.z += theYawOffset;
+	//att.x += thePitchOffset*1e-4;
+	//att.y += theRollOffset*1e-4;
+	//att.z += theYawOffset*1e-4;
 	double cp = cos(att.x);
 	double sp = sin(att.x);
 	double cr = cos(att.y);
@@ -1406,6 +1414,8 @@ void ossimHj1Model::imagingRay(const ossimDpt& image_point,
    bool runtime_dbflag = 0;
    NEWMAT::Matrix satToOrbit;
    ossimDpt iPt = image_point;
+   iPt.x += theCcdCenterXOffset;
+   iPt.y += theCcdCenterYOffset;
 
    double t_line;
    theSupportData->getLineTime(iPt.line, t_line);
@@ -1632,9 +1642,9 @@ void ossimHj1Model::imagingRay(const ossimDpt& image_point,
 	double sa = sin(a);
 	double ca = cos(a);
 	ossimDpt3d att(0.0, 0.0, 0.0);
-	att.x += thePitchOffset;
-	att.y += theRollOffset;
-	att.z += theYawOffset;
+	//att.x += thePitchOffset;
+	//att.y += theRollOffset;
+	//att.z += theYawOffset;
 	double cp = cos(att.x);
 	double sp = sin(att.x);
 	double cr = cos(att.y);

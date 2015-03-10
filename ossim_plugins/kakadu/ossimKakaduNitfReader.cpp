@@ -13,7 +13,7 @@
 // can be raw J2K or have a JP2 wrapper.
 //
 //----------------------------------------------------------------------------
-// $Id: ossimKakaduNitfReader.cpp 22448 2013-10-20 20:08:40Z dburken $
+// $Id: ossimKakaduNitfReader.cpp 22884 2014-09-12 13:14:35Z dburken $
 
 #include "ossimKakaduNitfReader.h"
 #include "ossimKakaduCommon.h"
@@ -38,6 +38,9 @@
 #include <kdu_region_decompressor.h>
  
 #include <iostream>
+
+using namespace kdu_core;
+using namespace kdu_supp;
 
 #ifdef OSSIM_ID_ENABLED
 static const char OSSIM_ID[] = "$Id";
@@ -72,77 +75,77 @@ ossimKakaduNitfReader::ossimKakaduNitfReader()
 
 ossimKakaduNitfReader::~ossimKakaduNitfReader()
 {
-   // Cleanup processing environment
-   if ( m_threadEnv )
+   // Kakadu kdu_thread_entity::terminate throws exceptions...
+   try
    {
-      // Kakadu kdu_thread_entity::terminate throws exceptions...
-      try
+      // Cleanup processing environment
+      if ( m_threadEnv )
       {
          m_threadEnv->terminate(m_openTileThreadQueue, true);
 
          // Terminates background codestream processing.
          m_threadEnv->cs_terminate(m_codestream);
-      }
-      catch ( kdu_exception exc )
-      {
-         // kdu_exception is an int typedef.
-         if ( m_threadEnv != 0 )
-         {
-            m_threadEnv->handle_exception(exc);
-         }
-         ostringstream e;
-         e << "ossimKakaduNitfReader::~ossimKakaduNitfReader\n"
-           << "Caught exception from kdu_region_decompressor: " << exc << "\n";
-         ossimNotify(ossimNotifyLevel_WARN) << e.str() << std::endl;
-      }
-      catch ( std::bad_alloc& )
-      {
-         if ( m_threadEnv != 0 )
-         {
-            m_threadEnv->handle_exception(KDU_MEMORY_EXCEPTION);
-         }
-         std::string e =
-            "Caught exception from kdu_region_decompressor: std::bad_alloc";
-         ossimNotify(ossimNotifyLevel_WARN) << e << std::endl;
-      }
-      catch( ... )
-      {
-         std::string e =
-            "Caught unhandled exception from kdu_region_decompressor";
-         ossimNotify(ossimNotifyLevel_WARN) << e << std::endl;
-      }
 
-      m_threadEnv->destroy();
-      delete m_threadEnv;
-      m_threadEnv = 0;
-   }   
+         m_threadEnv->destroy();
+         delete m_threadEnv;
+         m_threadEnv = 0; 
+      }
    
-   if ( m_codestream.exists() )
+      if ( m_codestream.exists() )
+      {
+         m_codestream.destroy();
+      }
+      
+      if ( m_openTileThreadQueue )
+      {
+         m_openTileThreadQueue = 0;
+      }
+      if ( m_jp2Source )
+      {
+         delete m_jp2Source;
+         m_jp2Source = 0;
+      }
+      if ( m_jp2FamilySrc )
+      {
+         delete m_jp2FamilySrc;
+         m_jp2FamilySrc = 0;
+      }
+      if ( m_channels )
+      {
+         m_channels->clear();
+         delete m_channels;
+         m_channels = 0;
+      }
+   }
+   catch ( kdu_core::kdu_exception exc )
    {
-      m_codestream.destroy();
+      // kdu_exception is an int typedef.
+      if ( m_threadEnv != 0 )
+      {
+         m_threadEnv->handle_exception(exc);
+      }
+      ostringstream e;
+      e << "ossimKakaduNitfReader::~ossimKakaduNitfReader\n"
+        << "Caught exception from kdu_region_decompressor: " << exc << "\n";
+      ossimNotify(ossimNotifyLevel_WARN) << e.str() << std::endl;
+   }
+   catch ( std::bad_alloc& )
+   {
+      if ( m_threadEnv != 0 )
+      {
+         m_threadEnv->handle_exception(KDU_MEMORY_EXCEPTION);
+      }
+      std::string e =
+         "Caught exception from kdu_region_decompressor: std::bad_alloc";
+      ossimNotify(ossimNotifyLevel_WARN) << e << std::endl;
+   }
+   catch( ... )
+   {
+      std::string e =
+         "Caught unhandled exception from kdu_region_decompressor";
+      ossimNotify(ossimNotifyLevel_WARN) << e << std::endl;
    }
    
-   if ( m_openTileThreadQueue )
-   {
-      m_openTileThreadQueue = 0;
-   }
-   if ( m_jp2Source )
-   {
-      delete m_jp2Source;
-      m_jp2Source = 0;
-   }
-   if ( m_jp2FamilySrc )
-   {
-      delete m_jp2FamilySrc;
-      m_jp2FamilySrc = 0;
-   }
-   if ( m_channels )
-   {
-      m_channels->clear();
-      delete m_channels;
-      m_channels = 0;
-   }
-
    ossimNitfTileSource::close();
 }
 
@@ -602,7 +605,7 @@ bool ossimKakaduNitfReader::allocate()
                
                if (m_jp2FamilySrc->exists())
                {
-                  m_jp2Source = new jp2_source();
+                  m_jp2Source = new kdu_supp::jp2_source();
                   
                   m_jp2Source->open(m_jp2FamilySrc);
                   m_jp2Source->read_header();

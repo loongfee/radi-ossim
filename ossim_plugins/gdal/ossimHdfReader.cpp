@@ -138,7 +138,7 @@ bool ossimHdfReader::open()
       std::vector<ossimString> entryStringList;
       if (m_gdalTileSource != 0)
       {
-         m_gdalTileSource->getEntryStringList(entryStringList);
+         m_gdalTileSource->getEntryNames(entryStringList);
       }
       
       // bool isSwathImage = false;
@@ -406,7 +406,7 @@ ossimString ossimHdfReader::getEntryString(ossim_uint32 entryId) const
    if (m_gdalTileSource.valid())
    {
       std::vector<ossimString> entryStringList;
-      m_gdalTileSource->getEntryStringList(entryStringList);
+      m_gdalTileSource->getEntryNames(entryStringList);
       if (entryId < entryStringList.size())
       {
          return entryStringList[entryId];
